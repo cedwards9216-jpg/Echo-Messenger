@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echo - Online Real-Time Messaging App</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: 'var(--color-brand-50, #f0f6ff)',
+              100: 'var(--color-brand-100, #e0edff)',
+              500: 'var(--color-brand-500, #3b82f6)',
+              600: 'var(--color-brand-600, #2563eb)',
+              700: 'var(--color-brand-700, #1d4ed8)',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Complete Dynamic Theme System Engine */
+    :root[data-theme="default"] {
+      --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      --sidebar-bg: rgba(255, 255, 255, 0.9);
+      --chat-bg: #f1f5f9;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --brand-primary: #3b82f6;
+      --brand-hover: #2563eb;
+      --bubble-me: #3b82f6;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #ffffff;
+      --bubble-other-text: #0f172a;
+      --border-color: #cbd5e1;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="default"].dark {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+      --sidebar-bg: rgba(15, 23, 42, 0.95);
+      --chat-bg: #0b0f19;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --brand-primary: #3b82f6;
+      --brand-hover: #2563eb;
+      --bubble-me: #2563eb;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #1e293b;
+      --bubble-other-text: #f8fafc;
+      --border-color: #334155;
+      --pattern-overlay: none;
+    }
+
+    /* Halloween Spooky Theme */
+    :root[data-theme="halloween"] {
+      --bg-gradient: linear-gradient(135deg, #180227 0%, #3b0764 40%, #7c2d12 100%);
+      --sidebar-bg: rgba(24, 2, 39, 0.92);
+      --chat-bg: #12011f;
+      --card-bg: #2e104d;
+      --text-main: #fae8ff;
+      --text-muted: #d8b4fe;
+      --brand-primary: #ea580c;
+      --brand-hover: #c2410c;
+      --bubble-me: linear-gradient(135deg, #ea580c 0%, #9333ea 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #240a3e;
+      --bubble-other-text: #f5d0fe;
+      --border-color: #f97316;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.08" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">🎃</text><text x="70" y="40" font-size="20">🦇</text><text x="30" y="80" font-size="22">👻</text><text x="80" y="90" font-size="18">🕷️</text></svg>');
+    }
+
+    /* Christmas Festive Theme */
+    :root[data-theme="christmas"] {
+      --bg-gradient: linear-gradient(135deg, #052e16 0%, #14532d 50%, #7f1d1d 100%);
+      --sidebar-bg: rgba(5, 46, 22, 0.92);
+      --chat-bg: #031e0f;
+      --card-bg: #0d3d22;
+      --text-main: #f0fdf4;
+      --text-muted: #86efac;
+      --brand-primary: #dc2626;
+      --brand-hover: #b91c1c;
+      --bubble-me: linear-gradient(135deg, #dc2626 0%, #15803d 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #114a2a;
+      --bubble-other-text: #f0fdf4;
+      --border-color: #fbbf24;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.1" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">❄️</text><text x="70" y="35" font-size="20">🎄</text><text x="30" y="80" font-size="22">🎁</text><text x="75" y="85" font-size="20">🎅</text></svg>');
+    }
+
+    /* Valentine's Romance Theme */
+    :root[data-theme="valentine"] {
+      --bg-gradient: linear-gradient(135deg, #ffe4e6 0%, #f43f5e 50%, #881337 100%);
+      --sidebar-bg: rgba(76, 5, 25, 0.92);
+      --chat-bg: #2c040e;
+      --card-bg: #4c0519;
+      --text-main: #ffe4e6;
+      --text-muted: #fecdd3;
+      --brand-primary: #e11d48;
+      --brand-hover: #be123c;
+      --bubble-me: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #580a22;
+      --bubble-other-text: #ffe4e6;
+      --border-color: #f43f5e;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.12" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">💖</text><text x="70" y="35" font-size="20">💕</text><text x="25" y="80" font-size="22">🌹</text><text x="75" y="85" font-size="20">💌</text></svg>');
+    }
+
+    /* New Year's Eve / Celebration Theme */
+    :root[data-theme="newyear"] {
+      --bg-gradient: linear-gradient(135deg, #020617 0%, #1e1b4b 50%, #78350f 100%);
+      --sidebar-bg: rgba(2, 6, 23, 0.94);
+      --chat-bg: #090d1f;
+      --card-bg: #131b36;
+      --text-main: #fef3c7;
+      --text-muted: #fde68a;
+      --brand-primary: #d97706;
+      --brand-hover: #b45309;
+      --bubble-me: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      --bubble-me-text: #020617;
+      --bubble-other: #1c274c;
+      --bubble-other-text: #fef3c7;
+      --border-color: #f59e0b;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.12" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">✨</text><text x="70" y="35" font-size="20">🎆</text><text x="25" y="80" font-size="22">🥂</text><text x="75" y="85" font-size="20">🎉</text></svg>');
+    }
+
+    /* Emerald Theme */
+    :root[data-theme="emerald"] {
+      --bg-gradient: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+      --sidebar-bg: rgba(6, 78, 59, 0.93);
+      --chat-bg: #022018;
+      --card-bg: #065f46;
+      --text-main: #ecfdf5;
+      --text-muted: #a7f3d0;
+      --brand-primary: #10b981;
+      --brand-hover: #059669;
+      --bubble-me: #059669;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #044e3a;
+      --bubble-other-text: #ecfdf5;
+      --border-color: #34d399;
+      --pattern-overlay: none;
+    }
+
+    /* Cyberpunk Theme */
+    :root[data-theme="cyberpunk"] {
+      --bg-gradient: linear-gradient(135deg, #2e1065 0%, #701a75 50%, #831843 100%);
+      --sidebar-bg: rgba(46, 16, 101, 0.94);
+      --chat-bg: #1c0942;
+      --card-bg: #4c1d95;
+      --text-main: #fdf4ff;
+      --text-muted: #f5d0fe;
+      --brand-primary: #d946ef;
+      --brand-hover: #c026d3;
+      --bubble-me: linear-gradient(135deg, #06b6d4 0%, #d946ef 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #3b0764;
+      --bubble-other-text: #fdf4ff;
+      --border-color: #22d3ee;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.08" viewBox="0 0 100 100"><text x="10" y="30" font-size="20">⚡</text><text x="60" y="70" font-size="20">💎</text></svg>');
+    }
+
+    /* Universal Dynamic Styling Apply Rules */
+    body {
+      background: var(--bg-gradient) !important;
+      color: var(--text-main) !important;
+    }
+
+    aside {
+      background: var(--sidebar-bg) !important;
+      border-color: var(--border-color) !important;
+    }
+
+    main {
+      background: var(--chat-bg) !important;
+      background-image: var(--pattern-overlay) !important;
+    }
+
+    .theme-card {
+      background-color: var(--card-bg) !important;
+      color: var(--text-main) !important;
+      border-color: var(--border-color) !important;
+    }
+
+    .theme-brand-bg {
+      background: var(--brand-primary) !important;
+      color: #ffffff !important;
+    }
+
+    .theme-brand-bg:hover {
+      background: var(--brand-hover) !important;
+    }
+
+    .theme-bubble-me {
+      background: var(--bubble-me) !important;
+      color: var(--bubble-me-text) !important;
+    }
+
+    .theme-bubble-other {
+      background: var(--bubble-other) !important;
+      color: var(--bubble-other-text) !important;
+      border: 1px solid var(--border-color) !important;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(156, 163, 175, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 h-screen overflow-hidden antialiased">
+
+  <!-- APP CONTAINER -->
+  <div id="app" class="h-full w-full flex flex-col justify-between">
+    
+    <!-- AUTH SCREEN -->
+    <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-95 backdrop-blur-sm p-4 hidden">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 max-w-md w-full border border-gray-200 dark:border-gray-700 relative overflow-hidden">
+        
+        <!-- Header -->
+        <div class="text-center mb-8">
+          <div class="w-16 h-16 theme-brand-bg text-white rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg transform -rotate-6">
+            <i class="fa-solid fa-comments text-3xl"></i>
+          </div>
+          <h1 class="text-3xl font-extrabold tracking-tight dark:text-white">Echo Messenger</h1>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Real-time chat with auto-login persistent security</p>
+        </div>
+
+        <!-- Auth Tabs -->
+        <div class="flex border-b border-gray-200 dark:border-gray-700 mb-6">
+          <button id="tab-login-btn" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400">Sign In</button>
+          <button id="tab-register-btn" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400">Register</button>
+        </div>
+
+        <!-- Auth Alert Message Box -->
+        <div id="auth-alert" class="hidden mb-4 p-3 rounded-lg text-xs font-medium bg-red-100 border border-red-200 text-red-700 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300"></div>
+
+        <!-- Login Form -->
+        <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Username</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-user"></i></span>
+              <input type="text" id="login-username" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="enter username">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Password</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" id="login-password" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="••••••••">
+            </div>
+          </div>
+          <button type="submit" id="login-submit-btn" class="w-full py-3 px-4 theme-brand-bg text-white font-semibold rounded-xl shadow-md hover:opacity-95 transition duration-200 flex items-center justify-center space-x-2 text-sm">
+            <span>Sign In to Echo</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="register-form" onsubmit="handleRegister(event)" class="space-y-4 hidden">
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Choose Username</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-at"></i></span>
+              <input type="text" id="reg-username" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="unique_username">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Choose Password</label>
+            <div class="relative">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-key"></i></span>
+              <input type="password" id="reg-password" required minlength="4" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="min 4 characters">
+            </div>
+          </div>
+          <button type="submit" id="reg-submit-btn" class="w-full py-3 px-4 theme-brand-bg text-white font-semibold rounded-xl shadow-md hover:opacity-95 transition duration-200 flex items-center justify-center space-x-2 text-sm">
+            <span>Create Account</span>
+            <i class="fa-solid fa-user-plus text-xs"></i>
+          </button>
+        </form>
+
+        <div class="mt-6 text-center text-xs text-gray-400 flex items-center justify-center space-x-1">
+          <i class="fa-solid fa-shield-halved text-emerald-500"></i>
+          <span>Synced globally via Cloud Database</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN APP DASHBOARD -->
+    <div id="main-dashboard" class="flex-1 flex overflow-hidden">
+      
+      <!-- SIDEBAR -->
+      <aside class="w-80 md:w-96 border-r flex flex-col z-10 transition-all duration-300">
+        
+        <!-- User Profile Header -->
+        <div class="p-4 border-b flex items-center justify-between opacity-95">
+          <div class="flex items-center space-x-3 cursor-pointer" onclick="openModal('settings-modal')">
+            <div class="relative">
+              <div id="user-avatar" class="w-10 h-10 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg shadow-sm">
+                ?
+              </div>
+              <span id="user-status-dot" class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></span>
+            </div>
+            <div>
+              <h2 id="user-display-name" class="font-bold text-sm leading-snug">Loading...</h2>
+              <p id="user-status-text" class="text-xs opacity-70">Online</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-1">
+            <button onclick="openModal('new-chat-modal')" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition" title="New Message or Group">
+              <i class="fa-solid fa-pen-to-square text-base"></i>
+            </button>
+            <button onclick="openModal('settings-modal')" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition" title="Settings">
+              <i class="fa-solid fa-gear text-base"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="p-3">
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+              <i class="fa-solid fa-magnifying-glass text-xs"></i>
+            </span>
+            <input type="text" id="chat-search-input" onkeyup="filterChats()" placeholder="Search chats or friends..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-700/60 text-xs text-gray-800 dark:text-gray-200 placeholder-gray-400 border border-transparent focus:border-blue-500 outline-none transition">
+          </div>
+        </div>
+
+        <!-- Navigation Tabs for Sidebar -->
+        <div class="flex px-3 pb-2 border-b border-gray-200 dark:border-gray-700/40 text-xs font-medium text-gray-500 dark:text-gray-400 space-x-1">
+          <button id="tab-chats-btn" onclick="switchSidebarTab('chats')" class="flex-1 py-1.5 rounded-lg theme-brand-bg text-white font-semibold shadow-xs transition">Chats</button>
+          <button id="tab-friends-btn" onclick="switchSidebarTab('friends')" class="flex-1 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center justify-center space-x-1">
+            <span>Friends</span>
+            <span id="pending-req-badge" class="hidden px-1.5 py-0.5 bg-rose-500 text-white rounded-full text-[10px]">0</span>
+          </button>
+        </div>
+
+        <!-- TAB CONTENT: CHATS LIST -->
+        <div id="sidebar-chats-container" class="flex-1 overflow-y-auto p-2 space-y-1">
+          <!-- Pinned Section -->
+          <div id="pinned-chats-section" class="mb-2 hidden">
+            <div class="px-2 py-1 text-[11px] font-bold text-gray-400 uppercase tracking-wider flex items-center space-x-1">
+              <i class="fa-solid fa-thumbtack text-xs text-amber-500"></i>
+              <span>Pinned Conversations</span>
+            </div>
+            <div id="pinned-chats-list" class="space-y-1"></div>
+          </div>
+
+          <!-- All Conversations -->
+          <div id="all-chats-section">
+            <div class="px-2 py-1 text-[11px] font-bold text-gray-400 uppercase tracking-wider">
+              <span>Messages</span>
+            </div>
+            <div id="all-chats-list" class="space-y-1"></div>
+          </div>
+        </div>
+
+        <!-- TAB CONTENT: FRIENDS LIST -->
+        <div id="sidebar-friends-container" class="flex-1 overflow-y-auto p-3 space-y-4 hidden">
+          <div id="friend-requests-wrapper" class="hidden">
+            <h3 class="text-xs font-bold text-amber-500 uppercase tracking-wider mb-2 flex items-center space-x-1">
+              <i class="fa-solid fa-bell text-xs"></i>
+              <span>Pending Requests</span>
+            </h3>
+            <div id="friend-requests-list" class="space-y-2"></div>
+          </div>
+
+          <div class="bg-gray-50 dark:bg-gray-700/40 p-3 rounded-xl border border-gray-200 dark:border-gray-700">
+            <label class="block text-xs font-semibold mb-1">Add Friend by Username</label>
+            <div class="flex space-x-2">
+              <input type="text" id="add-friend-input" placeholder="Enter username..." class="flex-1 px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
+              <button onclick="sendFriendRequest()" class="px-3 py-1.5 theme-brand-bg text-white rounded-lg text-xs font-semibold hover:opacity-90">Add</button>
+            </div>
+          </div>
+
+          <div>
+            <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">My Friends</h4>
+            <div id="friends-list" class="space-y-1"></div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- MAIN CHAT PANEL -->
+      <main class="flex-1 flex flex-col relative bg-slate-900/10">
+        <!-- Default State when no chat selected -->
+        <div id="no-chat-selected" class="flex-1 flex flex-col items-center justify-center p-8 text-center">
+          <div class="w-20 h-20 rounded-3xl theme-brand-bg text-white flex items-center justify-center text-4xl mb-4 shadow-xl">
+            <i class="fa-solid fa-comments"></i>
+          </div>
+          <h2 class="text-2xl font-bold mb-2">Welcome to Echo Messenger</h2>
+          <p class="text-xs opacity-70 max-w-sm mb-6">Select an existing conversation from the sidebar or start a new direct message or group chat.</p>
+          <button onclick="openModal('new-chat-modal')" class="px-5 py-2.5 theme-brand-bg text-white text-xs font-semibold rounded-xl shadow-lg hover:opacity-90 transition">
+            <i class="fa-solid fa-plus mr-1.5"></i> Start New Chat
+          </button>
+        </div>
+
+        <!-- Active Chat Interface -->
+        <div id="active-chat-wrapper" class="flex-1 flex flex-col h-full hidden">
+          <!-- Active Chat Header -->
+          <div class="p-3 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between theme-card">
+            <div class="flex items-center space-x-3">
+              <div id="active-chat-avatar" class="w-10 h-10 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold">
+                ?
+              </div>
+              <div>
+                <h3 id="active-chat-title" class="font-bold text-sm">Chat</h3>
+                <p id="active-chat-subtitle" class="text-[11px] opacity-70">Participants</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-2">
+              <button onclick="togglePinCurrentChat()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition" title="Pin/Unpin Conversation">
+                <i class="fa-solid fa-thumbtack text-amber-500"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Pinned Message Banner -->
+          <div id="chat-pinned-message-bar" class="bg-amber-500/15 border-b border-amber-500/30 px-4 py-2 flex items-center justify-between text-xs hidden">
+            <div class="flex items-center space-x-2 truncate">
+              <i class="fa-solid fa-thumbtack text-amber-500"></i>
+              <span class="font-semibold text-amber-600 dark:text-amber-400">Pinned:</span>
+              <span id="pinned-message-text" class="truncate opacity-90">Message content...</span>
+            </div>
+            <button onclick="unpinChatMessage()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <!-- Messages Container -->
+          <div id="messages-container" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+
+          <!-- Attachment Preview Bar -->
+          <div id="attachment-preview-bar" class="px-4 py-2 bg-black/10 dark:bg-white/10 flex items-center justify-between text-xs hidden">
+            <div class="flex items-center space-x-3">
+              <div id="media-preview-container" class="w-10 h-10 rounded-lg overflow-hidden bg-gray-300 dark:bg-gray-700 flex items-center justify-center"></div>
+              <span id="media-filename" class="font-medium truncate max-w-xs">attachment.png</span>
+            </div>
+            <button onclick="clearAttachment()" class="text-rose-500 hover:text-rose-600"><i class="fa-solid fa-circle-xmark text-lg"></i></button>
+          </div>
+
+          <!-- Reply Preview Bar -->
+          <div id="reply-preview-bar" class="px-4 py-2 bg-blue-500/10 border-t border-blue-500/30 flex items-center justify-between text-xs hidden">
+            <div class="truncate">
+              <span id="reply-to-user" class="font-bold text-blue-500">Replying to @user</span>
+              <p id="reply-to-text" class="truncate opacity-80 text-[11px]">Original message...</p>
+            </div>
+            <button onclick="cancelReply()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+
+          <!-- Input Bar -->
+          <div class="p-3 border-t border-gray-200 dark:border-gray-800 theme-card relative">
+            <!-- Quick Emoji Popover -->
+            <div id="quick-emoji-popover" class="absolute bottom-16 left-3 theme-card border rounded-2xl p-2 shadow-xl flex space-x-2 hidden z-20">
+              <button onclick="insertEmoji('❤️')" class="text-xl hover:scale-125 transition">❤️</button>
+              <button onclick="insertEmoji('😂')" class="text-xl hover:scale-125 transition">😂</button>
+              <button onclick="insertEmoji('😭')" class="text-xl hover:scale-125 transition">😭</button>
+              <button onclick="insertEmoji('🔥')" class="text-xl hover:scale-125 transition">🔥</button>
+              <button onclick="insertEmoji('👍')" class="text-xl hover:scale-125 transition">👍</button>
+              <button onclick="insertEmoji('🎉')" class="text-xl hover:scale-125 transition">🎉</button>
+            </div>
+
+            <form onsubmit="sendMessage(event)" class="flex items-center space-x-2">
+              <input type="file" id="media-file-input" accept="image/*,video/*" onchange="handleFileSelect(event)" class="hidden">
+              <button type="button" onclick="document.getElementById('media-file-input').click()" class="p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition" title="Attach Image or Video">
+                <i class="fa-solid fa-paperclip text-base"></i>
+              </button>
+              <button type="button" onclick="toggleEmojiPicker()" class="p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition" title="Emojis">
+                <i class="fa-solid fa-face-smile text-base"></i>
+              </button>
+              
+              <input type="text" id="message-text-input" placeholder="Type a message..." class="flex-1 py-2.5 px-4 rounded-xl bg-gray-100 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500 transition">
+              
+              <button type="submit" class="p-2.5 theme-brand-bg text-white rounded-xl shadow-md hover:opacity-90 transition">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </main>
+
+    </div>
+
+  </div>
+
+  <!-- NEW CHAT MODAL -->
+  <div id="new-chat-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="theme-card rounded-2xl max-w-md w-full p-6 border shadow-2xl relative">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-base font-bold">Start New Conversation</h3>
+        <button onclick="closeModal('new-chat-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <div id="modal-new-chat-alert" class="hidden mb-4 p-3 rounded-lg text-xs bg-red-500/10 border border-red-500/30 text-red-500"></div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold opacity-70 mb-1">Target Username(s)</label>
+          <input type="text" id="target-usernames-input" placeholder="e.g. john, sarah (comma separated for groups)" class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold opacity-70 mb-1">Group Title (Optional)</label>
+          <input type="text" id="group-title-input" placeholder="e.g. Weekend Crew" class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
+        </div>
+
+        <button onclick="createConversation()" class="w-full py-2.5 theme-brand-bg text-white text-xs font-semibold rounded-xl shadow-md hover:opacity-90 transition">
+          Create Chat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SETTINGS & THEMES MODAL -->
+  <div id="settings-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="theme-card rounded-2xl max-w-lg w-full p-6 border shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-6">
+      <div class="flex items-center justify-between border-b pb-3 border-black/10 dark:border-white/10">
+        <h3 class="text-base font-bold flex items-center space-x-2">
+          <i class="fa-solid fa-gear text-blue-500"></i>
+          <span>Settings & Preferences</span>
+        </h3>
+        <button onclick="closeModal('settings-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
+      </div>
+
+      <!-- Privacy Section -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Privacy & Approval</h4>
+        <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl">
+          <div>
+            <p class="text-xs font-semibold">Message Approval Required</p>
+            <p class="text-[11px] opacity-60">People cannot message you unless they are on your friends list.</p>
+          </div>
+          <input type="checkbox" id="privacy-dm-approval" onchange="updatePrivacySettings()" class="w-4 h-4 text-blue-600 rounded cursor-pointer">
+        </div>
+      </div>
+
+      <!-- Appearance Section -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">Appearance & Themes</h4>
+        <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl mb-4">
+          <span class="text-sm font-semibold">Dark Mode</span>
+          <button onclick="toggleDarkMode()" class="px-4 py-2 rounded-xl bg-black/10 dark:bg-white/10 text-xs font-semibold flex items-center space-x-2">
+            <i class="fa-solid fa-moon text-amber-400"></i>
+            <span id="darkmode-toggle-text">Toggle Mode</span>
+          </button>
+        </div>
+
+        <p class="text-xs font-semibold mb-2">Accent & Immersive Holiday Themes</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+          <button onclick="setTheme('default')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition">
+            <span class="w-3.5 h-3.5 rounded-full bg-blue-500 inline-block"></span>
+            <span>Default</span>
+          </button>
+          <button onclick="setTheme('emerald')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition">
+            <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 inline-block"></span>
+            <span>Emerald</span>
+          </button>
+          <button onclick="setTheme('cyberpunk')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-purple-600 to-pink-600 text-white">
+            <span>⚡ Cyberpunk</span>
+          </button>
+          <button onclick="setTheme('halloween')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-orange-600 to-purple-900 text-white">
+            <span>🎃 Halloween</span>
+          </button>
+          <button onclick="setTheme('christmas')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-emerald-700 to-red-700 text-white">
+            <span>🎄 Christmas</span>
+          </button>
+          <button onclick="setTheme('valentine')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-rose-500 to-red-700 text-white">
+            <span>💖 Valentine's</span>
+          </button>
+          <button onclick="setTheme('newyear')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-amber-600 to-indigo-900 text-white">
+            <span>✨ New Year's</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Changelog Section -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
+        <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
+          <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
+            <span class="font-bold text-blue-400">Echo Messenger v3.0.0</span>
+            <span class="text-[10px] opacity-60">Latest Release</span>
+          </div>
+          <p class="font-semibold text-amber-500 flex items-center space-x-1">
+            <i class="fa-solid fa-code"></i>
+            <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
+          </p>
+          <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
+            <li>Full dynamic theme overhaul (spooky Halloween, Christmas, Valentine's, New Year's).</li>
+            <li>Custom wallpaper patterns, message bubble styling, and animated accents.</li>
+            <li>Realtime Firebase backend auto-sync with device auto-login persistence.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-2 border-t border-gray-200 dark:border-gray-700">
+        <button onclick="handleLogout()" class="w-full py-3 bg-rose-500 text-white font-semibold rounded-xl hover:bg-rose-600 transition flex items-center justify-center space-x-2 text-xs">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Sign Out of Account</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIREBASE BACKEND ENGINE -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { 
+      getAuth, 
+      signInAnonymously, 
+      signInWithCustomToken 
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { 
+      getFirestore, 
+      doc, 
+      getDoc, 
+      setDoc, 
+      updateDoc, 
+      collection, 
+      onSnapshot 
+    } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // Hardcoded Firebase & App Config for GitHub Pages Hosting
+    const appId = 'echo-messenger-app';
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0JT-XWV_3An3m6me8tU3yo9oQ2_uYtGI",
+      authDomain: "echo-messenger-ccf83.firebaseapp.com",
+      projectId: "echo-messenger-ccf83",
+      storageBucket: "echo-messenger-ccf83.firebasestorage.app",
+      messagingSenderId: "1095644383008",
+      appId: "1:1095644383008:web:15107520b2a44948a17945",
+      measurementId: "G-47CN0DH91J"
+    };
+    
+    // Initialize
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // Global App State
+    let currentUser = null;
+    let activeChatId = null;
+    let chatsData = [];
+    let replyingToMsg = null;
+    let selectedAttachmentBase64 = null;
+
+    // Strict Firestore Paths
+    const PUBLIC_USERS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'users');
+    const PUBLIC_CHATS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'chats');
+    const PUBLIC_FRIENDS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'friends');
+
+    // SHA-256 Hashing for Passwords
+    async function hashString(str) {
+      const encoder = new TextEncoder();
+      const data = encoder.encode(str);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // SESSION INITIALIZATION
+    window.addEventListener('load', async () => {
+      try {
+        if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+          await signInWithCustomToken(auth, __initial_auth_token);
+        } else {
+          await signInAnonymously(auth);
+        }
+
+        const storedSession = localStorage.getItem('echo_session_user');
+        if (storedSession) {
+          const userDoc = await getDoc(doc(PUBLIC_USERS_COL, storedSession.toLowerCase()));
+          if (userDoc.exists()) {
+            currentUser = userDoc.data();
+            setupUserSession();
+          } else {
+            showAuthScreen();
+          }
+        } else {
+          showAuthScreen();
+        }
+      } catch (err) {
+        console.error("Auth init error:", err);
+        showAuthScreen();
+      }
+    });
+
+    window.switchAuthTab = (tab) => {
+      document.getElementById('auth-alert').classList.add('hidden');
+      if (tab === 'login') {
+        document.getElementById('tab-login-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400";
+        document.getElementById('tab-register-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400";
+        document.getElementById('login-form').classList.remove('hidden');
+        document.getElementById('register-form').classList.add('hidden');
+      } else {
+        document.getElementById('tab-register-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400";
+        document.getElementById('tab-login-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400";
+        document.getElementById('register-form').classList.remove('hidden');
+        document.getElementById('login-form').classList.add('hidden');
+      }
+    };
+
+    function showAuthScreen() {
+      document.getElementById('auth-screen').classList.remove('hidden');
+    }
+
+    function showAuthAlert(msg) {
+      const el = document.getElementById('auth-alert');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    window.handleLogin = async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('login-username').value.trim().toLowerCase();
+      const pass = document.getElementById('login-password').value;
+
+      if (!username || !pass) return;
+
+      const userDocRef = doc(PUBLIC_USERS_COL, username);
+      const snap = await getDoc(userDocRef);
+
+      if (!snap.exists()) {
+        showAuthAlert("Username does not exist. Please register.");
+        return;
+      }
+
+      const userData = snap.data();
+      const hashed = await hashString(pass);
+
+      if (userData.passHash !== hashed) {
+        showAuthAlert("Incorrect password.");
+        return;
+      }
+
+      localStorage.setItem('echo_session_user', username);
+      currentUser = userData;
+      setupUserSession();
+      document.getElementById('auth-screen').classList.add('hidden');
+    };
+
+    window.handleRegister = async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('reg-username').value.trim().toLowerCase();
+      const pass = document.getElementById('reg-password').value;
+
+      if (!username || !pass) return;
+
+      const userDocRef = doc(PUBLIC_USERS_COL, username);
+      const snap = await getDoc(userDocRef);
+
+      if (snap.exists()) {
+        showAuthAlert("Username is already taken!");
+        return;
+      }
+
+      const hashed = await hashString(pass);
+      const newUser = {
+        username: username,
+        passHash: hashed,
+        createdAt: Date.now(),
+        privacyApproval: false,
+        friends: [],
+        pinnedChats: []
+      };
+
+      await setDoc(userDocRef, newUser);
+      localStorage.setItem('echo_session_user', username);
+      currentUser = newUser;
+      setupUserSession();
+      document.getElementById('auth-screen').classList.add('hidden');
+    };
+
+    window.handleLogout = () => {
+      localStorage.removeItem('echo_session_user');
+      location.reload();
+    };
+
+    function setupUserSession() {
+      document.getElementById('user-display-name').textContent = "@" + currentUser.username;
+      document.getElementById('user-avatar').textContent = currentUser.username.charAt(0).toUpperCase();
+      
+      const privacyCheck = document.getElementById('privacy-dm-approval');
+      if (privacyCheck) {
+        privacyCheck.checked = currentUser.privacyApproval || false;
+      }
+
+      // Realtime listener for User Profile
+      onSnapshot(doc(PUBLIC_USERS_COL, currentUser.username), (docSnap) => {
+        if (docSnap.exists()) {
+          currentUser = docSnap.data();
+          renderFriendsList();
+        }
+      }, (err) => console.error("User sync error:", err));
+
+      // Realtime Listener for All Chats
+      onSnapshot(PUBLIC_CHATS_COL, (snapshot) => {
+        const rawChats = [];
+        snapshot.forEach(d => {
+          const data = d.data();
+          if (data.participants && data.participants.includes(currentUser.username)) {
+            rawChats.push({ id: d.id, ...data });
+          }
+        });
+        chatsData = rawChats;
+        renderChatsList();
+        if (activeChatId) renderActiveChatMessages();
+      }, (err) => console.error("Chats sync error:", err));
+
+      // Realtime Friend Requests
+      onSnapshot(PUBLIC_FRIENDS_COL, (snapshot) => {
+        const reqs = [];
+        snapshot.forEach(d => {
+          const data = d.data();
+          if (data.to === currentUser.username && data.status === 'pending') {
+            reqs.push({ id: d.id, ...data });
+          }
+        });
+        renderPendingRequests(reqs);
+      }, (err) => console.error("Friends sync error:", err));
+    }
+
+    window.switchSidebarTab = (tab) => {
+      const chatsTab = document.getElementById('tab-chats-btn');
+      const friendsTab = document.getElementById('tab-friends-btn');
+      const chatsContainer = document.getElementById('sidebar-chats-container');
+      const friendsContainer = document.getElementById('sidebar-friends-container');
+
+      if (tab === 'chats') {
+        chatsTab.className = "flex-1 py-1.5 rounded-lg theme-brand-bg text-white font-semibold shadow-xs transition";
+        friendsTab.className = "flex-1 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center justify-center space-x-1";
+        chatsContainer.classList.remove('hidden');
+        friendsContainer.classList.add('hidden');
+      } else {
+        friendsTab.className = "flex-1 py-1.5 rounded-lg theme-brand-bg text-white font-semibold shadow-xs transition flex items-center justify-center space-x-1";
+        chatsTab.className = "flex-1 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition";
+        friendsContainer.classList.remove('hidden');
+        chatsContainer.classList.add('hidden');
+      }
+    };
+
+    function renderChatsList() {
+      const pinnedContainer = document.getElementById('pinned-chats-list');
+      const allContainer = document.getElementById('all-chats-list');
+      const pinnedWrapper = document.getElementById('pinned-chats-section');
+
+      pinnedContainer.innerHTML = '';
+      allContainer.innerHTML = '';
+
+      const pinnedIds = currentUser.pinnedChats || [];
+      let pinnedCount = 0;
+
+      chatsData.sort((a,b) => (b.lastUpdated || 0) - (a.lastUpdated || 0)).forEach(chat => {
+        const isPinned = pinnedIds.includes(chat.id);
+        const chatItem = createChatItemElement(chat);
+
+        if (isPinned) {
+          pinnedContainer.appendChild(chatItem);
+          pinnedCount++;
+        } else {
+          allContainer.appendChild(chatItem);
+        }
+      });
+
+      if (pinnedCount > 0) {
+        pinnedWrapper.classList.remove('hidden');
+      } else {
+        pinnedWrapper.classList.add('hidden');
+      }
+    }
+
+    function createChatItemElement(chat) {
+      const div = document.createElement('div');
+      const isActive = chat.id === activeChatId;
+      
+      div.className = `p-3 rounded-xl flex items-center justify-between cursor-pointer transition ${
+        isActive ? 'theme-brand-bg text-white shadow-md' : 'hover:bg-gray-100 dark:hover:bg-gray-700/60'
+      }`;
+
+      let displayTitle = chat.title;
+      if (!displayTitle) {
+        const others = chat.participants.filter(p => p !== currentUser.username);
+        displayTitle = others.length > 0 ? others.join(', ') : 'Direct Message';
+      }
+
+      const lastMsg = chat.messages && chat.messages.length > 0 ? chat.messages[chat.messages.length - 1] : null;
+      const lastText = lastMsg ? (lastMsg.text || (lastMsg.media ? '📷 [Media]' : 'Started chat')) : 'No messages yet';
+
+      div.onclick = () => selectChat(chat.id);
+
+      div.innerHTML = `
+        <div class="flex items-center space-x-3 truncate">
+          <div class="w-10 h-10 rounded-full ${isActive ? 'bg-white/20 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'} flex items-center justify-center font-bold text-sm shrink-0">
+            ${displayTitle.charAt(0).toUpperCase()}
+          </div>
+          <div class="truncate">
+            <h4 class="font-semibold text-xs truncate ${isActive ? 'text-white' : 'text-gray-800 dark:text-gray-200'}">${displayTitle}</h4>
+            <p class="text-[11px] truncate ${isActive ? 'text-white/80' : 'text-gray-500 dark:text-gray-400'}">${lastText}</p>
+          </div>
+        </div>
+      `;
+
+      return div;
+    }
+
+    function selectChat(chatId) {
+      activeChatId = chatId;
+      document.getElementById('no-chat-selected').classList.add('hidden');
+      document.getElementById('active-chat-wrapper').classList.remove('hidden');
+      renderChatsList();
+      renderActiveChatMessages();
+    }
+
+    function renderActiveChatMessages() {
+      const chat = chatsData.find(c => c.id === activeChatId);
+      if (!chat) return;
+
+      let displayTitle = chat.title;
+      if (!displayTitle) {
+        const others = chat.participants.filter(p => p !== currentUser.username);
+        displayTitle = others.join(', ');
+      }
+      document.getElementById('active-chat-title').textContent = displayTitle;
+      document.getElementById('active-chat-subtitle').textContent = chat.participants.map(p => '@' + p).join(', ');
+      document.getElementById('active-chat-avatar').textContent = displayTitle.charAt(0).toUpperCase();
+
+      const pinBar = document.getElementById('chat-pinned-message-bar');
+      if (chat.pinnedMsg) {
+        document.getElementById('pinned-message-text').textContent = `"${chat.pinnedMsg.text || 'Media attachment'}" - @${chat.pinnedMsg.sender}`;
+        pinBar.classList.remove('hidden');
+      } else {
+        pinBar.classList.add('hidden');
+      }
+
+      const msgContainer = document.getElementById('messages-container');
+      msgContainer.innerHTML = '';
+
+      const msgs = chat.messages || [];
+      msgs.forEach(msg => {
+        const isMe = msg.sender === currentUser.username;
+        const msgWrapper = document.createElement('div');
+        msgWrapper.className = `flex flex-col ${isMe ? 'items-end' : 'items-start'} space-y-1 group`;
+
+        let mediaHTML = '';
+        if (msg.media) {
+          if (msg.mediaType === 'video') {
+            mediaHTML = `<video src="${msg.media}" controls class="max-w-xs rounded-lg mb-1 max-h-48"></video>`;
+          } else {
+            mediaHTML = `<img src="${msg.media}" class="max-w-xs rounded-lg mb-1 object-cover max-h-48">`;
+          }
+        }
+
+        let replyHTML = '';
+        if (msg.replyTo) {
+          replyHTML = `
+            <div class="text-[10px] opacity-80 border-l-2 border-white/60 pl-2 mb-1 truncate">
+              <span class="font-bold">@${msg.replyTo.sender}:</span> ${msg.replyTo.text || '[Attachment]'}
+            </div>
+          `;
+        }
+
+        let reactionsHTML = '';
+        if (msg.reactions && Object.keys(msg.reactions).length > 0) {
+          reactionsHTML = `<div class="flex flex-wrap gap-1 mt-1">`;
+          for (const [emoji, users] of Object.entries(msg.reactions)) {
+            if (users.length > 0) {
+              reactionsHTML += `<span onclick="toggleReaction('${msg.id}', '${emoji}')" class="text-[10px] bg-black/15 dark:bg-white/15 px-1.5 py-0.5 rounded-full cursor-pointer hover:scale-105">${emoji} ${users.length}</span>`;
+            }
+          }
+          reactionsHTML += `</div>`;
+        }
+
+        msgWrapper.innerHTML = `
+          <div class="text-[10px] opacity-70 px-1">${isMe ? 'You' : '@' + msg.sender} • ${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+          <div class="relative max-w-xs md:max-w-md">
+            <div class="p-3 rounded-2xl text-xs ${
+              isMe 
+                ? 'theme-bubble-me rounded-tr-none shadow-md' 
+                : 'theme-bubble-other rounded-tl-none shadow-sm'
+            }">
+              ${replyHTML}
+              ${mediaHTML}
+              <p class="whitespace-pre-wrap break-words">${escapeHTML(msg.text || '')}</p>
+              ${reactionsHTML}
+            </div>
+
+            <div class="absolute top-0 ${isMe ? '-left-20' : '-right-20'} hidden group-hover:flex items-center space-x-1 theme-card border rounded-lg p-1 shadow-md z-10 text-[10px]">
+              <button onclick="setReply('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-blue-500" title="Reply"><i class="fa-solid fa-reply"></i></button>
+              <button onclick="toggleReaction('${msg.id}', '❤️')" class="p-1 hover:scale-125 transition">❤️</button>
+              <button onclick="toggleReaction('${msg.id}', '😂')" class="p-1 hover:scale-125 transition">😂</button>
+              <button onclick="toggleReaction('${msg.id}', '😭')" class="p-1 hover:scale-125 transition">😭</button>
+              <button onclick="pinChatMessage('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-amber-500" title="Pin"><i class="fa-solid fa-thumbtack"></i></button>
+            </div>
+          </div>
+        `;
+
+        msgContainer.appendChild(msgWrapper);
+      });
+
+      msgContainer.scrollTop = msgContainer.scrollHeight;
+    }
+
+    window.sendMessage = async (e) => {
+      e.preventDefault();
+      const textInput = document.getElementById('message-text-input');
+      const text = textInput.value.trim();
+
+      if (!text && !selectedAttachmentBase64) return;
+
+      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
+      const chatSnap = await getDoc(chatRef);
+      if (!chatSnap.exists()) return;
+
+      const chatData = chatSnap.data();
+      const messages = chatData.messages || [];
+
+      const newMsg = {
+        id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+        sender: currentUser.username,
+        text: text,
+        timestamp: Date.now(),
+        reactions: {}
+      };
+
+      if (replyingToMsg) newMsg.replyTo = replyingToMsg;
+      if (selectedAttachmentBase64) {
+        newMsg.media = selectedAttachmentBase64.data;
+        newMsg.mediaType = selectedAttachmentBase64.type;
+      }
+
+      messages.push(newMsg);
+
+      await updateDoc(chatRef, {
+        messages: messages,
+        lastUpdated: Date.now()
+      });
+
+      textInput.value = '';
+      cancelReply();
+      clearAttachment();
+      document.getElementById('quick-emoji-popover').classList.add('hidden');
+    };
+
+    window.setReply = (msgId, sender, text) => {
+      replyingToMsg = { id: msgId, sender: sender, text: text };
+      document.getElementById('reply-to-user').textContent = `Replying to @${sender}`;
+      document.getElementById('reply-to-text').textContent = text || '[Attachment]';
+      document.getElementById('reply-preview-bar').classList.remove('hidden');
+    };
+
+    window.cancelReply = () => {
+      replyingToMsg = null;
+      document.getElementById('reply-preview-bar').classList.add('hidden');
+    };
+
+    window.toggleReaction = async (msgId, emoji) => {
+      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
+      const chatSnap = await getDoc(chatRef);
+      if (!chatSnap.exists()) return;
+
+      const chatData = chatSnap.data();
+      const messages = chatData.messages || [];
+      const targetMsg = messages.find(m => m.id === msgId);
+
+      if (targetMsg) {
+        if (!targetMsg.reactions) targetMsg.reactions = {};
+        if (!targetMsg.reactions[emoji]) targetMsg.reactions[emoji] = [];
+
+        const userIndex = targetMsg.reactions[emoji].indexOf(currentUser.username);
+        if (userIndex > -1) {
+          targetMsg.reactions[emoji].splice(userIndex, 1);
+        } else {
+          targetMsg.reactions[emoji].push(currentUser.username);
+        }
+
+        await updateDoc(chatRef, { messages: messages });
+      }
+    };
+
+    window.pinChatMessage = async (msgId, sender, text) => {
+      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
+      await updateDoc(chatRef, {
+        pinnedMsg: { id: msgId, sender: sender, text: text }
+      });
+    };
+
+    window.unpinChatMessage = async () => {
+      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
+      await updateDoc(chatRef, { pinnedMsg: null });
+    };
+
+    window.togglePinCurrentChat = async () => {
+      if (!activeChatId) return;
+      const pinnedList = currentUser.pinnedChats || [];
+      const idx = pinnedList.indexOf(activeChatId);
+
+      if (idx > -1) {
+        pinnedList.splice(idx, 1);
+      } else {
+        pinnedList.push(activeChatId);
+      }
+
+      const userRef = doc(PUBLIC_USERS_COL, currentUser.username);
+      await updateDoc(userRef, { pinnedChats: pinnedList });
+    };
+
+    window.handleFileSelect = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const isVideo = file.type.startsWith('video');
+        selectedAttachmentBase64 = {
+          data: event.target.result,
+          type: isVideo ? 'video' : 'image'
+        };
+
+        const previewContainer = document.getElementById('media-preview-container');
+        if (isVideo) {
+          previewContainer.innerHTML = `<i class="fa-solid fa-file-video text-blue-500 text-xl"></i>`;
+        } else {
+          previewContainer.innerHTML = `<img src="${event.target.result}" class="w-full h-full object-cover">`;
+        }
+
+        document.getElementById('media-filename').textContent = file.name;
+        document.getElementById('attachment-preview-bar').classList.remove('hidden');
+      };
+      reader.readAsDataURL(file);
+    };
+
+    window.clearAttachment = () => {
+      selectedAttachmentBase64 = null;
+      document.getElementById('media-file-input').value = '';
+      document.getElementById('attachment-preview-bar').classList.add('hidden');
+    };
+
+    window.createConversation = async () => {
+      const targetsInput = document.getElementById('target-usernames-input').value.trim();
+      const groupTitle = document.getElementById('group-title-input').value.trim();
+      const alertBox = document.getElementById('modal-new-chat-alert');
+
+      alertBox.classList.add('hidden');
+
+      if (!targetsInput) {
+        alertBox.textContent = "Please enter at least one username.";
+        alertBox.classList.remove('hidden');
+        return;
+      }
+
+      const targets = targetsInput.split(',').map(u => u.trim().toLowerCase()).filter(u => u.length > 0);
+      targets.push(currentUser.username);
+      const uniqueParticipants = [...new Set(targets)];
+
+      for (const target of uniqueParticipants) {
+        if (target !== currentUser.username) {
+          const userDoc = await getDoc(doc(PUBLIC_USERS_COL, target));
+          if (!userDoc.exists()) {
+            alertBox.textContent = `User "@${target}" does not exist.`;
+            alertBox.classList.remove('hidden');
+            return;
+          }
+
+          const targetData = userDoc.data();
+          if (targetData.privacyApproval && (!targetData.friends || !targetData.friends.includes(currentUser.username))) {
+            alertBox.textContent = `@${target} requires friend approval before messaging. Send them a request first!`;
+            alertBox.classList.remove('hidden');
+            return;
+          }
+        }
+      }
+
+      if (uniqueParticipants.length === 2 && !groupTitle) {
+        const existing = chatsData.find(c => !c.isGroup && c.participants.length === 2 && uniqueParticipants.every(p => c.participants.includes(p)));
+        if (existing) {
+          closeModal('new-chat-modal');
+          selectChat(existing.id);
+          return;
+        }
+      }
+
+      const newChatId = 'chat_' + Date.now();
+      const newChatObj = {
+        title: groupTitle || '',
+        isGroup: uniqueParticipants.length > 2 || !!groupTitle,
+        participants: uniqueParticipants,
+        createdBy: currentUser.username,
+        lastUpdated: Date.now(),
+        messages: []
+      };
+
+      await setDoc(doc(PUBLIC_CHATS_COL, newChatId), newChatObj);
+      closeModal('new-chat-modal');
+      selectChat(newChatId);
+    };
+
+    window.sendFriendRequest = async () => {
+      const friendInput = document.getElementById('add-friend-input');
+      const targetUser = friendInput.value.trim().toLowerCase();
+
+      if (!targetUser || targetUser === currentUser.username) return;
+
+      const userDoc = await getDoc(doc(PUBLIC_USERS_COL, targetUser));
+      if (!userDoc.exists()) {
+        alert("User @" + targetUser + " does not exist.");
+        return;
+      }
+
+      const reqId = `req_${currentUser.username}_${targetUser}`;
+      await setDoc(doc(PUBLIC_FRIENDS_COL, reqId), {
+        from: currentUser.username,
+        to: targetUser,
+        status: 'pending',
+        timestamp: Date.now()
+      });
+
+      friendInput.value = '';
+      alert("Friend request sent to @" + targetUser);
+    };
+
+    function renderPendingRequests(reqs) {
+      const wrapper = document.getElementById('friend-requests-wrapper');
+      const list = document.getElementById('friend-requests-list');
+      const badge = document.getElementById('pending-req-badge');
+
+      list.innerHTML = '';
+
+      if (reqs.length === 0) {
+        wrapper.classList.add('hidden');
+        badge.classList.add('hidden');
+        return;
+      }
+
+      wrapper.classList.remove('hidden');
+      badge.textContent = reqs.length;
+      badge.classList.remove('hidden');
+
+      reqs.forEach(req => {
+        const item = document.createElement('div');
+        item.className = "flex items-center justify-between p-2 bg-white dark:bg-gray-800 rounded-lg text-xs shadow-xs border border-gray-200 dark:border-gray-700";
+        item.innerHTML = `
+          <span class="font-semibold">@${req.from}</span>
+          <div class="flex space-x-1">
+            <button onclick="acceptFriendRequest('${req.id}', '${req.from}')" class="px-2 py-1 bg-emerald-500 text-white rounded hover:bg-emerald-600">Accept</button>
+          </div>
+        `;
+        list.appendChild(item);
+      });
+    }
+
+    window.acceptFriendRequest = async (reqId, fromUser) => {
+      await updateDoc(doc(PUBLIC_FRIENDS_COL, reqId), { status: 'accepted' });
+
+      const myFriends = currentUser.friends || [];
+      if (!myFriends.includes(fromUser)) myFriends.push(fromUser);
+      await updateDoc(doc(PUBLIC_USERS_COL, currentUser.username), { friends: myFriends });
+
+      const otherDoc = await getDoc(doc(PUBLIC_USERS_COL, fromUser));
+      if (otherDoc.exists()) {
+        const otherFriends = otherDoc.data().friends || [];
+        if (!otherFriends.includes(currentUser.username)) otherFriends.push(currentUser.username);
+        await updateDoc(doc(PUBLIC_USERS_COL, fromUser), { friends: otherFriends });
+      }
+    };
+
+    function renderFriendsList() {
+      const container = document.getElementById('friends-list');
+      container.innerHTML = '';
+
+      const friends = currentUser.friends || [];
+      if (friends.length === 0) {
+        container.innerHTML = `<p class="text-xs text-gray-400 italic">No friends added yet.</p>`;
+        return;
+      }
+
+      friends.forEach(friend => {
+        const item = document.createElement('div');
+        item.className = "flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-700/60 rounded-xl cursor-pointer text-xs";
+        item.onclick = () => {
+          document.getElementById('target-usernames-input').value = friend;
+          openModal('new-chat-modal');
+        };
+
+        item.innerHTML = `
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold">
+              ${friend.charAt(0).toUpperCase()}
+            </div>
+            <span class="font-medium">@${friend}</span>
+          </div>
+          <i class="fa-solid fa-message text-gray-400 hover:text-blue-500"></i>
+        `;
+        container.appendChild(item);
+      });
+    }
+
+    window.updatePrivacySettings = async () => {
+      const val = document.getElementById('privacy-dm-approval').checked;
+      await updateDoc(doc(PUBLIC_USERS_COL, currentUser.username), {
+        privacyApproval: val
+      });
+    };
+
+    window.setTheme = (themeName) => {
+      document.documentElement.setAttribute('data-theme', themeName);
+      localStorage.setItem('echo_theme', themeName);
+    };
+
+    window.toggleDarkMode = () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('echo_darkmode', isDark ? 'true' : 'false');
+    };
+
+    const savedTheme = localStorage.getItem('echo_theme') || 'default';
+    const savedDark = localStorage.getItem('echo_darkmode');
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    if (savedDark === 'false') {
+      document.documentElement.classList.remove('dark');
+    }
+
+    window.openModal = (id) => document.getElementById(id).classList.remove('hidden');
+    window.closeModal = (id) => document.getElementById(id).classList.add('hidden');
+    
+    window.toggleEmojiPicker = () => {
+      document.getElementById('quick-emoji-popover').classList.toggle('hidden');
+    };
+
+    window.insertEmoji = (emoji) => {
+      const input = document.getElementById('message-text-input');
+      input.value += emoji;
+      document.getElementById('quick-emoji-popover').classList.add('hidden');
+    };
+
+    window.filterChats = () => {
+      const q = document.getElementById('chat-search-input').value.toLowerCase();
+      const chats = document.querySelectorAll('#all-chats-list > div, #pinned-chats-list > div');
+      chats.forEach(c => {
+        const text = c.textContent.toLowerCase();
+        c.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    };
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
+    }
+
+    function escapeJS(str) {
+      return (str || '').replace(/'/g, "\\'").replace(/"/g, '\\"');
+    }
+  </script>
+</body>
+</html>
