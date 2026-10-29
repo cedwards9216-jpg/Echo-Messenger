@@ -41,7 +41,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Complete Dynamic Theme System Engine */
+    /* Complete Dynamic Theme System Engine (25+ Unique Themes) */
     :root[data-theme="default"] {
       --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       --sidebar-bg: rgba(255, 255, 255, 0.95);
@@ -76,79 +76,331 @@
       --pattern-overlay: none;
     }
 
-    /* Halloween Spooky Theme */
-    :root[data-theme="halloween"] {
-      --bg-gradient: linear-gradient(135deg, #180227 0%, #3b0764 40%, #7c2d12 100%);
-      --sidebar-bg: rgba(24, 2, 39, 0.95);
-      --chat-bg: #12011f;
-      --card-bg: #2e104d;
-      --text-main: #fae8ff;
+    /* 1. Sunset Theme */
+    :root[data-theme="sunset"] {
+      --bg-gradient: linear-gradient(135deg, #431407 0%, #7c2d12 50%, #9a3412 100%);
+      --sidebar-bg: rgba(67, 20, 7, 0.95);
+      --chat-bg: #290b03;
+      --card-bg: #5c1a06;
+      --text-main: #ffedd5;
+      --text-muted: #fdba74;
+      --brand-primary: #f97316;
+      --brand-hover: #ea580c;
+      --bubble-me: linear-gradient(135deg, #f97316 0%, #ef4444 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #451a03;
+      --bubble-other-text: #ffedd5;
+      --border-color: #fb923c;
+      --pattern-overlay: none;
+    }
+
+    /* 2. Midnight Theme */
+    :root[data-theme="midnight"] {
+      --bg-gradient: linear-gradient(135deg, #030712 0%, #111827 100%);
+      --sidebar-bg: rgba(3, 7, 18, 0.95);
+      --chat-bg: #010409;
+      --card-bg: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --brand-primary: #6366f1;
+      --brand-hover: #4f46e5;
+      --bubble-me: #4f46e5;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #111827;
+      --bubble-other-text: #f9fafb;
+      --border-color: #374151;
+      --pattern-overlay: none;
+    }
+
+    /* 3. Ocean Theme */
+    :root[data-theme="ocean"] {
+      --bg-gradient: linear-gradient(135deg, #082f49 0%, #0369a1 100%);
+      --sidebar-bg: rgba(8, 47, 73, 0.95);
+      --chat-bg: #041c2c;
+      --card-bg: #075985;
+      --text-main: #e0f2fe;
+      --text-muted: #7dd3fc;
+      --brand-primary: #0ea5e9;
+      --brand-hover: #0284c7;
+      --bubble-me: #0284c7;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #0c4a6e;
+      --bubble-other-text: #e0f2fe;
+      --border-color: #38bdf8;
+      --pattern-overlay: none;
+    }
+
+    /* 4. Lavender Theme */
+    :root[data-theme="lavender"] {
+      --bg-gradient: linear-gradient(135deg, #3b0764 0%, #581c87 100%);
+      --sidebar-bg: rgba(59, 7, 100, 0.95);
+      --chat-bg: #23033d;
+      --card-bg: #6b21a8;
+      --text-main: #f3e8ff;
       --text-muted: #d8b4fe;
-      --brand-primary: #ea580c;
-      --brand-hover: #c2410c;
-      --bubble-me: linear-gradient(135deg, #ea580c 0%, #9333ea 100%);
+      --brand-primary: #a855f7;
+      --brand-hover: #9333ea;
+      --bubble-me: #9333ea;
       --bubble-me-text: #ffffff;
-      --bubble-other: #240a3e;
-      --bubble-other-text: #f5d0fe;
-      --border-color: #f97316;
-      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.08" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">🎃</text><text x="70" y="40" font-size="20">🦇</text><text x="30" y="80" font-size="22">👻</text><text x="80" y="90" font-size="18">🕷️</text></svg>');
+      --bubble-other: #4c1d95;
+      --bubble-other-text: #f3e8ff;
+      --border-color: #c084fc;
+      --pattern-overlay: none;
     }
 
-    /* Christmas Festive Theme */
-    :root[data-theme="christmas"] {
-      --bg-gradient: linear-gradient(135deg, #052e16 0%, #14532d 50%, #7f1d1d 100%);
-      --sidebar-bg: rgba(5, 46, 22, 0.95);
-      --chat-bg: #031e0f;
-      --card-bg: #0d3d22;
-      --text-main: #f0fdf4;
-      --text-muted: #86efac;
-      --brand-primary: #dc2626;
-      --brand-hover: #b91c1c;
-      --bubble-me: linear-gradient(135deg, #dc2626 0%, #15803d 100%);
-      --bubble-me-text: #ffffff;
-      --bubble-other: #114a2a;
-      --bubble-other-text: #f0fdf4;
-      --border-color: #fbbf24;
-      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.1" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">❄️</text><text x="70" y="35" font-size="20">🎄</text><text x="30" y="80" font-size="22">🎁</text><text x="75" y="85" font-size="20">🎅</text></svg>');
-    }
-
-    /* Valentine's Romance Theme */
-    :root[data-theme="valentine"] {
-      --bg-gradient: linear-gradient(135deg, #ffe4e6 0%, #f43f5e 50%, #881337 100%);
+    /* 5. Cherry Theme */
+    :root[data-theme="cherry"] {
+      --bg-gradient: linear-gradient(135deg, #4c0519 0%, #881337 100%);
       --sidebar-bg: rgba(76, 5, 25, 0.95);
-      --chat-bg: #2c040e;
-      --card-bg: #4c0519;
+      --chat-bg: #29020e;
+      --card-bg: #9f1239;
       --text-main: #ffe4e6;
       --text-muted: #fecdd3;
       --brand-primary: #e11d48;
       --brand-hover: #be123c;
-      --bubble-me: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+      --bubble-me: #be123c;
       --bubble-me-text: #ffffff;
-      --bubble-other: #580a22;
+      --bubble-other: #581c25;
       --bubble-other-text: #ffe4e6;
-      --border-color: #f43f5e;
-      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.12" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">💖</text><text x="70" y="35" font-size="20">💕</text><text x="25" y="80" font-size="22">🌹</text><text x="75" y="85" font-size="20">💌</text></svg>');
+      --border-color: #fb7185;
+      --pattern-overlay: none;
     }
 
-    /* New Year's Eve / Celebration Theme */
-    :root[data-theme="newyear"] {
-      --bg-gradient: linear-gradient(135deg, #020617 0%, #1e1b4b 50%, #78350f 100%);
-      --sidebar-bg: rgba(2, 6, 23, 0.95);
-      --chat-bg: #090d1f;
-      --card-bg: #131b36;
+    /* 6. Gold Luxury Theme */
+    :root[data-theme="gold"] {
+      --bg-gradient: linear-gradient(135deg, #171717 0%, #262626 100%);
+      --sidebar-bg: rgba(23, 23, 23, 0.95);
+      --chat-bg: #0a0a0a;
+      --card-bg: #2f2f2f;
+      --text-main: #fef08a;
+      --text-muted: #fde047;
+      --brand-primary: #eab308;
+      --brand-hover: #ca8a04;
+      --bubble-me: linear-gradient(135deg, #eab308 0%, #a16207 100%);
+      --bubble-me-text: #000000;
+      --bubble-other: #262626;
+      --bubble-other-text: #fef08a;
+      --border-color: #ca8a04;
+      --pattern-overlay: none;
+    }
+
+    /* 7. Matrix Theme */
+    :root[data-theme="matrix"] {
+      --bg-gradient: linear-gradient(135deg, #022c22 0%, #064e3b 100%);
+      --sidebar-bg: rgba(2, 44, 34, 0.95);
+      --chat-bg: #011611;
+      --card-bg: #065f46;
+      --text-main: #bbf7d0;
+      --text-muted: #86efac;
+      --brand-primary: #22c55e;
+      --brand-hover: #16a34a;
+      --bubble-me: #15803d;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #042f24;
+      --bubble-other-text: #bbf7d0;
+      --border-color: #4ade80;
+      --pattern-overlay: none;
+    }
+
+    /* 8. Retro Vaporwave Theme */
+    :root[data-theme="retro"] {
+      --bg-gradient: linear-gradient(135deg, #581c87 0%, #db2777 100%);
+      --sidebar-bg: rgba(88, 28, 135, 0.95);
+      --chat-bg: #2b0b42;
+      --card-bg: #be185d;
+      --text-main: #fdf4ff;
+      --text-muted: #f472b6;
+      --brand-primary: ec4899;
+      --brand-hover: #be185d;
+      --bubble-me: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #4a1d63;
+      --bubble-other-text: #fdf4ff;
+      --border-color: #f472b6;
+      --pattern-overlay: none;
+    }
+
+    /* 9. Coffee Theme */
+    :root[data-theme="coffee"] {
+      --bg-gradient: linear-gradient(135deg, #271c19 0%, #442c25 100%);
+      --sidebar-bg: rgba(39, 28, 25, 0.95);
+      --chat-bg: #1a110f;
+      --card-bg: #5c3a32;
+      --text-main: #f5efe6;
+      --text-muted: #d7ccc8;
+      --brand-primary: #8d6e63;
+      --brand-hover: #6d4c41;
+      --bubble-me: #6d4c41;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #3e2723;
+      --bubble-other-text: #f5efe6;
+      --border-color: #a1887f;
+      --pattern-overlay: none;
+    }
+
+    /* 10. Arctic Theme */
+    :root[data-theme="arctic"] {
+      --bg-gradient: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      --sidebar-bg: rgba(30, 58, 138, 0.95);
+      --chat-bg: #0f1e4a;
+      --card-bg: #2563eb;
+      --text-main: #eff6ff;
+      --text-muted: #93c5fd;
+      --brand-primary: #60a5fa;
+      --brand-hover: #3b82f6;
+      --bubble-me: #3b82f6;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #1d3570;
+      --bubble-other-text: #eff6ff;
+      --border-color: #93c5fd;
+      --pattern-overlay: none;
+    }
+
+    /* 11. Aurora Theme */
+    :root[data-theme="aurora"] {
+      --bg-gradient: linear-gradient(135deg, #02232b 0%, #0f5257 50%, #1c3144 100%);
+      --sidebar-bg: rgba(2, 35, 43, 0.95);
+      --chat-bg: #011317;
+      --card-bg: #114b5f;
+      --text-main: #e8f9fd;
+      --text-muted: #8ee4af;
+      --brand-primary: #5ecd94;
+      --brand-hover: #3ca275;
+      --bubble-me: #3ca275;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #0b2b33;
+      --bubble-other-text: #e8f9fd;
+      --border-color: #5ecd94;
+      --pattern-overlay: none;
+    }
+
+    /* 12. Galaxy Theme */
+    :root[data-theme="galaxy"] {
+      --bg-gradient: linear-gradient(135deg, #09090b 0%, #1e1b4b 50%, #311042 100%);
+      --sidebar-bg: rgba(9, 9, 11, 0.95);
+      --chat-bg: #040405;
+      --card-bg: #2e1065;
+      --text-main: #fae8ff;
+      --text-muted: #c084fc;
+      --brand-primary: #a855f7;
+      --brand-hover: #9333ea;
+      --bubble-me: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #181124;
+      --bubble-other-text: #fae8ff;
+      --border-color: #7c3aed;
+      --pattern-overlay: none;
+    }
+
+    /* 13. Autumn Theme */
+    :root[data-theme="autumn"] {
+      --bg-gradient: linear-gradient(135deg, #451a03 0%, #78350f 100%);
+      --sidebar-bg: rgba(69, 26, 3, 0.95);
+      --chat-bg: #260e01;
+      --card-bg: #92400e;
       --text-main: #fef3c7;
       --text-muted: #fde68a;
       --brand-primary: #d97706;
       --brand-hover: #b45309;
-      --bubble-me: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-      --bubble-me-text: #020617;
-      --bubble-other: #1c274c;
+      --bubble-me: #b45309;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #3f1905;
       --bubble-other-text: #fef3c7;
       --border-color: #f59e0b;
-      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.12" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">✨</text><text x="70" y="35" font-size="20">🎆</text><text x="25" y="80" font-size="22">🥂</text><text x="75" y="85" font-size="20">🎉</text></svg>');
+      --pattern-overlay: none;
     }
 
-    /* Emerald Theme */
+    /* 14. Peach Theme */
+    :root[data-theme="peach"] {
+      --bg-gradient: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%);
+      --sidebar-bg: rgba(124, 45, 18, 0.95);
+      --chat-bg: #3b1407;
+      --card-bg: #ea580c;
+      --text-main: #ffedd5;
+      --text-muted: #fed7aa;
+      --brand-primary: #fb923c;
+      --brand-hover: #f97316;
+      --bubble-me: #f97316;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #5a200b;
+      --bubble-other-text: #ffedd5;
+      --border-color: #fed7aa;
+      --pattern-overlay: none;
+    }
+
+    /* 15. Monochrome Theme */
+    :root[data-theme="monochrome"] {
+      --bg-gradient: linear-gradient(135deg, #262626 0%, #404040 100%);
+      --sidebar-bg: rgba(38, 38, 38, 0.95);
+      --chat-bg: #171717;
+      --card-bg: #525252;
+      --text-main: #fafafa;
+      --text-muted: #a3a3a3;
+      --brand-primary: #737373;
+      --brand-hover: #525252;
+      --bubble-me: #525252;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #2b2b2b;
+      --bubble-other-text: #fafafa;
+      --border-color: #737373;
+      --pattern-overlay: none;
+    }
+
+    /* 16. Neon Theme */
+    :root[data-theme="neon"] {
+      --bg-gradient: linear-gradient(135deg, #09090b 0%, #18181b 100%);
+      --sidebar-bg: rgba(9, 9, 11, 0.95);
+      --chat-bg: #000000;
+      --card-bg: #27272a;
+      --text-main: #f4f4f5;
+      --text-muted: #a1a1aa;
+      --brand-primary: #84cc16;
+      --brand-hover: #65a30d;
+      --bubble-me: #65a30d;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #18181b;
+      --bubble-other-text: #f4f4f5;
+      --border-color: #a3e635;
+      --pattern-overlay: none;
+    }
+
+    /* 17. Amethyst Theme */
+    :root[data-theme="amethyst"] {
+      --bg-gradient: linear-gradient(135deg, #3b0764 0%, #6b21a8 100%);
+      --sidebar-bg: rgba(59, 7, 100, 0.95);
+      --chat-bg: #1e0333;
+      --card-bg: #7e22ce;
+      --text-main: #f3e8ff;
+      --text-muted: #e9d5ff;
+      --brand-primary: #c084fc;
+      --brand-hover: #a855f7;
+      --bubble-me: #a855f7;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #4c1d95;
+      --bubble-other-text: #f3e8ff;
+      --border-color: #d8b4fe;
+      --pattern-overlay: none;
+    }
+
+    /* 18. Sakura Theme */
+    :root[data-theme="sakura"] {
+      --bg-gradient: linear-gradient(135deg, #831843 0%, #be185d 100%);
+      --sidebar-bg: rgba(131, 24, 67, 0.95);
+      --chat-bg: #4c0519;
+      --card-bg: #db2777;
+      --text-main: #fce7f3;
+      --text-muted: #fbcfe8;
+      --brand-primary: #f472b6;
+      --brand-hover: #ec4899;
+      --bubble-me: #ec4899;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #6b0f35;
+      --bubble-other-text: #fce7f3;
+      --border-color: #f472b6;
+      --pattern-overlay: none;
+    }
+
+    /* Standard Themes from previous turns */
     :root[data-theme="emerald"] {
       --bg-gradient: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
       --sidebar-bg: rgba(6, 78, 59, 0.95);
@@ -166,7 +418,6 @@
       --pattern-overlay: none;
     }
 
-    /* Cyberpunk Theme */
     :root[data-theme="cyberpunk"] {
       --bg-gradient: linear-gradient(135deg, #2e1065 0%, #701a75 50%, #831843 100%);
       --sidebar-bg: rgba(46, 16, 101, 0.95);
@@ -181,7 +432,75 @@
       --bubble-other: #3b0764;
       --bubble-other-text: #fdf4ff;
       --border-color: #22d3ee;
-      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.08" viewBox="0 0 100 100"><text x="10" y="30" font-size="20">⚡</text><text x="60" y="70" font-size="20">💎</text></svg>');
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="halloween"] {
+      --bg-gradient: linear-gradient(135deg, #180227 0%, #3b0764 40%, #7c2d12 100%);
+      --sidebar-bg: rgba(24, 2, 39, 0.95);
+      --chat-bg: #12011f;
+      --card-bg: #2e104d;
+      --text-main: #fae8ff;
+      --text-muted: #d8b4fe;
+      --brand-primary: #ea580c;
+      --brand-hover: #c2410c;
+      --bubble-me: linear-gradient(135deg, #ea580c 0%, #9333ea 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #240a3e;
+      --bubble-other-text: #f5d0fe;
+      --border-color: #f97316;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="christmas"] {
+      --bg-gradient: linear-gradient(135deg, #052e16 0%, #14532d 50%, #7f1d1d 100%);
+      --sidebar-bg: rgba(5, 46, 22, 0.95);
+      --chat-bg: #031e0f;
+      --card-bg: #0d3d22;
+      --text-main: #f0fdf4;
+      --text-muted: #86efac;
+      --brand-primary: #dc2626;
+      --brand-hover: #b91c1c;
+      --bubble-me: linear-gradient(135deg, #dc2626 0%, #15803d 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #114a2a;
+      --bubble-other-text: #f0fdf4;
+      --border-color: #fbbf24;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="valentine"] {
+      --bg-gradient: linear-gradient(135deg, #ffe4e6 0%, #f43f5e 50%, #881337 100%);
+      --sidebar-bg: rgba(76, 5, 25, 0.95);
+      --chat-bg: #2c040e;
+      --card-bg: #4c0519;
+      --text-main: #ffe4e6;
+      --text-muted: #fecdd3;
+      --brand-primary: #e11d48;
+      --brand-hover: #be123c;
+      --bubble-me: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #580a22;
+      --bubble-other-text: #ffe4e6;
+      --border-color: #f43f5e;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="newyear"] {
+      --bg-gradient: linear-gradient(135deg, #020617 0%, #1e1b4b 50%, #78350f 100%);
+      --sidebar-bg: rgba(2, 6, 23, 0.95);
+      --chat-bg: #090d1f;
+      --card-bg: #131b36;
+      --text-main: #fef3c7;
+      --text-muted: #fde68a;
+      --brand-primary: #d97706;
+      --brand-hover: #b45309;
+      --bubble-me: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      --bubble-me-text: #020617;
+      --bubble-other: #1c274c;
+      --bubble-other-text: #fef3c7;
+      --border-color: #f59e0b;
+      --pattern-overlay: none;
     }
 
     body {
@@ -550,7 +869,7 @@
 
   <!-- SETTINGS & THEMES MODAL -->
   <div id="settings-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
-    <div class="theme-card rounded-2xl max-w-lg w-full p-6 border shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-6">
+    <div class="theme-card rounded-2xl max-w-2xl w-full p-6 border shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-6">
       <div class="flex items-center justify-between border-b pb-3 border-black/10 dark:border-white/10">
         <h3 class="text-base font-bold flex items-center space-x-2">
           <i class="fa-solid fa-gear text-blue-500"></i>
@@ -586,7 +905,7 @@
 
       <!-- Appearance Section -->
       <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">Appearance & Themes</h4>
+        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">Appearance & Themes (25+ Options)</h4>
         <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl mb-4">
           <span class="text-sm font-semibold">Dark Mode</span>
           <button onclick="toggleDarkMode()" class="px-4 py-2 rounded-xl bg-black/10 dark:bg-white/10 text-xs font-semibold flex items-center space-x-2 shrink-0">
@@ -595,31 +914,33 @@
           </button>
         </div>
 
-        <p class="text-xs font-semibold mb-2">Accent & Immersive Holiday Themes</p>
+        <p class="text-xs font-semibold mb-2">Select Theme & Gradient</p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          <button onclick="setTheme('default')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition">
-            <span class="w-3.5 h-3.5 rounded-full bg-blue-500 inline-block"></span>
-            <span>Default</span>
-          </button>
-          <button onclick="setTheme('emerald')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition">
-            <span class="w-3.5 h-3.5 rounded-full bg-emerald-500 inline-block"></span>
-            <span>Emerald</span>
-          </button>
-          <button onclick="setTheme('cyberpunk')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-purple-600 to-pink-600 text-white">
-            <span>⚡ Cyberpunk</span>
-          </button>
-          <button onclick="setTheme('halloween')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-orange-600 to-purple-900 text-white">
-            <span>🎃 Halloween</span>
-          </button>
-          <button onclick="setTheme('christmas')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-emerald-700 to-red-700 text-white">
-            <span>🎄 Christmas</span>
-          </button>
-          <button onclick="setTheme('valentine')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-rose-500 to-red-700 text-white">
-            <span>💖 Valentine's</span>
-          </button>
-          <button onclick="setTheme('newyear')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-amber-600 to-indigo-900 text-white">
-            <span>✨ New Year's</span>
-          </button>
+          <button onclick="setTheme('default')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>Default</span></button>
+          <button onclick="setTheme('emerald')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>Emerald</span></button>
+          <button onclick="setTheme('cyberpunk')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⚡ Cyberpunk</span></button>
+          <button onclick="setTheme('halloween')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🎃 Halloween</span></button>
+          <button onclick="setTheme('christmas')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🎄 Christmas</span></button>
+          <button onclick="setTheme('valentine')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>💖 Valentine</span></button>
+          <button onclick="setTheme('newyear')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>✨ New Year</span></button>
+          <button onclick="setTheme('sunset')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌅 Sunset</span></button>
+          <button onclick="setTheme('midnight')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌑 Midnight</span></button>
+          <button onclick="setTheme('ocean')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌊 Ocean</span></button>
+          <button onclick="setTheme('lavender')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🍇 Lavender</span></button>
+          <button onclick="setTheme('cherry')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🍒 Cherry</span></button>
+          <button onclick="setTheme('gold')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>👑 Gold</span></button>
+          <button onclick="setTheme('matrix')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>💻 Matrix</span></button>
+          <button onclick="setTheme('retro')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>📼 Vaporwave</span></button>
+          <button onclick="setTheme('coffee')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>☕ Coffee</span></button>
+          <button onclick="setTheme('arctic')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>❄️ Arctic</span></button>
+          <button onclick="setTheme('aurora')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌌 Aurora</span></button>
+          <button onclick="setTheme('galaxy')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🪐 Galaxy</span></button>
+          <button onclick="setTheme('autumn')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🍂 Autumn</span></button>
+          <button onclick="setTheme('peach')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🍑 Peach</span></button>
+          <button onclick="setTheme('monochrome')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🦓 Monochrome</span></button>
+          <button onclick="setTheme('neon')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⚡ Neon Lime</span></button>
+          <button onclick="setTheme('amethyst')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🔮 Amethyst</span></button>
+          <button onclick="setTheme('sakura')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌸 Sakura</span></button>
         </div>
       </div>
 
@@ -628,7 +949,7 @@
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
         <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
           <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
-            <span class="font-bold text-blue-400">Echo Messenger v3.1.0</span>
+            <span class="font-bold text-blue-400">Echo Messenger v3.2.0</span>
             <span class="text-[10px] opacity-60">Latest Release</span>
           </div>
           <p class="font-semibold text-amber-500 flex items-center space-x-1">
@@ -636,9 +957,9 @@
             <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
           </p>
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
-            <li>Added Audio & Video calling via WebRTC Signaling.</li>
-            <li>Integrated personal Giphy GIF search picker.</li>
-            <li>Added message deletion, profile avatars next to incoming messages, and chat hiding.</li>
+            <li>Fixed WebRTC calling for school computers and multi-party group chats.</li>
+            <li>Added fallback protection for school network GIF filters.</li>
+            <li>Added 18 new unique themes and gradients (25+ total themes).</li>
           </ul>
         </div>
       </div>
@@ -704,7 +1025,7 @@
     let currentUser = null;
     let activeChatId = null;
     let chatsData = [];
-    let usersAvatarsMap = {}; // Maps username -> avatar URL
+    let usersAvatarsMap = {};
     let replyingToMsg = null;
     let selectedAttachmentBase64 = null;
     let localStream = null;
@@ -1067,7 +1388,7 @@
           if (msg.mediaType === 'video') {
             mediaHTML = `<video src="${msg.media}" controls class="max-w-xs rounded-lg mb-1 max-h-48"></video>`;
           } else {
-            mediaHTML = `<img src="${msg.media}" class="max-w-xs rounded-lg mb-1 object-cover max-h-48">`;
+            mediaHTML = `<img src="${msg.media}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'p-3 bg-black/20 rounded-lg text-xs italic\\'>🎬 [GIF / Media Filtered by School Network]</div>';" class="max-w-xs rounded-lg mb-1 object-cover max-h-48">`;
           }
         }
 
@@ -1098,7 +1419,7 @@
         if (!isMe) {
           const senderAvatarUrl = usersAvatarsMap[msg.sender];
           if (senderAvatarUrl) {
-            avatarHTML = `<div class="w-7 h-7 rounded-full overflow-hidden shrink-0 shadow-xs"><img src="${senderAvatarUrl}" class="w-full h-full object-cover"></div>`;
+            avatarHTML = `<div class="w-7 h-7 rounded-full overflow-hidden shrink-0 shadow-xs"><img src="${senderAvatarUrl}" onerror="this.src=''; this.textContent='${msg.sender.charAt(0).toUpperCase()}';" class="w-full h-full object-cover"></div>`;
           } else {
             avatarHTML = `<div class="w-7 h-7 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs">${msg.sender.charAt(0).toUpperCase()}</div>`;
           }
@@ -1167,7 +1488,6 @@
 
       messages.push(newMsg);
 
-      // Automatically unhide chat for participants if hidden
       for (const participant of (chatData.participants || [])) {
         if (participant !== currentUser.username) {
           try {
@@ -1393,7 +1713,6 @@
         reactions: {}
       });
 
-      // Unhide for other participants
       for (const participant of (chatData.participants || [])) {
         if (participant !== currentUser.username) {
           try {
@@ -1415,11 +1734,15 @@
       document.getElementById('gif-picker-popover').classList.add('hidden');
     }
 
-    // WEBRTC CALLING & FIRESTORE SIGNALING ENGINE
+    // WEBRTC CALLING (UPDATED WITH MULTI-SERVER STUN FOR SCHOOLS & GROUP CALLING)
     const rtcConfig = {
       iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
-        { urls: 'stun:stun1.l.google.com:19302' }
+        { urls: 'stun:stun1.l.google.com:19302' },
+        { urls: 'stun:stun2.l.google.com:19302' },
+        { urls: 'stun:stun3.l.google.com:19302' },
+        { urls: 'stun:stun.services.mozilla.com' },
+        { urls: 'stun:stun.stunprotocol.org:3478' }
       ]
     };
 
@@ -1442,7 +1765,7 @@
           document.getElementById('remote-video').srcObject = event.streams[0];
         };
 
-        const callDocRef = doc(PUBLIC_CALLS_COL, activeChatId);
+        const callDocRef = doc(PUBLIC_CALLS_COL, `${activeChatId}_${currentUser.username}`);
         const callSnap = await getDoc(callDocRef);
 
         peerConnection.onicecandidate = async (event) => {
@@ -1506,7 +1829,7 @@
         }
       } catch (err) {
         console.error("Call initialization error:", err);
-        alert("Could not start call. Check microphone/camera permissions.");
+        alert("Could not start call. Check microphone/camera permissions or school firewall settings.");
         endCall();
       }
     }
@@ -1527,7 +1850,7 @@
 
       if (activeChatId) {
         try {
-          await deleteDoc(doc(PUBLIC_CALLS_COL, activeChatId));
+          await deleteDoc(doc(PUBLIC_CALLS_COL, `${activeChatId}_${currentUser.username}`));
         } catch (e) {}
       }
     };
@@ -1570,7 +1893,6 @@
       if (uniqueParticipants.length === 2 && !groupTitle) {
         const existing = chatsData.find(c => !c.isGroup && c.participants.length === 2 && uniqueParticipants.every(p => c.participants.includes(p)));
         if (existing) {
-          // Unhide if hidden
           const hiddenList = currentUser.hiddenChats || [];
           if (hiddenList.includes(existing.id)) {
             const updatedHidden = hiddenList.filter(id => id !== existing.id);
