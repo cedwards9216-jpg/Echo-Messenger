@@ -44,7 +44,7 @@
     /* Complete Dynamic Theme System Engine */
     :root[data-theme="default"] {
       --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-      --sidebar-bg: rgba(255, 255, 255, 0.9);
+      --sidebar-bg: rgba(255, 255, 255, 0.95);
       --chat-bg: #f1f5f9;
       --card-bg: #ffffff;
       --text-main: #0f172a;
@@ -79,7 +79,7 @@
     /* Halloween Spooky Theme */
     :root[data-theme="halloween"] {
       --bg-gradient: linear-gradient(135deg, #180227 0%, #3b0764 40%, #7c2d12 100%);
-      --sidebar-bg: rgba(24, 2, 39, 0.92);
+      --sidebar-bg: rgba(24, 2, 39, 0.95);
       --chat-bg: #12011f;
       --card-bg: #2e104d;
       --text-main: #fae8ff;
@@ -97,7 +97,7 @@
     /* Christmas Festive Theme */
     :root[data-theme="christmas"] {
       --bg-gradient: linear-gradient(135deg, #052e16 0%, #14532d 50%, #7f1d1d 100%);
-      --sidebar-bg: rgba(5, 46, 22, 0.92);
+      --sidebar-bg: rgba(5, 46, 22, 0.95);
       --chat-bg: #031e0f;
       --card-bg: #0d3d22;
       --text-main: #f0fdf4;
@@ -115,7 +115,7 @@
     /* Valentine's Romance Theme */
     :root[data-theme="valentine"] {
       --bg-gradient: linear-gradient(135deg, #ffe4e6 0%, #f43f5e 50%, #881337 100%);
-      --sidebar-bg: rgba(76, 5, 25, 0.92);
+      --sidebar-bg: rgba(76, 5, 25, 0.95);
       --chat-bg: #2c040e;
       --card-bg: #4c0519;
       --text-main: #ffe4e6;
@@ -133,7 +133,7 @@
     /* New Year's Eve / Celebration Theme */
     :root[data-theme="newyear"] {
       --bg-gradient: linear-gradient(135deg, #020617 0%, #1e1b4b 50%, #78350f 100%);
-      --sidebar-bg: rgba(2, 6, 23, 0.94);
+      --sidebar-bg: rgba(2, 6, 23, 0.95);
       --chat-bg: #090d1f;
       --card-bg: #131b36;
       --text-main: #fef3c7;
@@ -151,7 +151,7 @@
     /* Emerald Theme */
     :root[data-theme="emerald"] {
       --bg-gradient: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
-      --sidebar-bg: rgba(6, 78, 59, 0.93);
+      --sidebar-bg: rgba(6, 78, 59, 0.95);
       --chat-bg: #022018;
       --card-bg: #065f46;
       --text-main: #ecfdf5;
@@ -169,7 +169,7 @@
     /* Cyberpunk Theme */
     :root[data-theme="cyberpunk"] {
       --bg-gradient: linear-gradient(135deg, #2e1065 0%, #701a75 50%, #831843 100%);
-      --sidebar-bg: rgba(46, 16, 101, 0.94);
+      --sidebar-bg: rgba(46, 16, 101, 0.95);
       --chat-bg: #1c0942;
       --card-bg: #4c1d95;
       --text-main: #fdf4ff;
@@ -226,8 +226,8 @@
     }
 
     ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
     }
     ::-webkit-scrollbar-track {
       background: transparent;
@@ -235,9 +235,6 @@
     ::-webkit-scrollbar-thumb {
       background: rgba(156, 163, 175, 0.3);
       border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(156, 163, 175, 0.5);
     }
   </style>
 </head>
@@ -248,13 +245,13 @@
     
     <!-- AUTH SCREEN -->
     <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-95 backdrop-blur-sm p-4 hidden">
-      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 max-w-md w-full border border-gray-200 dark:border-gray-700 relative overflow-hidden">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 max-w-md w-full border border-gray-200 dark:border-gray-700 relative overflow-hidden">
         
-        <div class="text-center mb-8">
+        <div class="text-center mb-6 sm:mb-8">
           <div class="w-16 h-16 theme-brand-bg text-white rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg transform -rotate-6">
             <i class="fa-solid fa-comments text-3xl"></i>
           </div>
-          <h1 class="text-3xl font-extrabold tracking-tight dark:text-white">Echo Messenger</h1>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight dark:text-white">Echo Messenger</h1>
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Real-time chat with auto-login persistent security</p>
         </div>
 
@@ -315,10 +312,10 @@
     </div>
 
     <!-- MAIN APP DASHBOARD -->
-    <div id="main-dashboard" class="flex-1 flex overflow-hidden">
+    <div id="main-dashboard" class="flex-1 flex overflow-hidden relative">
       
       <!-- SIDEBAR -->
-      <aside class="w-80 md:w-96 border-r flex flex-col z-10 transition-all duration-300">
+      <aside id="sidebar-panel" class="w-full md:w-80 lg:w-96 border-r flex flex-col z-10 transition-all duration-300 absolute md:relative inset-y-0 left-0 h-full">
         
         <div class="p-4 border-b flex items-center justify-between opacity-95">
           <div class="flex items-center space-x-3 cursor-pointer" onclick="openModal('settings-modal')">
@@ -329,7 +326,7 @@
               <span id="user-status-dot" class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></span>
             </div>
             <div>
-              <h2 id="user-display-name" class="font-bold text-sm leading-snug">Loading...</h2>
+              <h2 id="user-display-name" class="font-bold text-sm leading-snug truncate max-w-[120px] sm:max-w-xs">Loading...</h2>
               <p id="user-status-text" class="text-xs opacity-70">Online</p>
             </div>
           </div>
@@ -403,8 +400,8 @@
       </aside>
 
       <!-- MAIN CHAT PANEL -->
-      <main class="flex-1 flex flex-col relative bg-slate-900/10">
-        <div id="no-chat-selected" class="flex-1 flex flex-col items-center justify-center p-8 text-center">
+      <main id="chat-main-panel" class="flex-1 flex flex-col relative bg-slate-900/10 h-full w-full absolute md:relative inset-0 z-20 hidden md:flex">
+        <div id="no-chat-selected" class="flex-1 flex flex-col items-center justify-center p-6 sm:p-8 text-center">
           <div class="w-20 h-20 rounded-3xl theme-brand-bg text-white flex items-center justify-center text-4xl mb-4 shadow-xl">
             <i class="fa-solid fa-comments"></i>
           </div>
@@ -417,16 +414,20 @@
 
         <div id="active-chat-wrapper" class="flex-1 flex flex-col h-full hidden">
           <div class="p-3 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between theme-card">
-            <div class="flex items-center space-x-3">
-              <div id="active-chat-avatar" class="w-10 h-10 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold">
+            <div class="flex items-center space-x-3 truncate">
+              <!-- Mobile Back Button -->
+              <button onclick="backToChatsList()" class="md:hidden p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition shrink-0" title="Back to Chats">
+                <i class="fa-solid fa-arrow-left"></i>
+              </button>
+              <div id="active-chat-avatar" class="w-10 h-10 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold shrink-0">
                 ?
               </div>
-              <div>
-                <h3 id="active-chat-title" class="font-bold text-sm">Chat</h3>
-                <p id="active-chat-subtitle" class="text-[11px] opacity-70">Participants</p>
+              <div class="truncate">
+                <h3 id="active-chat-title" class="font-bold text-sm truncate">Chat</h3>
+                <p id="active-chat-subtitle" class="text-[11px] opacity-70 truncate">Participants</p>
               </div>
             </div>
-            <div class="flex items-center space-x-2">
+            <div class="flex items-center space-x-1 sm:space-x-2 shrink-0">
               <button onclick="startAudioCall()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-emerald-500" title="Start Audio Call">
                 <i class="fa-solid fa-phone"></i>
               </button>
@@ -442,20 +443,20 @@
           <div id="chat-pinned-message-bar" class="bg-amber-500/15 border-b border-amber-500/30 px-4 py-2 flex items-center justify-between text-xs hidden">
             <div class="flex items-center space-x-2 truncate">
               <i class="fa-solid fa-thumbtack text-amber-500"></i>
-              <span class="font-semibold text-amber-600 dark:text-amber-400">Pinned:</span>
+              <span class="font-semibold text-amber-600 dark:text-amber-400 shrink-0">Pinned:</span>
               <span id="pinned-message-text" class="truncate opacity-90">Message content...</span>
             </div>
-            <button onclick="unpinChatMessage()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
+            <button onclick="unpinChatMessage()" class="text-xs opacity-60 hover:opacity-100 shrink-0 ml-2"><i class="fa-solid fa-xmark"></i></button>
           </div>
 
-          <div id="messages-container" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+          <div id="messages-container" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3"></div>
 
           <div id="attachment-preview-bar" class="px-4 py-2 bg-black/10 dark:bg-white/10 flex items-center justify-between text-xs hidden">
-            <div class="flex items-center space-x-3">
-              <div id="media-preview-container" class="w-10 h-10 rounded-lg overflow-hidden bg-gray-300 dark:bg-gray-700 flex items-center justify-center"></div>
+            <div class="flex items-center space-x-3 truncate">
+              <div id="media-preview-container" class="w-10 h-10 rounded-lg overflow-hidden bg-gray-300 dark:bg-gray-700 flex items-center justify-center shrink-0"></div>
               <span id="media-filename" class="font-medium truncate max-w-xs">attachment.png</span>
             </div>
-            <button onclick="clearAttachment()" class="text-rose-500 hover:text-rose-600"><i class="fa-solid fa-circle-xmark text-lg"></i></button>
+            <button onclick="clearAttachment()" class="text-rose-500 hover:text-rose-600 shrink-0 ml-2"><i class="fa-solid fa-circle-xmark text-lg"></i></button>
           </div>
 
           <div id="reply-preview-bar" class="px-4 py-2 bg-blue-500/10 border-t border-blue-500/30 flex items-center justify-between text-xs hidden">
@@ -463,11 +464,11 @@
               <span id="reply-to-user" class="font-bold text-blue-500">Replying to @user</span>
               <p id="reply-to-text" class="truncate opacity-80 text-[11px]">Original message...</p>
             </div>
-            <button onclick="cancelReply()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
+            <button onclick="cancelReply()" class="text-xs opacity-60 hover:opacity-100 shrink-0 ml-2"><i class="fa-solid fa-xmark"></i></button>
           </div>
 
           <!-- Input Bar -->
-          <div class="p-3 border-t border-gray-200 dark:border-gray-800 theme-card relative">
+          <div class="p-2 sm:p-3 border-t border-gray-200 dark:border-gray-800 theme-card relative">
             <!-- Quick Emoji Popover -->
             <div id="quick-emoji-popover" class="absolute bottom-16 left-3 theme-card border rounded-2xl p-2 shadow-xl flex space-x-2 hidden z-20">
               <button onclick="insertEmoji('❤️')" class="text-xl hover:scale-125 transition">❤️</button>
@@ -479,32 +480,32 @@
             </div>
 
             <!-- GIF Picker Popover -->
-            <div id="gif-picker-popover" class="absolute bottom-16 left-12 theme-card border rounded-2xl p-3 shadow-xl w-72 hidden z-25">
+            <div id="gif-picker-popover" class="absolute bottom-16 left-12 theme-card border rounded-2xl p-3 shadow-xl w-72 max-w-[90vw] hidden z-25">
               <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-bold">Search GIFs</span>
+                <span class="text-xs font-bold">Search GIPHY</span>
                 <button onclick="toggleGifPicker()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
               </div>
-              <input type="text" id="gif-search-box" onkeyup="searchGifs(event)" placeholder="Search GIFs (or press enter)..." class="w-full px-2 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs mb-2 outline-none">
+              <input type="text" id="gif-search-box" onkeyup="searchGifs(event)" placeholder="Search GIFs..." class="w-full px-2 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs mb-2 outline-none">
               <div id="gif-results-container" class="grid grid-cols-2 gap-1.5 max-h-48 overflow-y-auto">
                 <p class="text-[11px] text-gray-400 col-span-2 text-center py-4">Type a query above</p>
               </div>
             </div>
 
-            <form onsubmit="sendMessage(event)" class="flex items-center space-x-2">
+            <form onsubmit="sendMessage(event)" class="flex items-center space-x-1 sm:space-x-2">
               <input type="file" id="media-file-input" accept="image/*,video/*" onchange="handleFileSelect(event)" class="hidden">
-              <button type="button" onclick="document.getElementById('media-file-input').click()" class="p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition" title="Attach Image or Video">
+              <button type="button" onclick="document.getElementById('media-file-input').click()" class="p-2 sm:p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition shrink-0" title="Attach Image or Video">
                 <i class="fa-solid fa-paperclip text-base"></i>
               </button>
-              <button type="button" onclick="toggleEmojiPicker()" class="p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition" title="Emojis">
+              <button type="button" onclick="toggleEmojiPicker()" class="p-2 sm:p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition shrink-0" title="Emojis">
                 <i class="fa-solid fa-face-smile text-base"></i>
               </button>
-              <button type="button" onclick="toggleGifPicker()" class="p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition text-amber-400 font-bold text-xs" title="Send GIF">
+              <button type="button" onclick="toggleGifPicker()" class="p-2 sm:p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition text-amber-400 font-bold text-xs shrink-0" title="Send GIF">
                 GIF
               </button>
               
-              <input type="text" id="message-text-input" placeholder="Type a message..." class="flex-1 py-2.5 px-4 rounded-xl bg-gray-100 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500 transition">
+              <input type="text" id="message-text-input" placeholder="Type a message..." class="flex-1 py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl bg-gray-100 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500 transition min-w-0">
               
-              <button type="submit" class="p-2.5 theme-brand-bg text-white rounded-xl shadow-md hover:opacity-90 transition">
+              <button type="submit" class="p-2 sm:p-2.5 theme-brand-bg text-white rounded-xl shadow-md hover:opacity-90 transition shrink-0">
                 <i class="fa-solid fa-paper-plane text-xs"></i>
               </button>
             </form>
@@ -559,11 +560,11 @@
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Profile Avatar</h4>
         <div class="flex items-center space-x-4 bg-black/5 dark:bg-white/5 p-4 rounded-xl">
-          <div id="settings-avatar-preview" class="w-12 h-12 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg overflow-hidden shadow-inner">?</div>
-          <div>
+          <div id="settings-avatar-preview" class="w-12 h-12 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg overflow-hidden shadow-inner shrink-0">?</div>
+          <div class="truncate">
             <input type="file" id="avatar-file-input" accept="image/*" onchange="handleAvatarSelect(event)" class="hidden">
             <button onclick="document.getElementById('avatar-file-input').click()" class="px-3 py-1.5 theme-brand-bg text-white rounded-lg text-xs font-semibold hover:opacity-90 transition">Change Profile Picture</button>
-            <p class="text-[11px] opacity-60 mt-1">Upload an image to serve as your profile icon.</p>
+            <p class="text-[11px] opacity-60 mt-1 truncate">Upload an image to serve as your profile icon.</p>
           </div>
         </div>
       </div>
@@ -572,11 +573,11 @@
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Privacy & Approval</h4>
         <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl">
-          <div>
+          <div class="pr-3">
             <p class="text-xs font-semibold">Message Approval Required</p>
             <p class="text-[11px] opacity-60">People cannot message you unless they are on your friends list.</p>
           </div>
-          <input type="checkbox" id="privacy-dm-approval" onchange="updatePrivacySettings()" class="w-4 h-4 text-blue-600 rounded cursor-pointer">
+          <input type="checkbox" id="privacy-dm-approval" onchange="updatePrivacySettings()" class="w-4 h-4 text-blue-600 rounded cursor-pointer shrink-0">
         </div>
       </div>
 
@@ -585,14 +586,14 @@
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">Appearance & Themes</h4>
         <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl mb-4">
           <span class="text-sm font-semibold">Dark Mode</span>
-          <button onclick="toggleDarkMode()" class="px-4 py-2 rounded-xl bg-black/10 dark:bg-white/10 text-xs font-semibold flex items-center space-x-2">
+          <button onclick="toggleDarkMode()" class="px-4 py-2 rounded-xl bg-black/10 dark:bg-white/10 text-xs font-semibold flex items-center space-x-2 shrink-0">
             <i class="fa-solid fa-moon text-amber-400"></i>
             <span id="darkmode-toggle-text">Toggle Mode</span>
           </button>
         </div>
 
         <p class="text-xs font-semibold mb-2">Accent & Immersive Holiday Themes</p>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
           <button onclick="setTheme('default')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition">
             <span class="w-3.5 h-3.5 rounded-full bg-blue-500 inline-block"></span>
             <span>Default</span>
@@ -619,7 +620,7 @@
         </div>
       </div>
 
-      <!-- Changelog Section Restored -->
+      <!-- Changelog Section -->
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
         <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
@@ -632,8 +633,8 @@
             <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
           </p>
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
-            <li>Added Audio & Video calling via WebRTC.</li>
-            <li>Integrated Giphy GIF picker search with fallback support.</li>
+            <li>Added Audio & Video calling via WebRTC Signaling.</li>
+            <li>Integrated personal Giphy GIF search picker.</li>
             <li>Added message deletion and custom profile picture uploading.</li>
           </ul>
         </div>
@@ -677,7 +678,8 @@
       setDoc, 
       updateDoc, 
       collection, 
-      onSnapshot 
+      onSnapshot,
+      deleteDoc 
     } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
     // Hardcoded Firebase & App Config for GitHub Pages Hosting
@@ -702,10 +704,15 @@
     let replyingToMsg = null;
     let selectedAttachmentBase64 = null;
     let localStream = null;
+    let peerConnection = null;
+    let callUnsubscribe = null;
 
     const PUBLIC_USERS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'users');
     const PUBLIC_CHATS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'chats');
     const PUBLIC_FRIENDS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'friends');
+    const PUBLIC_CALLS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'calls');
+
+    const GIPHY_API_KEY = "H4ANxvnXMow7tMhtH0Wj0o7RFgWw8FH8";
 
     async function hashString(str) {
       const encoder = new TextEncoder();
@@ -969,9 +976,30 @@
       activeChatId = chatId;
       document.getElementById('no-chat-selected').classList.add('hidden');
       document.getElementById('active-chat-wrapper').classList.remove('hidden');
+      
+      // Responsive layout switching for mobile screens
+      if (window.innerWidth < 768) {
+        document.getElementById('sidebar-panel').classList.add('hidden');
+        document.getElementById('chat-main-panel').classList.remove('hidden');
+        document.getElementById('chat-main-panel').classList.add('flex');
+      }
+
       renderChatsList();
       renderActiveChatMessages();
     }
+
+    window.backToChatsList = () => {
+      activeChatId = null;
+      document.getElementById('active-chat-wrapper').classList.add('hidden');
+      document.getElementById('no-chat-selected').classList.remove('hidden');
+      
+      if (window.innerWidth < 768) {
+        document.getElementById('sidebar-panel').classList.remove('hidden');
+        document.getElementById('chat-main-panel').classList.add('hidden');
+        document.getElementById('chat-main-panel').classList.remove('flex');
+      }
+      renderChatsList();
+    };
 
     function renderActiveChatMessages() {
       const chat = chatsData.find(c => c.id === activeChatId);
@@ -1229,7 +1257,7 @@
       reader.readAsDataURL(file);
     };
 
-    // ROBUST GIPHY API SEARCH & FALLBACK HANDLER
+    // GIPHY API INTEGRATION
     window.toggleGifPicker = () => {
       const picker = document.getElementById('gif-picker-popover');
       picker.classList.toggle('hidden');
@@ -1242,12 +1270,11 @@
       const container = document.getElementById('gif-results-container');
       container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-2">Loading GIFs...</p>`;
       try {
-        const res = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=6`);
+        const res = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${GIPHY_API_KEY}&limit=6`);
         const data = await res.json();
         renderGifResults(data.data);
       } catch (err) {
-        // Fallback working GIFs if public API rate limits or errors out
-        renderFallbackGifs();
+        container.innerHTML = `<p class="text-[11px] text-red-400 col-span-2 text-center py-2">Failed to load GIFs.</p>`;
       }
     }
 
@@ -1260,7 +1287,7 @@
       }
 
       try {
-        const res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=${encodeURIComponent(query)}&limit=6`);
+        const res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${GIPHY_API_KEY}&q=${encodeURIComponent(query)}&limit=6`);
         const data = await res.json();
         if (data.data && data.data.length > 0) {
           renderGifResults(data.data);
@@ -1268,7 +1295,7 @@
           container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-4">No GIFs found</p>`;
         }
       } catch (err) {
-        renderFallbackGifs();
+        container.innerHTML = `<p class="text-[11px] text-red-400 col-span-2 text-center py-2">Search error.</p>`;
       }
     };
 
@@ -1281,24 +1308,6 @@
         img.src = imgUrl;
         img.className = "w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition";
         img.onclick = () => sendGifMessage(imgUrl);
-        container.appendChild(img);
-      });
-    }
-
-    function renderFallbackGifs() {
-      const container = document.getElementById('gif-results-container');
-      container.innerHTML = '';
-      const fallbacks = [
-        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BuN2FwcnltcnRrdTNmdTVreWhwcXo2aHRrcmxpdWJmdTNtNWR3ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nOsE/giphy.gif",
-        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNndxYnR3Y28xYXRndThndzN3cDF6dTF1M2t6dDl3eWVmN3Fwd3B6ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LnjD7SI2PhyAA/giphy.gif",
-        "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm12aWp3aG96cGJyZTZoNWt5ZzE3cjJ2MW14dzdyMmVndmVvOGlqbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/artj92V8o75VPL7AeQ/giphy.gif",
-        "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGx0cG83NDFqN3psNWszYnI1bWhqNWt2MGd2MXRybW5qMXV5M2J1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26u4lOMA8JKSnL9Uk/giphy.gif"
-      ];
-      fallbacks.forEach(url => {
-        const img = document.createElement('img');
-        img.src = url;
-        img.className = "w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition";
-        img.onclick = () => sendGifMessage(url);
         container.appendChild(img);
       });
     }
@@ -1325,38 +1334,121 @@
       document.getElementById('gif-picker-popover').classList.add('hidden');
     }
 
-    // WEBRTC CALL SIMULATION HANDLERS
-    window.startAudioCall = async () => {
-      document.getElementById('call-title').textContent = "Audio Call in Progress";
-      document.getElementById('call-modal').classList.remove('hidden');
-      try {
-        localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-        document.getElementById('local-video').srcObject = localStream;
-      } catch (err) {
-        console.error("Audio permission error:", err);
-        alert("Could not access microphone.");
-      }
+    // WEBRTC CALLING & FIRESTORE SIGNALING ENGINE
+    const rtcConfig = {
+      iceServers: [
+        { urls: 'stun:stun.l.google.com:19302' },
+        { urls: 'stun:stun1.l.google.com:19302' }
+      ]
     };
 
-    window.startVideoCall = async () => {
-      document.getElementById('call-title').textContent = "Video Call in Progress";
-      document.getElementById('call-modal').classList.remove('hidden');
-      try {
-        localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-        document.getElementById('local-video').srcObject = localStream;
-      } catch (err) {
-        console.error("Video permission error:", err);
-        alert("Could not access camera or microphone.");
-      }
-    };
+    window.startAudioCall = () => initiateCall(false);
+    window.startVideoCall = () => initiateCall(true);
 
-    window.endCall = () => {
+    async function initiateCall(withVideo) {
+      if (!activeChatId) return;
+      document.getElementById('call-title').textContent = withVideo ? "Echo Video Call" : "Echo Audio Call";
+      document.getElementById('call-modal').classList.remove('hidden');
+
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: withVideo });
+        document.getElementById('local-video').srcObject = localStream;
+
+        peerConnection = new RTCPeerConnection(rtcConfig);
+        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+        peerConnection.ontrack = (event) => {
+          document.getElementById('remote-video').srcObject = event.streams[0];
+        };
+
+        const callDocRef = doc(PUBLIC_CALLS_COL, activeChatId);
+        const callSnap = await getDoc(callDocRef);
+
+        peerConnection.onicecandidate = async (event) => {
+          if (event.candidate) {
+            const currentData = (await getDoc(callDocRef)).data() || {};
+            const candidates = currentData.candidates || [];
+            candidates.push({ sender: currentUser.username, candidate: event.candidate.toJSON() });
+            await setDoc(callDocRef, { ...currentData, candidates }, { merge: true });
+          }
+        };
+
+        if (!callSnap.exists() || !callSnap.data().offer) {
+          const offer = await peerConnection.createOffer();
+          await peerConnection.setLocalDescription(offer);
+
+          await setDoc(callDocRef, {
+            chatId: activeChatId,
+            caller: currentUser.username,
+            offer: { type: offer.type, sdp: offer.sdp },
+            answer: null,
+            candidates: []
+          });
+
+          callUnsubscribe = onSnapshot(callDocRef, async (snapshot) => {
+            const data = snapshot.data();
+            if (data && data.answer && !peerConnection.currentRemoteDescription) {
+              await peerConnection.setRemoteDescription(new RTCSessionDescription(data.answer));
+            }
+            if (data && data.candidates) {
+              data.candidates.forEach(async (c) => {
+                if (c.sender !== currentUser.username) {
+                  try {
+                    await peerConnection.addIceCandidate(new RTCIceCandidate(c.candidate));
+                  } catch (e) { console.error("ICE add error:", e); }
+                }
+              });
+            }
+          });
+        } else {
+          const data = callSnap.data();
+          await peerConnection.setRemoteDescription(new RTCSessionDescription(data.offer));
+          const answer = await peerConnection.createAnswer();
+          await peerConnection.setLocalDescription(answer);
+
+          await updateDoc(callDocRef, {
+            answer: { type: answer.type, sdp: answer.sdp }
+          });
+
+          callUnsubscribe = onSnapshot(callDocRef, async (snapshot) => {
+            const d = snapshot.data();
+            if (d && d.candidates) {
+              d.candidates.forEach(async (c) => {
+                if (c.sender !== currentUser.username) {
+                  try {
+                    await peerConnection.addIceCandidate(new RTCIceCandidate(c.candidate));
+                  } catch (e) { console.error("ICE add error:", e); }
+                }
+              });
+            }
+          });
+        }
+      } catch (err) {
+        console.error("Call initialization error:", err);
+        alert("Could not start call. Check microphone/camera permissions.");
+        endCall();
+      }
+    }
+
+    window.endCall = async () => {
+      if (callUnsubscribe) callUnsubscribe();
+      if (peerConnection) {
+        peerConnection.close();
+        peerConnection = null;
+      }
       if (localStream) {
         localStream.getTracks().forEach(track => track.stop());
+        localStream = null;
       }
       document.getElementById('local-video').srcObject = null;
       document.getElementById('remote-video').srcObject = null;
       document.getElementById('call-modal').classList.add('hidden');
+
+      if (activeChatId) {
+        try {
+          await deleteDoc(doc(PUBLIC_CALLS_COL, activeChatId));
+        } catch (e) {}
+      }
     };
 
     window.createConversation = async () => {
