@@ -194,11 +194,6 @@
       border-color: var(--border-color) !important;
     }
 
-    main {
-      background: var(--chat-bg) !important;
-      background-image: var(--pattern-overlay) !important;
-    }
-
     .theme-card {
       background-color: var(--card-bg) !important;
       color: var(--text-main) !important;
@@ -400,7 +395,7 @@
       </aside>
 
       <!-- MAIN CHAT PANEL -->
-      <main id="chat-main-panel" class="flex-1 flex flex-col relative bg-slate-900/10 h-full w-full absolute md:relative inset-0 z-20 hidden md:flex">
+      <main id="chat-main-panel" class="flex-1 flex flex-col relative h-full w-full absolute md:relative inset-0 z-20 hidden md:flex">
         <div id="no-chat-selected" class="flex-1 flex flex-col items-center justify-center p-6 sm:p-8 text-center">
           <div class="w-20 h-20 rounded-3xl theme-brand-bg text-white flex items-center justify-center text-4xl mb-4 shadow-xl">
             <i class="fa-solid fa-comments"></i>
@@ -428,7 +423,7 @@
               </div>
             </div>
             <div class="flex items-center space-x-1 sm:space-x-2 shrink-0">
-              <button onclick="openModal('games-modal')" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-purple-400" title="Mini Games">
+              <button onclick="openGamesModal()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-purple-400" title="Mini Games">
                 <i class="fa-solid fa-gamepad"></i>
               </button>
               <button onclick="openModal('custom-theme-modal')" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-pink-400" title="Custom Chat Theme">
@@ -585,7 +580,13 @@
         </h3>
         <button onclick="closeModal('games-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
-      <p class="text-xs opacity-70">Select a game to challenge your friends in this chat!</p>
+      <p class="text-xs opacity-70">Select a game to challenge friends in this chat!</p>
+      
+      <div id="game-opponent-selector" class="hidden">
+        <label class="block text-xs font-semibold mb-1">Select Opponent (1v1 in Group Chat)</label>
+        <select id="game-opponent-select" class="w-full p-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs mb-2"></select>
+      </div>
+
       <div class="grid grid-cols-2 gap-3">
         <button onclick="sendGameInvite('Tic-Tac-Toe')" class="p-4 rounded-xl theme-brand-bg text-white font-bold text-xs flex flex-col items-center space-y-2 shadow-md hover:opacity-90">
           <i class="fa-solid fa-hashtag text-xl"></i>
@@ -679,7 +680,7 @@
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
         <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
           <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
-            <span class="font-bold text-blue-400">Echo Messenger v3.2.0</span>
+            <span class="font-bold text-blue-400">Echo Messenger v3.3.0</span>
             <span class="text-[10px] opacity-60">Latest Release</span>
           </div>
           <p class="font-semibold text-amber-500 flex items-center space-x-1">
@@ -687,10 +688,9 @@
             <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
           </p>
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
-            <li>Added incoming call ringing notifications with accept/decline prompts.</li>
-            <li>Added hang-up button, mic mute, and camera toggle controls.</li>
-            <li>Added chat-specific custom themes and background wallpapers.</li>
-            <li>Integrated functional Tic-Tac-Toe and Connect 4 mini-games.</li>
+            <li>Fixed game challenge requests, turn-sync, and group chat 1v1 opponents.</li>
+            <li>Fixed mobile call notification z-index and auto-connect when both users call.</li>
+            <li>Fixed custom chat-specific themes and background wallpaper rendering.</li>
           </ul>
         </div>
       </div>
@@ -705,7 +705,7 @@
   </div>
 
   <!-- INCOMING CALL RINGING MODAL -->
-  <div id="incoming-call-modal" class="fixed inset-0 z-60 bg-black/80 flex flex-col items-center justify-center p-4 hidden">
+  <div id="incoming-call-modal" class="fixed inset-0 z-70 bg-black/80 flex flex-col items-center justify-center p-4 hidden">
     <div class="theme-card rounded-2xl max-w-sm w-full p-6 border shadow-2xl text-center space-y-4 animate-bounce">
       <div class="w-16 h-16 rounded-full theme-brand-bg text-white flex items-center justify-center text-2xl mx-auto shadow-lg">
         <i class="fa-solid fa-phone-volume animate-pulse"></i>
@@ -719,7 +719,7 @@
   </div>
 
   <!-- VIDEO/AUDIO CALL MODAL OVERLAY -->
-  <div id="call-modal" class="fixed inset-0 z-50 bg-black/90 flex flex-col items-center justify-center p-4 hidden">
+  <div id="call-modal" class="fixed inset-0 z-60 bg-black/90 flex flex-col items-center justify-center p-4 hidden">
     <div class="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden border border-gray-700 shadow-2xl flex flex-col h-[80vh]">
       <div class="p-4 bg-gray-800 flex items-center justify-between">
         <h3 id="call-title" class="font-bold text-white text-sm">Echo Secure Call</h3>
@@ -964,15 +964,20 @@
         renderPendingRequests(reqs);
       }, (err) => console.error("Friends sync error:", err));
 
-      // Global Call Listener for Ringing Notifications
+      // Global Call Listener for Ringing Notifications & Auto-Connect
       onSnapshot(PUBLIC_CALLS_COL, (snapshot) => {
         snapshot.forEach(d => {
           const callData = d.data();
           const chat = chatsData.find(c => c.id === callData.chatId);
-          if (chat && chat.participants.includes(currentUser.username) && callData.caller !== currentUser.username && !callData.answer && !incomingCallData) {
-            incomingCallData = { id: d.id, ...callData };
-            document.getElementById('incoming-call-text').textContent = `@${callData.caller} is calling you...`;
-            document.getElementById('incoming-call-modal').classList.remove('hidden');
+          if (chat && chat.participants.includes(currentUser.username) && callData.caller !== currentUser.username) {
+            // Check if we are also calling them simultaneously (Auto-connect)
+            if (peerConnection && localStream && !callData.answer) {
+              acceptIncomingCallDirectly(callData);
+            } else if (!callData.answer && !incomingCallData) {
+              incomingCallData = { id: d.id, ...callData };
+              document.getElementById('incoming-call-text').textContent = `@${callData.caller} is calling you...`;
+              document.getElementById('incoming-call-modal').classList.remove('hidden');
+            }
           }
         });
       });
@@ -1067,16 +1072,17 @@
       document.getElementById('active-chat-wrapper').classList.remove('hidden');
       
       const chat = chatsData.find(c => c.id === chatId);
+      const mainPanel = document.getElementById('chat-main-panel');
       if (chat && chat.customBg) {
-        document.getElementById('chat-main-panel').style.background = chat.customBg;
+        mainPanel.style.background = chat.customBg;
       } else {
-        document.getElementById('chat-main-panel').style.background = '';
+        mainPanel.style.background = '';
       }
 
       if (window.innerWidth < 768) {
         document.getElementById('sidebar-panel').classList.add('hidden');
-        document.getElementById('chat-main-panel').classList.remove('hidden');
-        document.getElementById('chat-main-panel').classList.add('flex');
+        mainPanel.classList.remove('hidden');
+        mainPanel.classList.add('flex');
       }
 
       renderChatsList();
@@ -1129,12 +1135,34 @@
 
         let contentHTML = '';
         if (msg.type === 'gameInvite') {
-          contentHTML = `
-            <div class="p-3 bg-purple-900/40 border border-purple-500/50 rounded-2xl text-xs space-y-2">
-              <p class="font-bold flex items-center space-x-1.5"><i class="fa-solid fa-gamepad text-purple-400"></i><span>Game Challenge: ${msg.gameName}</span></p>
-              <div id="game-board-${msg.id}" class="py-2"></div>
-            </div>
-          `;
+          if (msg.status === 'pending') {
+            const isTarget = msg.opponent === currentUser.username || (!msg.opponent && msg.sender !== currentUser.username);
+            contentHTML = `
+              <div class="p-3 bg-purple-900/40 border border-purple-500/50 rounded-2xl text-xs space-y-2">
+                <p class="font-bold flex items-center space-x-1.5"><i class="fa-solid fa-gamepad text-purple-400"></i><span>Game Challenge: ${msg.gameName}</span></p>
+                <p class="opacity-80">Challenged by @${msg.sender} ${msg.opponent ? 'vs @' + msg.opponent : ''}</p>
+                ${isTarget ? `
+                  <div class="flex space-x-2 pt-1">
+                    <button onclick="respondGameInvite('${msg.id}', false)" class="px-3 py-1 bg-rose-500 text-white rounded font-semibold">Decline</button>
+                    <button onclick="respondGameInvite('${msg.id}', true)" class="px-3 py-1 bg-emerald-500 text-white rounded font-semibold">Accept</button>
+                  </div>
+                ` : `<p class="italic opacity-60">Waiting for response...</p>`}
+              </div>
+            `;
+          } else if (msg.status === 'declined') {
+            contentHTML = `
+              <div class="p-3 bg-rose-900/30 border border-rose-500/40 rounded-2xl text-xs">
+                <p class="font-bold"><i class="fa-solid fa-gamepad text-rose-400"></i> ${msg.gameName} Challenge Declined</p>
+              </div>
+            `;
+          } else {
+            contentHTML = `
+              <div class="p-3 bg-purple-900/40 border border-purple-500/50 rounded-2xl text-xs space-y-2">
+                <p class="font-bold flex items-center space-x-1.5"><i class="fa-solid fa-gamepad text-purple-400"></i><span>${msg.gameName}</span></p>
+                <div id="game-board-${msg.id}" class="py-2"></div>
+              </div>
+            `;
+          }
         } else {
           let mediaHTML = '';
           if (msg.media) {
@@ -1190,7 +1218,7 @@
 
         msgContainer.appendChild(msgWrapper);
 
-        if (msg.type === 'gameInvite') {
+        if (msg.type === 'gameInvite' && msg.status === 'accepted') {
           renderMiniGame(msg);
         }
       });
@@ -1198,9 +1226,43 @@
       msgContainer.scrollTop = msgContainer.scrollHeight;
     }
 
-    // Fully Functional Mini Games (Tic-Tac-Toe & Connect 4)
+    // Mini Games Hub & Group Chat 1v1 Support
+    window.openGamesModal = () => {
+      const chat = chatsData.find(c => c.id === activeChatId);
+      if (!chat) return;
+
+      const opponentSelector = document.getElementById('game-opponent-selector');
+      const selectEl = document.getElementById('game-opponent-select');
+      selectEl.innerHTML = '';
+
+      const others = chat.participants.filter(p => p !== currentUser.username);
+      if (chat.isGroup && others.length > 0) {
+        opponentSelector.classList.remove('hidden');
+        others.forEach(o => {
+          const opt = document.createElement('option');
+          opt.value = o;
+          opt.textContent = '@' + o;
+          selectEl.appendChild(opt);
+        });
+      } else {
+        opponentSelector.classList.add('hidden');
+      }
+
+      openModal('games-modal');
+    };
+
     window.sendGameInvite = async (gameName) => {
       closeModal('games-modal');
+      const chat = chatsData.find(c => c.id === activeChatId);
+      if (!chat) return;
+
+      let opponent = null;
+      if (chat.isGroup) {
+        opponent = document.getElementById('game-opponent-select').value;
+      } else {
+        opponent = chat.participants.find(p => p !== currentUser.username);
+      }
+
       const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
       const chatSnap = await getDoc(chatRef);
       if (!chatSnap.exists()) return;
@@ -1211,17 +1273,39 @@
       const newMsg = {
         id: 'msg_' + Date.now(),
         sender: currentUser.username,
+        opponent: opponent,
         type: 'gameInvite',
         gameName: gameName,
+        status: 'pending',
         gameState: gameName === 'Tic-Tac-Toe' ? Array(9).fill('') : Array(42).fill(''),
         turn: currentUser.username,
-        players: [currentUser.username],
+        players: [currentUser.username, opponent].filter(Boolean),
         winner: null,
         timestamp: Date.now()
       };
 
       messages.push(newMsg);
       await updateDoc(chatRef, { messages: messages, lastUpdated: Date.now() });
+    };
+
+    window.respondGameInvite = async (msgId, accepted) => {
+      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
+      const chatSnap = await getDoc(chatRef);
+      if (!chatSnap.exists()) return;
+
+      const chatData = chatSnap.data();
+      const messages = chatData.messages || [];
+      const msg = messages.find(m => m.id === msgId);
+
+      if (!msg) return;
+
+      if (accepted) {
+        msg.status = 'accepted';
+      } else {
+        msg.status = 'declined';
+      }
+
+      await updateDoc(chatRef, { messages: messages });
     };
 
     function renderMiniGame(msg) {
@@ -1275,18 +1359,12 @@
       const msg = messages.find(m => m.id === msgId);
 
       if (!msg || msg.winner || msg.gameState[idx] !== '') return;
-
-      if (!msg.players.includes(currentUser.username)) {
-        if (msg.players.length < 2) msg.players.push(currentUser.username);
-        else return;
-      }
-
+      if (!msg.players.includes(currentUser.username)) return;
       if (msg.turn !== currentUser.username) return;
 
       const symbol = msg.players[0] === currentUser.username ? 'X' : 'O';
       msg.gameState[idx] = symbol;
 
-      // Check win
       const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
       let won = false;
       for (const w of wins) {
@@ -1319,15 +1397,9 @@
       const msg = messages.find(m => m.id === msgId);
 
       if (!msg || msg.winner) return;
-
-      if (!msg.players.includes(currentUser.username)) {
-        if (msg.players.length < 2) msg.players.push(currentUser.username);
-        else return;
-      }
-
+      if (!msg.players.includes(currentUser.username)) return;
       if (msg.turn !== currentUser.username) return;
 
-      // Drop piece into column
       let targetRow = -1;
       for (let r = 5; r >= 0; r--) {
         const idx = r * 7 + col;
@@ -1342,9 +1414,7 @@
       const symbol = msg.players[0] === currentUser.username ? 'X' : 'O';
       msg.gameState[targetRow * 7 + col] = symbol;
 
-      // Check win (simplified)
       let won = false;
-      // Check horizontal, vertical
       for (let r = 0; r < 6; r++) {
         for (let c = 0; c < 7; c++) {
           const p = msg.gameState[r * 7 + c];
@@ -1625,7 +1695,7 @@
       document.getElementById('gif-picker-popover').classList.add('hidden');
     }
 
-    // WEBRTC CALLING WITH INCOMING NOTIFICATIONS & CONTROLS
+    // WEBRTC CALLING & AUTO-CONNECT
     const rtcConfig = {
       iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
@@ -1697,21 +1767,30 @@
     window.acceptIncomingCall = async () => {
       document.getElementById('incoming-call-modal').classList.add('hidden');
       if (!incomingCallData) return;
+      acceptIncomingCallDirectly(incomingCallData);
+      incomingCallData = null;
+    };
 
-      activeChatId = incomingCallData.chatId;
+    async function acceptIncomingCallDirectly(callData) {
+      document.getElementById('incoming-call-modal').classList.add('hidden');
+      activeChatId = callData.chatId;
       document.getElementById('call-title').textContent = "Echo Call Connected";
       document.getElementById('call-modal').classList.remove('hidden');
 
       try {
-        localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-        document.getElementById('local-video').srcObject = localStream;
+        if (!localStream) {
+          localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+          document.getElementById('local-video').srcObject = localStream;
+        }
 
-        peerConnection = new RTCPeerConnection(rtcConfig);
-        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+        if (!peerConnection) {
+          peerConnection = new RTCPeerConnection(rtcConfig);
+          localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
 
-        peerConnection.ontrack = (event) => {
-          document.getElementById('remote-video').srcObject = event.streams[0];
-        };
+          peerConnection.ontrack = (event) => {
+            document.getElementById('remote-video').srcObject = event.streams[0];
+          };
+        }
 
         const callDocRef = doc(PUBLIC_CALLS_COL, activeChatId);
         peerConnection.onicecandidate = async (event) => {
@@ -1723,13 +1802,15 @@
           }
         };
 
-        await peerConnection.setRemoteDescription(new RTCSessionDescription(incomingCallData.offer));
-        const answer = await peerConnection.createAnswer();
-        await peerConnection.setLocalDescription(answer);
+        if (callData.offer && !peerConnection.currentRemoteDescription) {
+          await peerConnection.setRemoteDescription(new RTCSessionDescription(callData.offer));
+          const answer = await peerConnection.createAnswer();
+          await peerConnection.setLocalDescription(answer);
 
-        await updateDoc(callDocRef, {
-          answer: { type: answer.type, sdp: answer.sdp }
-        });
+          await updateDoc(callDocRef, {
+            answer: { type: answer.type, sdp: answer.sdp }
+          });
+        }
 
         callUnsubscribe = onSnapshot(callDocRef, async (snapshot) => {
           const d = snapshot.data();
@@ -1744,11 +1825,10 @@
           }
         });
       } catch (err) {
-        alert("Could not accept call.");
+        alert("Could not connect call.");
         endCall();
       }
-      incomingCallData = null;
-    };
+    }
 
     window.declineIncomingCall = () => {
       document.getElementById('incoming-call-modal').classList.add('hidden');
