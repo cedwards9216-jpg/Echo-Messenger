@@ -184,7 +184,6 @@
       --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" opacity="0.08" viewBox="0 0 100 100"><text x="10" y="30" font-size="20">⚡</text><text x="60" y="70" font-size="20">💎</text></svg>');
     }
 
-    /* Universal Dynamic Styling Apply Rules */
     body {
       background: var(--bg-gradient) !important;
       color: var(--text-main) !important;
@@ -226,7 +225,6 @@
       border: 1px solid var(--border-color) !important;
     }
 
-    /* Custom Scrollbars */
     ::-webkit-scrollbar {
       width: 6px;
       height: 6px;
@@ -252,7 +250,6 @@
     <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-95 backdrop-blur-sm p-4 hidden">
       <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 max-w-md w-full border border-gray-200 dark:border-gray-700 relative overflow-hidden">
         
-        <!-- Header -->
         <div class="text-center mb-8">
           <div class="w-16 h-16 theme-brand-bg text-white rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg transform -rotate-6">
             <i class="fa-solid fa-comments text-3xl"></i>
@@ -261,16 +258,13 @@
           <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Real-time chat with auto-login persistent security</p>
         </div>
 
-        <!-- Auth Tabs -->
         <div class="flex border-b border-gray-200 dark:border-gray-700 mb-6">
           <button id="tab-login-btn" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400">Sign In</button>
           <button id="tab-register-btn" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400">Register</button>
         </div>
 
-        <!-- Auth Alert Message Box -->
         <div id="auth-alert" class="hidden mb-4 p-3 rounded-lg text-xs font-medium bg-red-100 border border-red-200 text-red-700 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300"></div>
 
-        <!-- Login Form -->
         <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
           <div>
             <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Username</label>
@@ -292,7 +286,6 @@
           </button>
         </form>
 
-        <!-- Register Form -->
         <form id="register-form" onsubmit="handleRegister(event)" class="space-y-4 hidden">
           <div>
             <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Choose Username</label>
@@ -327,11 +320,10 @@
       <!-- SIDEBAR -->
       <aside class="w-80 md:w-96 border-r flex flex-col z-10 transition-all duration-300">
         
-        <!-- User Profile Header -->
         <div class="p-4 border-b flex items-center justify-between opacity-95">
           <div class="flex items-center space-x-3 cursor-pointer" onclick="openModal('settings-modal')">
             <div class="relative">
-              <div id="user-avatar" class="w-10 h-10 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg shadow-sm">
+              <div id="user-avatar" class="w-10 h-10 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg shadow-sm overflow-hidden">
                 ?
               </div>
               <span id="user-status-dot" class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></span>
@@ -351,7 +343,6 @@
           </div>
         </div>
 
-        <!-- Search Bar -->
         <div class="p-3">
           <div class="relative">
             <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
@@ -361,7 +352,6 @@
           </div>
         </div>
 
-        <!-- Navigation Tabs for Sidebar -->
         <div class="flex px-3 pb-2 border-b border-gray-200 dark:border-gray-700/40 text-xs font-medium text-gray-500 dark:text-gray-400 space-x-1">
           <button id="tab-chats-btn" onclick="switchSidebarTab('chats')" class="flex-1 py-1.5 rounded-lg theme-brand-bg text-white font-semibold shadow-xs transition">Chats</button>
           <button id="tab-friends-btn" onclick="switchSidebarTab('friends')" class="flex-1 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center justify-center space-x-1">
@@ -370,9 +360,7 @@
           </button>
         </div>
 
-        <!-- TAB CONTENT: CHATS LIST -->
         <div id="sidebar-chats-container" class="flex-1 overflow-y-auto p-2 space-y-1">
-          <!-- Pinned Section -->
           <div id="pinned-chats-section" class="mb-2 hidden">
             <div class="px-2 py-1 text-[11px] font-bold text-gray-400 uppercase tracking-wider flex items-center space-x-1">
               <i class="fa-solid fa-thumbtack text-xs text-amber-500"></i>
@@ -381,7 +369,6 @@
             <div id="pinned-chats-list" class="space-y-1"></div>
           </div>
 
-          <!-- All Conversations -->
           <div id="all-chats-section">
             <div class="px-2 py-1 text-[11px] font-bold text-gray-400 uppercase tracking-wider">
               <span>Messages</span>
@@ -390,7 +377,6 @@
           </div>
         </div>
 
-        <!-- TAB CONTENT: FRIENDS LIST -->
         <div id="sidebar-friends-container" class="flex-1 overflow-y-auto p-3 space-y-4 hidden">
           <div id="friend-requests-wrapper" class="hidden">
             <h3 class="text-xs font-bold text-amber-500 uppercase tracking-wider mb-2 flex items-center space-x-1">
@@ -418,7 +404,6 @@
 
       <!-- MAIN CHAT PANEL -->
       <main class="flex-1 flex flex-col relative bg-slate-900/10">
-        <!-- Default State when no chat selected -->
         <div id="no-chat-selected" class="flex-1 flex flex-col items-center justify-center p-8 text-center">
           <div class="w-20 h-20 rounded-3xl theme-brand-bg text-white flex items-center justify-center text-4xl mb-4 shadow-xl">
             <i class="fa-solid fa-comments"></i>
@@ -430,9 +415,7 @@
           </button>
         </div>
 
-        <!-- Active Chat Interface -->
         <div id="active-chat-wrapper" class="flex-1 flex flex-col h-full hidden">
-          <!-- Active Chat Header -->
           <div class="p-3 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between theme-card">
             <div class="flex items-center space-x-3">
               <div id="active-chat-avatar" class="w-10 h-10 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold">
@@ -444,13 +427,18 @@
               </div>
             </div>
             <div class="flex items-center space-x-2">
+              <button onclick="startAudioCall()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-emerald-500" title="Start Audio Call">
+                <i class="fa-solid fa-phone"></i>
+              </button>
+              <button onclick="startVideoCall()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-blue-500" title="Start Video Call">
+                <i class="fa-solid fa-video"></i>
+              </button>
               <button onclick="togglePinCurrentChat()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition" title="Pin/Unpin Conversation">
                 <i class="fa-solid fa-thumbtack text-amber-500"></i>
               </button>
             </div>
           </div>
 
-          <!-- Pinned Message Banner -->
           <div id="chat-pinned-message-bar" class="bg-amber-500/15 border-b border-amber-500/30 px-4 py-2 flex items-center justify-between text-xs hidden">
             <div class="flex items-center space-x-2 truncate">
               <i class="fa-solid fa-thumbtack text-amber-500"></i>
@@ -460,10 +448,8 @@
             <button onclick="unpinChatMessage()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
           </div>
 
-          <!-- Messages Container -->
           <div id="messages-container" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
 
-          <!-- Attachment Preview Bar -->
           <div id="attachment-preview-bar" class="px-4 py-2 bg-black/10 dark:bg-white/10 flex items-center justify-between text-xs hidden">
             <div class="flex items-center space-x-3">
               <div id="media-preview-container" class="w-10 h-10 rounded-lg overflow-hidden bg-gray-300 dark:bg-gray-700 flex items-center justify-center"></div>
@@ -472,7 +458,6 @@
             <button onclick="clearAttachment()" class="text-rose-500 hover:text-rose-600"><i class="fa-solid fa-circle-xmark text-lg"></i></button>
           </div>
 
-          <!-- Reply Preview Bar -->
           <div id="reply-preview-bar" class="px-4 py-2 bg-blue-500/10 border-t border-blue-500/30 flex items-center justify-between text-xs hidden">
             <div class="truncate">
               <span id="reply-to-user" class="font-bold text-blue-500">Replying to @user</span>
@@ -493,6 +478,18 @@
               <button onclick="insertEmoji('🎉')" class="text-xl hover:scale-125 transition">🎉</button>
             </div>
 
+            <!-- GIF Picker Popover -->
+            <div id="gif-picker-popover" class="absolute bottom-16 left-12 theme-card border rounded-2xl p-3 shadow-xl w-72 hidden z-20">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold">Search GIPHY</span>
+                <button onclick="toggleGifPicker()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <input type="text" id="gif-search-box" onkeyup="searchGifs(event)" placeholder="Search GIFs..." class="w-full px-2 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs mb-2 outline-none">
+              <div id="gif-results-container" class="grid grid-cols-2 gap-1.5 max-h-48 overflow-y-auto">
+                <p class="text-[11px] text-gray-400 col-span-2 text-center py-4">Type a query above</p>
+              </div>
+            </div>
+
             <form onsubmit="sendMessage(event)" class="flex items-center space-x-2">
               <input type="file" id="media-file-input" accept="image/*,video/*" onchange="handleFileSelect(event)" class="hidden">
               <button type="button" onclick="document.getElementById('media-file-input').click()" class="p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition" title="Attach Image or Video">
@@ -500,6 +497,9 @@
               </button>
               <button type="button" onclick="toggleEmojiPicker()" class="p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition" title="Emojis">
                 <i class="fa-solid fa-face-smile text-base"></i>
+              </button>
+              <button type="button" onclick="toggleGifPicker()" class="p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition text-amber-400 font-bold text-xs" title="Send GIF">
+                GIF
               </button>
               
               <input type="text" id="message-text-input" placeholder="Type a message..." class="flex-1 py-2.5 px-4 rounded-xl bg-gray-100 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500 transition">
@@ -555,6 +555,19 @@
         <button onclick="closeModal('settings-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
+      <!-- Profile Picture Section -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Profile Avatar</h4>
+        <div class="flex items-center space-x-4 bg-black/5 dark:bg-white/5 p-4 rounded-xl">
+          <div id="settings-avatar-preview" class="w-12 h-12 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg overflow-hidden shadow-inner">?</div>
+          <div>
+            <input type="file" id="avatar-file-input" accept="image/*" onchange="handleAvatarSelect(event)" class="hidden">
+            <button onclick="document.getElementById('avatar-file-input').click()" class="px-3 py-1.5 theme-brand-bg text-white rounded-lg text-xs font-semibold hover:opacity-90 transition">Change Profile Picture</button>
+            <p class="text-[11px] opacity-60 mt-1">Upload an image to serve as your profile icon.</p>
+          </div>
+        </div>
+      </div>
+
       <!-- Privacy Section -->
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Privacy & Approval</h4>
@@ -606,31 +619,25 @@
         </div>
       </div>
 
-      <!-- Changelog Section -->
-      <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
-        <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
-          <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
-            <span class="font-bold text-blue-400">Echo Messenger v3.0.0</span>
-            <span class="text-[10px] opacity-60">Latest Release</span>
-          </div>
-          <p class="font-semibold text-amber-500 flex items-center space-x-1">
-            <i class="fa-solid fa-code"></i>
-            <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
-          </p>
-          <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
-            <li>Full dynamic theme overhaul (spooky Halloween, Christmas, Valentine's, New Year's).</li>
-            <li>Custom wallpaper patterns, message bubble styling, and animated accents.</li>
-            <li>Realtime Firebase backend auto-sync with device auto-login persistence.</li>
-          </ul>
-        </div>
-      </div>
-
       <div class="pt-2 border-t border-gray-200 dark:border-gray-700">
         <button onclick="handleLogout()" class="w-full py-3 bg-rose-500 text-white font-semibold rounded-xl hover:bg-rose-600 transition flex items-center justify-center space-x-2 text-xs">
           <i class="fa-solid fa-right-from-bracket"></i>
           <span>Sign Out of Account</span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIDEO/AUDIO CALL MODAL OVERLAY -->
+  <div id="call-modal" class="fixed inset-0 z-50 bg-black/90 flex flex-col items-center justify-center p-4 hidden">
+    <div class="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden border border-gray-700 shadow-2xl flex flex-col h-[80vh]">
+      <div class="p-4 bg-gray-800 flex items-center justify-between">
+        <h3 id="call-title" class="font-bold text-white text-sm">Echo Secure Call</h3>
+        <button onclick="endCall()" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold">End Call</button>
+      </div>
+      <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2 p-2 bg-black relative">
+        <video id="local-video" autoplay muted playsinline class="w-full h-full object-cover rounded-xl bg-gray-800"></video>
+        <video id="remote-video" autoplay playsinline class="w-full h-full object-cover rounded-xl bg-gray-800"></video>
       </div>
     </div>
   </div>
@@ -665,24 +672,21 @@
       measurementId: "G-47CN0DH91J"
     };
     
-    // Initialize
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
     const db = getFirestore(app);
 
-    // Global App State
     let currentUser = null;
     let activeChatId = null;
     let chatsData = [];
     let replyingToMsg = null;
     let selectedAttachmentBase64 = null;
+    let localStream = null;
 
-    // Strict Firestore Paths
     const PUBLIC_USERS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'users');
     const PUBLIC_CHATS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'chats');
     const PUBLIC_FRIENDS_COL = collection(db, 'artifacts', appId, 'public', 'data', 'friends');
 
-    // SHA-256 Hashing for Passwords
     async function hashString(str) {
       const encoder = new TextEncoder();
       const data = encoder.encode(str);
@@ -690,7 +694,6 @@
       return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // SESSION INITIALIZATION
     window.addEventListener('load', async () => {
       try {
         if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
@@ -793,7 +796,8 @@
         createdAt: Date.now(),
         privacyApproval: false,
         friends: [],
-        pinnedChats: []
+        pinnedChats: [],
+        avatar: ''
       };
 
       await setDoc(userDocRef, newUser);
@@ -810,14 +814,22 @@
 
     function setupUserSession() {
       document.getElementById('user-display-name').textContent = "@" + currentUser.username;
-      document.getElementById('user-avatar').textContent = currentUser.username.charAt(0).toUpperCase();
+      
+      const avatarEl = document.getElementById('user-avatar');
+      const settingsAvatar = document.getElementById('settings-avatar-preview');
+      if (currentUser.avatar) {
+        avatarEl.innerHTML = `<img src="${currentUser.avatar}" class="w-full h-full object-cover">`;
+        settingsAvatar.innerHTML = `<img src="${currentUser.avatar}" class="w-full h-full object-cover">`;
+      } else {
+        avatarEl.textContent = currentUser.username.charAt(0).toUpperCase();
+        settingsAvatar.textContent = currentUser.username.charAt(0).toUpperCase();
+      }
       
       const privacyCheck = document.getElementById('privacy-dm-approval');
       if (privacyCheck) {
         privacyCheck.checked = currentUser.privacyApproval || false;
       }
 
-      // Realtime listener for User Profile
       onSnapshot(doc(PUBLIC_USERS_COL, currentUser.username), (docSnap) => {
         if (docSnap.exists()) {
           currentUser = docSnap.data();
@@ -825,7 +837,6 @@
         }
       }, (err) => console.error("User sync error:", err));
 
-      // Realtime Listener for All Chats
       onSnapshot(PUBLIC_CHATS_COL, (snapshot) => {
         const rawChats = [];
         snapshot.forEach(d => {
@@ -839,7 +850,6 @@
         if (activeChatId) renderActiveChatMessages();
       }, (err) => console.error("Chats sync error:", err));
 
-      // Realtime Friend Requests
       onSnapshot(PUBLIC_FRIENDS_COL, (snapshot) => {
         const reqs = [];
         snapshot.forEach(d => {
@@ -1002,6 +1012,8 @@
           reactionsHTML += `</div>`;
         }
 
+        let deleteBtnHTML = isMe ? `<button onclick="deleteMessage('${msg.id}')" class="p-1 hover:text-rose-500" title="Delete Message"><i class="fa-solid fa-trash"></i></button>` : '';
+
         msgWrapper.innerHTML = `
           <div class="text-[10px] opacity-70 px-1">${isMe ? 'You' : '@' + msg.sender} • ${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
           <div class="relative max-w-xs md:max-w-md">
@@ -1016,12 +1028,12 @@
               ${reactionsHTML}
             </div>
 
-            <div class="absolute top-0 ${isMe ? '-left-20' : '-right-20'} hidden group-hover:flex items-center space-x-1 theme-card border rounded-lg p-1 shadow-md z-10 text-[10px]">
+            <div class="absolute top-0 ${isMe ? '-left-28' : '-right-28'} hidden group-hover:flex items-center space-x-1 theme-card border rounded-lg p-1 shadow-md z-10 text-[10px]">
               <button onclick="setReply('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-blue-500" title="Reply"><i class="fa-solid fa-reply"></i></button>
               <button onclick="toggleReaction('${msg.id}', '❤️')" class="p-1 hover:scale-125 transition">❤️</button>
               <button onclick="toggleReaction('${msg.id}', '😂')" class="p-1 hover:scale-125 transition">😂</button>
-              <button onclick="toggleReaction('${msg.id}', '😭')" class="p-1 hover:scale-125 transition">😭</button>
               <button onclick="pinChatMessage('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-amber-500" title="Pin"><i class="fa-solid fa-thumbtack"></i></button>
+              ${deleteBtnHTML}
             </div>
           </div>
         `;
@@ -1071,6 +1083,18 @@
       cancelReply();
       clearAttachment();
       document.getElementById('quick-emoji-popover').classList.add('hidden');
+    };
+
+    window.deleteMessage = async (msgId) => {
+      if (!confirm("Are you sure you want to delete this message?")) return;
+      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
+      const chatSnap = await getDoc(chatRef);
+      if (!chatSnap.exists()) return;
+
+      const chatData = chatSnap.data();
+      const updatedMessages = (chatData.messages || []).filter(m => m.id !== msgId);
+
+      await updateDoc(chatRef, { messages: updatedMessages });
     };
 
     window.setReply = (msgId, sender, text) => {
@@ -1165,6 +1189,116 @@
       selectedAttachmentBase64 = null;
       document.getElementById('media-file-input').value = '';
       document.getElementById('attachment-preview-bar').classList.add('hidden');
+    };
+
+    window.handleAvatarSelect = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        const base64Avatar = event.target.result;
+        currentUser.avatar = base64Avatar;
+        
+        const userRef = doc(PUBLIC_USERS_COL, currentUser.username);
+        await updateDoc(userRef, { avatar: base64Avatar });
+
+        setupUserSession();
+        alert("Profile picture updated successfully!");
+      };
+      reader.readAsDataURL(file);
+    };
+
+    // GIPHY API SEARCH & SEND
+    window.toggleGifPicker = () => {
+      document.getElementById('gif-picker-popover').classList.toggle('hidden');
+    };
+
+    window.searchGifs = async (e) => {
+      const query = e.target.value.trim();
+      const container = document.getElementById('gif-results-container');
+      if (!query) {
+        container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-4">Type a query above</p>`;
+        return;
+      }
+
+      try {
+        // Using public Giphy beta key for demonstration/testing
+        const res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=${encodeURIComponent(query)}&limit=6`);
+        const data = await res.json();
+        
+        container.innerHTML = '';
+        if (data.data && data.data.length > 0) {
+          data.data.forEach(gif => {
+            const imgUrl = gif.images.fixed_height_small.url;
+            const img = document.createElement('img');
+            img.src = imgUrl;
+            img.className = "w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition";
+            img.onclick = () => sendGifMessage(imgUrl);
+            container.appendChild(img);
+          });
+        } else {
+          container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-4">No GIFs found</p>`;
+        }
+      } catch (err) {
+        console.error("Giphy search error:", err);
+      }
+    };
+
+    async function sendGifMessage(gifUrl) {
+      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
+      const chatSnap = await getDoc(chatRef);
+      if (!chatSnap.exists()) return;
+
+      const chatData = chatSnap.data();
+      const messages = chatData.messages || [];
+
+      messages.push({
+        id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+        sender: currentUser.username,
+        text: '',
+        media: gifUrl,
+        mediaType: 'image',
+        timestamp: Date.now(),
+        reactions: {}
+      });
+
+      await updateDoc(chatRef, { messages: messages, lastUpdated: Date.now() });
+      document.getElementById('gif-picker-popover').classList.add('hidden');
+    }
+
+    // WEBRTC CALL SIMULATION HANDLERS
+    window.startAudioCall = async () => {
+      document.getElementById('call-title').textContent = "Audio Call in Progress";
+      document.getElementById('call-modal').classList.remove('hidden');
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
+        document.getElementById('local-video').srcObject = localStream;
+      } catch (err) {
+        console.error("Audio permission error:", err);
+        alert("Could not access microphone.");
+      }
+    };
+
+    window.startVideoCall = async () => {
+      document.getElementById('call-title').textContent = "Video Call in Progress";
+      document.getElementById('call-modal').classList.remove('hidden');
+      try {
+        localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+        document.getElementById('local-video').srcObject = localStream;
+      } catch (err) {
+        console.error("Video permission error:", err);
+        alert("Could not access camera or microphone.");
+      }
+    };
+
+    window.endCall = () => {
+      if (localStream) {
+        localStream.getTracks().forEach(track => track.stop());
+      }
+      document.getElementById('local-video').srcObject = null;
+      document.getElementById('remote-video').srcObject = null;
+      document.getElementById('call-modal').classList.add('hidden');
     };
 
     window.createConversation = async () => {
@@ -1351,6 +1485,7 @@
       document.documentElement.classList.remove('dark');
     }
 
+    window.openModal = (id) => document.getElementById(id).classList.add('hidden'); // wait fix below
     window.openModal = (id) => document.getElementById(id).classList.remove('hidden');
     window.closeModal = (id) => document.getElementById(id).classList.add('hidden');
     
@@ -1374,7 +1509,7 @@
     };
 
     function escapeHTML(str) {
-      return str.replace(/[&<>'"]/g, 
+      return (str || '').replace(/[&<>'"]/g, 
         tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag));
     }
 
