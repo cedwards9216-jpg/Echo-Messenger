@@ -437,6 +437,9 @@
               <button onclick="togglePinCurrentChat()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition" title="Pin/Unpin Conversation">
                 <i class="fa-solid fa-thumbtack text-amber-500"></i>
               </button>
+              <button onclick="hideCurrentChat()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-gray-400 hover:text-rose-500" title="Hide Conversation">
+                <i class="fa-solid fa-eye-slash"></i>
+              </button>
             </div>
           </div>
 
@@ -635,7 +638,7 @@
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
             <li>Added Audio & Video calling via WebRTC Signaling.</li>
             <li>Integrated personal Giphy GIF search picker.</li>
-            <li>Added message deletion and custom profile picture uploading.</li>
+            <li>Added message deletion, profile avatars next to incoming messages, and chat hiding.</li>
           </ul>
         </div>
       </div>
@@ -701,6 +704,7 @@
     let currentUser = null;
     let activeChatId = null;
     let chatsData = [];
+    let usersAvatarsMap = {}; // Maps username -> avatar URL
     let replyingToMsg = null;
     let selectedAttachmentBase64 = null;
     let localStream = null;
@@ -824,6 +828,7 @@
         privacyApproval: false,
         friends: [],
         pinnedChats: [],
+        hiddenChats: [],
         avatar: ''
       };
 
@@ -861,8 +866,20 @@
         if (docSnap.exists()) {
           currentUser = docSnap.data();
           renderFriendsList();
+          renderChatsList();
         }
       }, (err) => console.error("User sync error:", err));
+
+      onSnapshot(PUBLIC_USERS_COL, (snapshot) => {
+        usersAvatarsMap = {};
+        snapshot.forEach(d => {
+          const uData = d.data();
+          if (uData.username) {
+            usersAvatarsMap[uData.username] = uData.avatar || '';
+          }
+        });
+        if (activeChatId) renderActiveChatMessages();
+      });
 
       onSnapshot(PUBLIC_CHATS_COL, (snapshot) => {
         const rawChats = [];
@@ -917,9 +934,10 @@
       allContainer.innerHTML = '';
 
       const pinnedIds = currentUser.pinnedChats || [];
+      const hiddenIds = currentUser.hiddenChats || [];
       let pinnedCount = 0;
 
-      chatsData.sort((a,b) => (b.lastUpdated || 0) - (a.lastUpdated || 0)).forEach(chat => {
+      chatsData.filter(chat => !hiddenIds.includes(chat.id)).sort((a,b) => (b.lastUpdated || 0) - (a.lastUpdated || 0)).forEach(chat => {
         const isPinned = pinnedIds.includes(chat.id);
         const chatItem = createChatItemElement(chat);
 
@@ -972,12 +990,25 @@
       return div;
     }
 
+    window.hideCurrentChat = async () => {
+      if (!activeChatId) return;
+      if (!confirm("Are you sure you want to hide this conversation? (New incoming messages will unhide it)")) return;
+
+      const hiddenList = currentUser.hiddenChats || [];
+      if (!hiddenList.includes(activeChatId)) {
+        hiddenList.push(activeChatId);
+      }
+
+      const userRef = doc(PUBLIC_USERS_COL, currentUser.username);
+      await updateDoc(userRef, { hiddenChats: hiddenList });
+      backToChatsList();
+    };
+
     function selectChat(chatId) {
       activeChatId = chatId;
       document.getElementById('no-chat-selected').classList.add('hidden');
       document.getElementById('active-chat-wrapper').classList.remove('hidden');
       
-      // Responsive layout switching for mobile screens
       if (window.innerWidth < 768) {
         document.getElementById('sidebar-panel').classList.add('hidden');
         document.getElementById('chat-main-panel').classList.remove('hidden');
@@ -1062,26 +1093,40 @@
 
         let deleteBtnHTML = isMe ? `<button onclick="deleteMessage('${msg.id}')" class="p-1 hover:text-rose-500" title="Delete Message"><i class="fa-solid fa-trash"></i></button>` : '';
 
+        // Avatar handling for sender
+        let avatarHTML = '';
+        if (!isMe) {
+          const senderAvatarUrl = usersAvatarsMap[msg.sender];
+          if (senderAvatarUrl) {
+            avatarHTML = `<div class="w-7 h-7 rounded-full overflow-hidden shrink-0 shadow-xs"><img src="${senderAvatarUrl}" class="w-full h-full object-cover"></div>`;
+          } else {
+            avatarHTML = `<div class="w-7 h-7 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs">${msg.sender.charAt(0).toUpperCase()}</div>`;
+          }
+        }
+
         msgWrapper.innerHTML = `
           <div class="text-[10px] opacity-70 px-1">${isMe ? 'You' : '@' + msg.sender} • ${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
-          <div class="relative max-w-xs md:max-w-md">
-            <div class="p-3 rounded-2xl text-xs ${
-              isMe 
-                ? 'theme-bubble-me rounded-tr-none shadow-md' 
-                : 'theme-bubble-other rounded-tl-none shadow-sm'
-            }">
-              ${replyHTML}
-              ${mediaHTML}
-              <p class="whitespace-pre-wrap break-words">${escapeHTML(msg.text || '')}</p>
-              ${reactionsHTML}
-            </div>
+          <div class="flex items-end space-x-2 ${isMe ? 'flex-row-reverse space-x-reverse' : ''}">
+            ${avatarHTML}
+            <div class="relative max-w-xs md:max-w-md">
+              <div class="p-3 rounded-2xl text-xs ${
+                isMe 
+                  ? 'theme-bubble-me rounded-tr-none shadow-md' 
+                  : 'theme-bubble-other rounded-tl-none shadow-sm'
+              }">
+                ${replyHTML}
+                ${mediaHTML}
+                <p class="whitespace-pre-wrap break-words">${escapeHTML(msg.text || '')}</p>
+                ${reactionsHTML}
+              </div>
 
-            <div class="absolute top-0 ${isMe ? '-left-28' : '-right-28'} hidden group-hover:flex items-center space-x-1 theme-card border rounded-lg p-1 shadow-md z-10 text-[10px]">
-              <button onclick="setReply('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-blue-500" title="Reply"><i class="fa-solid fa-reply"></i></button>
-              <button onclick="toggleReaction('${msg.id}', '❤️')" class="p-1 hover:scale-125 transition">❤️</button>
-              <button onclick="toggleReaction('${msg.id}', '😂')" class="p-1 hover:scale-125 transition">😂</button>
-              <button onclick="pinChatMessage('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-amber-500" title="Pin"><i class="fa-solid fa-thumbtack"></i></button>
-              ${deleteBtnHTML}
+              <div class="absolute top-0 ${isMe ? '-left-28' : '-right-28'} hidden group-hover:flex items-center space-x-1 theme-card border rounded-lg p-1 shadow-md z-10 text-[10px]">
+                <button onclick="setReply('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-blue-500" title="Reply"><i class="fa-solid fa-reply"></i></button>
+                <button onclick="toggleReaction('${msg.id}', '❤️')" class="p-1 hover:scale-125 transition">❤️</button>
+                <button onclick="toggleReaction('${msg.id}', '😂')" class="p-1 hover:scale-125 transition">😂</button>
+                <button onclick="pinChatMessage('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-amber-500" title="Pin"><i class="fa-solid fa-thumbtack"></i></button>
+                ${deleteBtnHTML}
+              </div>
             </div>
           </div>
         `;
@@ -1121,6 +1166,24 @@
       }
 
       messages.push(newMsg);
+
+      // Automatically unhide chat for participants if hidden
+      for (const participant of (chatData.participants || [])) {
+        if (participant !== currentUser.username) {
+          try {
+            const pDocRef = doc(PUBLIC_USERS_COL, participant);
+            const pSnap = await getDoc(pDocRef);
+            if (pSnap.exists()) {
+              const pData = pSnap.data();
+              const pHidden = pData.hiddenChats || [];
+              if (pHidden.includes(activeChatId)) {
+                const updatedHidden = pHidden.filter(id => id !== activeChatId);
+                await updateDoc(pDocRef, { hiddenChats: updatedHidden });
+              }
+            }
+          } catch(err) {}
+        }
+      }
 
       await updateDoc(chatRef, {
         messages: messages,
@@ -1330,6 +1393,24 @@
         reactions: {}
       });
 
+      // Unhide for other participants
+      for (const participant of (chatData.participants || [])) {
+        if (participant !== currentUser.username) {
+          try {
+            const pDocRef = doc(PUBLIC_USERS_COL, participant);
+            const pSnap = await getDoc(pDocRef);
+            if (pSnap.exists()) {
+              const pData = pSnap.data();
+              const pHidden = pData.hiddenChats || [];
+              if (pHidden.includes(activeChatId)) {
+                const updatedHidden = pHidden.filter(id => id !== activeChatId);
+                await updateDoc(pDocRef, { hiddenChats: updatedHidden });
+              }
+            }
+          } catch(err) {}
+        }
+      }
+
       await updateDoc(chatRef, { messages: messages, lastUpdated: Date.now() });
       document.getElementById('gif-picker-popover').classList.add('hidden');
     }
@@ -1489,6 +1570,12 @@
       if (uniqueParticipants.length === 2 && !groupTitle) {
         const existing = chatsData.find(c => !c.isGroup && c.participants.length === 2 && uniqueParticipants.every(p => c.participants.includes(p)));
         if (existing) {
+          // Unhide if hidden
+          const hiddenList = currentUser.hiddenChats || [];
+          if (hiddenList.includes(existing.id)) {
+            const updatedHidden = hiddenList.filter(id => id !== existing.id);
+            await updateDoc(doc(PUBLIC_USERS_COL, currentUser.username), { hiddenChats: updatedHidden });
+          }
           closeModal('new-chat-modal');
           selectChat(existing.id);
           return;
