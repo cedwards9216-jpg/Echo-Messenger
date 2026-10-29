@@ -479,12 +479,12 @@
             </div>
 
             <!-- GIF Picker Popover -->
-            <div id="gif-picker-popover" class="absolute bottom-16 left-12 theme-card border rounded-2xl p-3 shadow-xl w-72 hidden z-20">
+            <div id="gif-picker-popover" class="absolute bottom-16 left-12 theme-card border rounded-2xl p-3 shadow-xl w-72 hidden z-25">
               <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-bold">Search GIPHY</span>
+                <span class="text-xs font-bold">Search GIFs</span>
                 <button onclick="toggleGifPicker()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
               </div>
-              <input type="text" id="gif-search-box" onkeyup="searchGifs(event)" placeholder="Search GIFs..." class="w-full px-2 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs mb-2 outline-none">
+              <input type="text" id="gif-search-box" onkeyup="searchGifs(event)" placeholder="Search GIFs (or press enter)..." class="w-full px-2 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs mb-2 outline-none">
               <div id="gif-results-container" class="grid grid-cols-2 gap-1.5 max-h-48 overflow-y-auto">
                 <p class="text-[11px] text-gray-400 col-span-2 text-center py-4">Type a query above</p>
               </div>
@@ -616,6 +616,26 @@
           <button onclick="setTheme('newyear')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-gradient-to-r from-amber-600 to-indigo-900 text-white">
             <span>✨ New Year's</span>
           </button>
+        </div>
+      </div>
+
+      <!-- Changelog Section Restored -->
+      <div>
+        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
+        <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
+          <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
+            <span class="font-bold text-blue-400">Echo Messenger v3.1.0</span>
+            <span class="text-[10px] opacity-60">Latest Release</span>
+          </div>
+          <p class="font-semibold text-amber-500 flex items-center space-x-1">
+            <i class="fa-solid fa-code"></i>
+            <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
+          </p>
+          <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
+            <li>Added Audio & Video calling via WebRTC.</li>
+            <li>Integrated Giphy GIF picker search with fallback support.</li>
+            <li>Added message deletion and custom profile picture uploading.</li>
+          </ul>
         </div>
       </div>
 
@@ -1209,41 +1229,79 @@
       reader.readAsDataURL(file);
     };
 
-    // GIPHY API SEARCH & SEND
+    // ROBUST GIPHY API SEARCH & FALLBACK HANDLER
     window.toggleGifPicker = () => {
-      document.getElementById('gif-picker-popover').classList.toggle('hidden');
+      const picker = document.getElementById('gif-picker-popover');
+      picker.classList.toggle('hidden');
+      if (!picker.classList.contains('hidden')) {
+        loadTrendingGifs();
+      }
     };
+
+    async function loadTrendingGifs() {
+      const container = document.getElementById('gif-results-container');
+      container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-2">Loading GIFs...</p>`;
+      try {
+        const res = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=dc6zaTOxFJmzC&limit=6`);
+        const data = await res.json();
+        renderGifResults(data.data);
+      } catch (err) {
+        // Fallback working GIFs if public API rate limits or errors out
+        renderFallbackGifs();
+      }
+    }
 
     window.searchGifs = async (e) => {
       const query = e.target.value.trim();
       const container = document.getElementById('gif-results-container');
       if (!query) {
-        container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-4">Type a query above</p>`;
+        loadTrendingGifs();
         return;
       }
 
       try {
-        // Using public Giphy beta key for demonstration/testing
         const res = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=dc6zaTOxFJmzC&q=${encodeURIComponent(query)}&limit=6`);
         const data = await res.json();
-        
-        container.innerHTML = '';
         if (data.data && data.data.length > 0) {
-          data.data.forEach(gif => {
-            const imgUrl = gif.images.fixed_height_small.url;
-            const img = document.createElement('img');
-            img.src = imgUrl;
-            img.className = "w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition";
-            img.onclick = () => sendGifMessage(imgUrl);
-            container.appendChild(img);
-          });
+          renderGifResults(data.data);
         } else {
           container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-4">No GIFs found</p>`;
         }
       } catch (err) {
-        console.error("Giphy search error:", err);
+        renderFallbackGifs();
       }
     };
+
+    function renderGifResults(gifs) {
+      const container = document.getElementById('gif-results-container');
+      container.innerHTML = '';
+      gifs.forEach(gif => {
+        const imgUrl = gif.images.fixed_height_small.url;
+        const img = document.createElement('img');
+        img.src = imgUrl;
+        img.className = "w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition";
+        img.onclick = () => sendGifMessage(imgUrl);
+        container.appendChild(img);
+      });
+    }
+
+    function renderFallbackGifs() {
+      const container = document.getElementById('gif-results-container');
+      container.innerHTML = '';
+      const fallbacks = [
+        "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3BuN2FwcnltcnRrdTNmdTVreWhwcXo2aHRrcmxpdWJmdTNtNWR3ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oKIPnAiaMCws8nOsE/giphy.gif",
+        "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNndxYnR3Y28xYXRndThndzN3cDF6dTF1M2t6dDl3eWVmN3Fwd3B6ciZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LnjD7SI2PhyAA/giphy.gif",
+        "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbm12aWp3aG96cGJyZTZoNWt5ZzE3cjJ2MW14dzdyMmVndmVvOGlqbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/artj92V8o75VPL7AeQ/giphy.gif",
+        "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMGx0cG83NDFqN3psNWszYnI1bWhqNWt2MGd2MXRybW5qMXV5M2J1byZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/26u4lOMA8JKSnL9Uk/giphy.gif"
+      ];
+      fallbacks.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.className = "w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition";
+        img.onclick = () => sendGifMessage(url);
+        container.appendChild(img);
+      });
+    }
 
     async function sendGifMessage(gifUrl) {
       const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
@@ -1485,7 +1543,6 @@
       document.documentElement.classList.remove('dark');
     }
 
-    window.openModal = (id) => document.getElementById(id).classList.add('hidden'); // wait fix below
     window.openModal = (id) => document.getElementById(id).classList.remove('hidden');
     window.closeModal = (id) => document.getElementById(id).classList.add('hidden');
     
