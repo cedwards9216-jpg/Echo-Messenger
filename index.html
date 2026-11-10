@@ -863,7 +863,8 @@
             <button onclick="unpinChatMessage()" class="text-xs opacity-60 hover:opacity-100 shrink-0 ml-2"><i class="fa-solid fa-xmark"></i></button>
           </div>
 
-          <div id="messages-container" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3"></div>
+          <!-- Message Container with min-h-0 fix applied -->
+          <div id="messages-container" class="flex-1 min-h-0 overflow-y-auto p-3 sm:p-4 space-y-3"></div>
 
           <div id="attachment-preview-bar" class="px-4 py-2 bg-black/10 dark:bg-white/10 flex items-center justify-between text-xs hidden">
             <div class="flex items-center space-x-3 truncate">
@@ -1121,7 +1122,7 @@
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
         <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
           <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
-            <span class="font-bold text-blue-400">Echo Messenger v3.6.0</span>
+            <span class="font-bold text-blue-400">Echo Messenger v3.6.1</span>
             <span class="text-[10px] opacity-60">Latest Release</span>
           </div>
           <p class="font-semibold text-amber-500 flex items-center space-x-1">
@@ -1129,9 +1130,9 @@
             <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
           </p>
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
+            <li>Fixed messages container flexbox height clipping bug.</li>
             <li>Added Group Admin Kick feature for group creators.</li>
-            <li>Added solid color themes (Solid Dark, Solid Black, Solid Red, etc.).</li>
-            <li>Upgraded notifications for background tabs and minimized windows.</li>
+            <li>Added solid color themes & background tab notifications.</li>
           </ul>
         </div>
       </div>
@@ -1358,7 +1359,6 @@
         const notifTitle = isMentioned ? `🚨 Mentioned by @${sender}` : `New message from @${sender}`;
         
         if (document.visibilityState === 'hidden') {
-          // Trigger persistent background notification if supported
           try {
             navigator.serviceWorker?.ready.then(reg => {
               reg.showNotification(notifTitle, {
@@ -1431,7 +1431,6 @@
             lastKnownMessageCounts[chatId] = messages.length;
             rawChats.push({ id: chatId, ...data });
           } else if (chatId === activeChatId) {
-            // User was kicked from active chat
             backToChatsList();
           }
         });
@@ -1602,7 +1601,6 @@
         activeAvatarEl.textContent = displayTitle.charAt(0).toUpperCase();
       }
 
-      // Show group management buttons only for group chats
       const groupAddBtn = document.getElementById('group-add-member-btn');
       const groupSettingsBtn = document.getElementById('group-settings-btn');
       if (chat.isGroup) {
@@ -1906,7 +1904,6 @@
       reader.readAsDataURL(file);
     };
 
-    // GROUP SETTINGS, AVATAR & ADMIN KICK ENGINE
     window.openGroupSettingsModal = () => {
       const chat = chatsData.find(c => c.id === activeChatId);
       if (!chat || !chat.isGroup) return;
@@ -2024,10 +2021,9 @@
         lastUpdated: Date.now()
       });
 
-      openGroupSettingsModal(); // Refresh modal list
+      openGroupSettingsModal();
     };
 
-    // GIPHY API INTEGRATION
     window.toggleGifPicker = () => {
       const picker = document.getElementById('gif-picker-popover');
       picker.classList.toggle('hidden');
@@ -2121,7 +2117,6 @@
       document.getElementById('gif-picker-popover').classList.add('hidden');
     }
 
-    // ROBUST WEBRTC CALLING (TURN / STUN WITH SCHOOL FIREWALL BYPASS)
     const rtcConfig = {
       iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
