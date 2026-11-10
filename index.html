@@ -41,7 +41,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Dynamic Theme System Engine with Gradients, Holiday Emojis & Solid Colors */
+    /* Dynamic Theme System Engine with High-Energy Gradients & Holiday Emojis */
     :root[data-theme="default"] {
       --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       --sidebar-bg: rgba(255, 255, 255, 0.95);
@@ -76,68 +76,34 @@
       --pattern-overlay: none;
     }
 
-    /* Solid Color Themes */
-    :root[data-theme="solid-dark"] {
-      --bg-gradient: #1e293b;
-      --sidebar-bg: #0f172a;
-      --chat-bg: #111827;
-      --card-bg: #1e293b;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --brand-primary: #4f46e5;
-      --brand-hover: #4338ca;
-      --bubble-me: #4f46e5;
-      --bubble-me-text: #ffffff;
-      --bubble-other: #1f2937;
-      --bubble-other-text: #f8fafc;
-      --border-color: #374151;
-      --pattern-overlay: none;
-    }
-
-    :root[data-theme="solid-light"] {
-      --bg-gradient: #ffffff;
-      --sidebar-bg: #f8fafc;
-      --chat-bg: #f1f5f9;
-      --card-bg: #ffffff;
-      --text-main: #000000;
-      --text-muted: #475569;
-      --brand-primary: #2563eb;
-      --brand-hover: #1d4ed8;
-      --bubble-me: #2563eb;
-      --bubble-me-text: #ffffff;
-      --bubble-other: #ffffff;
-      --bubble-other-text: #000000;
-      --border-color: #e2e8f0;
-      --pattern-overlay: none;
-    }
-
+    /* Solid Color Themes Added */
     :root[data-theme="solid-black"] {
       --bg-gradient: #000000;
-      --sidebar-bg: #0a0a0a;
+      --sidebar-bg: #000000;
       --chat-bg: #000000;
       --card-bg: #121212;
       --text-main: #ffffff;
-      --text-muted: #a3a3a3;
-      --brand-primary: #262626;
-      --brand-hover: #404040;
-      --bubble-me: #262626;
+      --text-muted: #a1a1aa;
+      --brand-primary: #3b82f6;
+      --brand-hover: #2563eb;
+      --bubble-me: #27272a;
       --bubble-me-text: #ffffff;
-      --bubble-other: #1a1a1a;
+      --bubble-other: #121212;
       --bubble-other-text: #ffffff;
-      --border-color: #262626;
+      --border-color: #27272a;
       --pattern-overlay: none;
     }
 
     :root[data-theme="solid-red"] {
       --bg-gradient: #7f1d1d;
-      --sidebar-bg: #450a0a;
+      --sidebar-bg: #7f1d1d;
       --chat-bg: #450a0a;
-      --card-bg: #7f1d1d;
+      --card-bg: #991b1b;
       --text-main: #fef2f2;
       --text-muted: #fca5a5;
-      --brand-primary: #dc2626;
-      --brand-hover: #b91c1c;
-      --bubble-me: #dc2626;
+      --brand-primary: #ef4444;
+      --brand-hover: #dc2626;
+      --bubble-me: #ef4444;
       --bubble-me-text: #ffffff;
       --bubble-other: #991b1b;
       --bubble-other-text: #fef2f2;
@@ -146,40 +112,57 @@
     }
 
     :root[data-theme="solid-green"] {
-      --bg-gradient: #064e3b;
-      --sidebar-bg: #022c22;
-      --chat-bg: #022c22;
-      --card-bg: #064e3b;
-      --text-main: #ecfdf5;
-      --text-muted: #6ee7b7;
-      --brand-primary: #059669;
-      --brand-hover: #047857;
-      --bubble-me: #059669;
+      --bg-gradient: #14532d;
+      --sidebar-bg: #14532d;
+      --chat-bg: #052e16;
+      --card-bg: #166534;
+      --text-main: #f0fdf4;
+      --text-muted: #86efac;
+      --brand-primary: #22c55e;
+      --brand-hover: #16a34a;
+      --bubble-me: #22c55e;
       --bubble-me-text: #ffffff;
-      --bubble-other: #065f46;
-      --bubble-other-text: #ecfdf5;
-      --border-color: #047857;
+      --bubble-other: #166534;
+      --bubble-other-text: #f0fdf4;
+      --border-color: #15803d;
       --pattern-overlay: none;
     }
 
     :root[data-theme="solid-blue"] {
       --bg-gradient: #1e3a8a;
-      --sidebar-bg: #172554;
+      --sidebar-bg: #1e3a8a;
       --chat-bg: #172554;
-      --card-bg: #1e3a8a;
+      --card-bg: #1d4ed8;
       --text-main: #eff6ff;
       --text-muted: #93c5fd;
-      --brand-primary: #2563eb;
-      --brand-hover: #1d4ed8;
-      --bubble-me: #2563eb;
+      --brand-primary: #3b82f6;
+      --brand-hover: #2563eb;
+      --bubble-me: #3b82f6;
       --bubble-me-text: #ffffff;
       --bubble-other: #1d4ed8;
       --bubble-other-text: #eff6ff;
-      --border-color: #1d4ed8;
+      --border-color: #2563eb;
       --pattern-overlay: none;
     }
 
-    /* Holiday & Event Themes */
+    :root[data-theme="solid-purple"] {
+      --bg-gradient: #581c87;
+      --sidebar-bg: #581c87;
+      --chat-bg: #3b0764;
+      --card-bg: #6b21a8;
+      --text-main: #faf5ff;
+      --text-muted: #d8b4fe;
+      --brand-primary: #a855f7;
+      --brand-hover: #9333ea;
+      --bubble-me: #a855f7;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #6b21a8;
+      --bubble-other-text: #faf5ff;
+      --border-color: #7e22ce;
+      --pattern-overlay: none;
+    }
+
+    /* Holiday & Event Themes with Restored Emojis */
     :root[data-theme="halloween"] {
       --bg-gradient: linear-gradient(135deg, #2e0854 0%, #581c87 40%, #c2410c 100%);
       --sidebar-bg: rgba(46, 8, 84, 0.95);
@@ -248,7 +231,7 @@
       --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.15" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">✨</text><text x="70" y="35" font-size="20">🎆</text><text x="25" y="80" font-size="22">🥂</text><text x="75" y="85" font-size="20">🎉</text></svg>');
     }
 
-    /* Vibrant Themes */
+    /* High-Energy Vibrant Themes */
     :root[data-theme="sunset"] {
       --bg-gradient: linear-gradient(135deg, #7c2d12 0%, #ea580c 50%, #db2777 100%);
       --sidebar-bg: rgba(124, 45, 18, 0.95);
@@ -863,8 +846,7 @@
             <button onclick="unpinChatMessage()" class="text-xs opacity-60 hover:opacity-100 shrink-0 ml-2"><i class="fa-solid fa-xmark"></i></button>
           </div>
 
-          <!-- Message Container with min-h-0 fix applied -->
-          <div id="messages-container" class="flex-1 min-h-0 overflow-y-auto p-3 sm:p-4 space-y-3"></div>
+          <div id="messages-container" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3"></div>
 
           <div id="attachment-preview-bar" class="px-4 py-2 bg-black/10 dark:bg-white/10 flex items-center justify-between text-xs hidden">
             <div class="flex items-center space-x-3 truncate">
@@ -983,17 +965,17 @@
     </div>
   </div>
 
-  <!-- EDIT GROUP SETTINGS & ADMIN KICK MODAL -->
+  <!-- EDIT GROUP SETTINGS & ADMIN MEMBER KICK MODAL -->
   <div id="edit-group-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
-    <div class="theme-card rounded-2xl max-w-md w-full p-6 border shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-4">
-      <div class="flex items-center justify-between mb-2">
+    <div class="theme-card rounded-2xl max-w-md w-full p-6 border shadow-2xl relative">
+      <div class="flex items-center justify-between mb-4">
         <h3 class="text-base font-bold">Group Settings & Members</h3>
         <button onclick="closeModal('edit-group-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
-      <div id="modal-edit-group-alert" class="hidden mb-2 p-3 rounded-lg text-xs bg-red-500/10 border border-red-500/30 text-red-500"></div>
+      <div id="modal-edit-group-alert" class="hidden mb-4 p-3 rounded-lg text-xs bg-red-500/10 border border-red-500/30 text-red-500"></div>
 
-      <div class="space-y-3">
+      <div class="space-y-4">
         <div>
           <label class="block text-xs font-semibold opacity-70 mb-1">Group Title</label>
           <input type="text" id="edit-group-title-input" placeholder="Group name..." class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
@@ -1009,10 +991,8 @@
         </div>
 
         <div>
-          <label class="block text-xs font-semibold opacity-70 mb-1">Participants & Admin Controls</label>
-          <div id="group-participants-management-list" class="space-y-2 max-h-40 overflow-y-auto bg-black/5 dark:bg-white/5 p-2 rounded-xl">
-            <!-- Rendered dynamically -->
-          </div>
+          <label class="block text-xs font-semibold opacity-70 mb-1">Manage Members (Admin Kick)</label>
+          <div id="group-members-list" class="space-y-1.5 max-h-36 overflow-y-auto p-2 bg-black/5 dark:bg-white/5 rounded-xl border border-black/10 dark:border-white/10"></div>
         </div>
 
         <button onclick="submitEditGroup()" class="w-full py-2.5 theme-brand-bg text-white text-xs font-semibold rounded-xl shadow-md hover:opacity-90 transition">
@@ -1051,8 +1031,8 @@
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Notifications</h4>
         <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl">
           <div class="pr-3">
-            <p class="text-xs font-semibold">Enable Push Notifications (Background & Tab Alerts)</p>
-            <p class="text-[11px] opacity-60">Receive desktop/mobile push alerts when new messages arrive.</p>
+            <p class="text-xs font-semibold">Enable Push Notifications</p>
+            <p class="text-[11px] opacity-60">Receive desktop/mobile alerts when new messages arrive.</p>
           </div>
           <button onclick="requestNotificationPermission()" class="px-3 py-1.5 theme-brand-bg text-white rounded-lg text-xs font-semibold hover:opacity-90 transition shrink-0">Enable Alerts</button>
         </div>
@@ -1072,7 +1052,7 @@
 
       <!-- Appearance Section -->
       <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">Appearance & Solid/Gradient Themes</h4>
+        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">Appearance & Themes (Solid Colors + 25+ Gradients)</h4>
         <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl mb-4">
           <span class="text-sm font-semibold">Dark Mode</span>
           <button onclick="toggleDarkMode()" class="px-4 py-2 rounded-xl bg-black/10 dark:bg-white/10 text-xs font-semibold flex items-center space-x-2 shrink-0">
@@ -1081,15 +1061,17 @@
           </button>
         </div>
 
-        <p class="text-xs font-semibold mb-2">Select Theme & Color Palette</p>
+        <p class="text-xs font-semibold mb-2">Select Theme & Solid Colors</p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <!-- Solid Colors Added -->
+          <button onclick="setTheme('solid-black')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-black text-white border-zinc-700"><span>⬛ Solid Black</span></button>
+          <button onclick="setTheme('solid-red')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-red-800 text-white border-red-600"><span>🔴 Solid Red</span></button>
+          <button onclick="setTheme('solid-green')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-green-800 text-white border-green-600"><span>🟢 Solid Green</span></button>
+          <button onclick="setTheme('solid-blue')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-blue-800 text-white border-blue-600"><span>🔵 Solid Blue</span></button>
+          <button onclick="setTheme('solid-purple')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-purple-800 text-white border-purple-600"><span>🟣 Solid Purple</span></button>
+          
+          <!-- Existing Gradients & Holidays -->
           <button onclick="setTheme('default')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>Default</span></button>
-          <button onclick="setTheme('solid-dark')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⬛ Solid Dark</span></button>
-          <button onclick="setTheme('solid-light')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⬜ Solid Light</span></button>
-          <button onclick="setTheme('solid-black')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🖤 OLED Black</span></button>
-          <button onclick="setTheme('solid-red')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🔴 Solid Red</span></button>
-          <button onclick="setTheme('solid-green')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🟢 Solid Green</span></button>
-          <button onclick="setTheme('solid-blue')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🔵 Solid Blue</span></button>
           <button onclick="setTheme('emerald')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>Emerald</span></button>
           <button onclick="setTheme('cyberpunk')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⚡ Cyberpunk</span></button>
           <button onclick="setTheme('halloween')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🎃 Halloween</span></button>
@@ -1122,7 +1104,7 @@
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
         <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
           <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
-            <span class="font-bold text-blue-400">Echo Messenger v3.6.2</span>
+            <span class="font-bold text-blue-400">Echo Messenger v3.6.0</span>
             <span class="text-[10px] opacity-60">Latest Release</span>
           </div>
           <p class="font-semibold text-amber-500 flex items-center space-x-1">
@@ -1130,9 +1112,9 @@
             <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
           </p>
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
-            <li>Fixed message text visibility across light and dark themes.</li>
             <li>Added Group Admin Kick feature for group creators.</li>
-            <li>Added solid color themes & background tab notifications.</li>
+            <li>Added solid color themes (Solid Black, Red, Green, Blue, Purple).</li>
+            <li>Upgraded group title/avatar management and push notifications.</li>
           </ul>
         </div>
       </div>
@@ -1356,22 +1338,10 @@
     function triggerPushNotification(sender, text) {
       if (Notification.permission === "granted" && sender !== currentUser.username) {
         const isMentioned = text.includes(`@${currentUser.username}`) || text.includes('@everyone');
-        const notifTitle = isMentioned ? `🚨 Mentioned by @${sender}` : `New message from @${sender}`;
-        
-        if (document.visibilityState === 'hidden') {
-          try {
-            navigator.serviceWorker?.ready.then(reg => {
-              reg.showNotification(notifTitle, {
-                body: text || '[Media Attachment]',
-                icon: 'https://cdn-icons-png.flaticon.com/512/1341/1341593.png'
-              });
-            });
-          } catch(e) {
-            new Notification(notifTitle, { body: text || '[Media Attachment]' });
-          }
-        } else {
-          new Notification(notifTitle, { body: text || '[Media Attachment]' });
-        }
+        new Notification(isMentioned ? `🚨 Mentioned by @${sender}` : `New message from @${sender}`, {
+          body: text || '[Media Attachment]',
+          icon: 'https://cdn-icons-png.flaticon.com/512/1341/1341593.png'
+        });
       }
     }
 
@@ -1430,13 +1400,19 @@
             }
             lastKnownMessageCounts[chatId] = messages.length;
             rawChats.push({ id: chatId, ...data });
-          } else if (chatId === activeChatId) {
-            backToChatsList();
           }
         });
         chatsData = rawChats;
         renderChatsList();
-        if (activeChatId) renderActiveChatMessages();
+        if (activeChatId) {
+          const activeChat = chatsData.find(c => c.id === activeChatId);
+          if (!activeChat || !activeChat.participants.includes(currentUser.username)) {
+            alert("You have been removed from this group chat by the admin.");
+            backToChatsList();
+          } else {
+            renderActiveChatMessages();
+          }
+        }
       }, (err) => console.error("Chats sync error:", err));
 
       onSnapshot(PUBLIC_FRIENDS_COL, (snapshot) => {
@@ -1601,6 +1577,7 @@
         activeAvatarEl.textContent = displayTitle.charAt(0).toUpperCase();
       }
 
+      // Show group management buttons only for group chats
       const groupAddBtn = document.getElementById('group-add-member-btn');
       const groupSettingsBtn = document.getElementById('group-settings-btn');
       if (chat.isGroup) {
@@ -1714,10 +1691,10 @@
     function formatMessageText(text) {
       if (!text) return '';
       const safeText = escapeHTML(text);
-      let formatted = safeText.replace(/@everyone/g, '<span class="bg-amber-500/20 text-amber-600 dark:text-amber-300 font-bold px-1.5 py-0.5 rounded">@everyone</span>');
+      let formatted = safeText.replace(/@everyone/g, '<span class="bg-amber-500/20 text-amber-300 font-bold px-1.5 py-0.5 rounded">@everyone</span>');
       formatted = formatted.replace(/@([a-zA-Z0-9_]+)/g, (match, username) => {
         if (username === 'everyone') return match;
-        return `<span class="bg-blue-500/20 text-blue-600 dark:text-blue-300 font-bold px-1.5 py-0.5 rounded">@${username}</span>`;
+        return `<span class="bg-blue-500/20 text-blue-300 font-bold px-1.5 py-0.5 rounded">@${username}</span>`;
       });
       return formatted;
     }
@@ -1904,6 +1881,7 @@
       reader.readAsDataURL(file);
     };
 
+    // GROUP SETTINGS & ADMIN KICK FUNCTIONALITY
     window.openGroupSettingsModal = () => {
       const chat = chatsData.find(c => c.id === activeChatId);
       if (!chat || !chat.isGroup) return;
@@ -1918,29 +1896,32 @@
         previewEl.textContent = (chat.title || 'G').charAt(0).toUpperCase();
       }
 
+      // Render members list with admin kick options
+      const membersContainer = document.getElementById('group-members-list');
+      membersContainer.innerHTML = '';
+
       const isAdmin = chat.createdBy === currentUser.username;
-      const participantsListEl = document.getElementById('group-participants-management-list');
-      participantsListEl.innerHTML = '';
-
       chat.participants.forEach(participant => {
-        const row = document.createElement('div');
-        row.className = "flex items-center justify-between p-2 rounded-lg bg-white dark:bg-gray-800 text-xs";
+        const memberRow = document.createElement('div');
+        memberRow.className = "flex items-center justify-between p-1.5 rounded-lg bg-white dark:bg-gray-800 text-xs mb-1";
         
-        let adminBadge = participant === chat.createdBy ? `<span class="text-[10px] bg-amber-500/20 text-amber-500 px-1.5 py-0.5 rounded font-bold ml-1">Admin</span>` : '';
-        let kickBtn = '';
+        let badges = '';
+        if (participant === chat.createdBy) badges += `<span class="bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded text-[9px] font-bold ml-1">Admin</span>`;
+        if (participant === currentUser.username) badges += `<span class="bg-blue-500/20 text-blue-400 px-1.5 py-0.5 rounded text-[9px] font-bold ml-1">You</span>`;
 
+        let kickBtnHTML = '';
         if (isAdmin && participant !== currentUser.username) {
-          kickBtn = `<button type="button" onclick="kickGroupParticipant('${participant}')" class="px-2 py-1 bg-rose-500 hover:bg-rose-600 text-white rounded text-[10px]">Kick</button>`;
+          kickBtnHTML = `<button onclick="kickParticipant('${participant}')" class="px-2 py-0.5 bg-rose-500 text-white rounded text-[10px] font-semibold hover:bg-rose-600 transition">Kick</button>`;
         }
 
-        row.innerHTML = `
+        memberRow.innerHTML = `
           <div class="flex items-center space-x-1 truncate">
-            <span class="font-semibold">@${participant}</span>
-            ${adminBadge}
+            <span class="font-medium truncate">@${participant}</span>
+            ${badges}
           </div>
-          ${kickBtn}
+          ${kickBtnHTML}
         `;
-        participantsListEl.appendChild(row);
+        membersContainer.appendChild(memberRow);
       });
 
       openModal('edit-group-modal');
@@ -1957,6 +1938,39 @@
         previewEl.innerHTML = `<img src="${selectedGroupAvatarBase64}" class="w-full h-full object-cover">`;
       };
       reader.readAsDataURL(file);
+    };
+
+    window.kickParticipant = async (usernameToKick) => {
+      if (!confirm(`Are you sure you want to kick @${usernameToKick} from this group?`)) return;
+
+      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
+      const chatSnap = await getDoc(chatRef);
+      if (!chatSnap.exists()) return;
+
+      const chatData = chatSnap.data();
+      if (chatData.createdBy !== currentUser.username) {
+        alert("Only the group admin can kick participants.");
+        return;
+      }
+
+      const updatedParticipants = chatData.participants.filter(p => p !== usernameToKick);
+      const messages = chatData.messages || [];
+
+      messages.push({
+        id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
+        sender: 'system',
+        text: `@${currentUser.username} removed @${usernameToKick} from the group.`,
+        timestamp: Date.now(),
+        reactions: {}
+      });
+
+      await updateDoc(chatRef, {
+        participants: updatedParticipants,
+        messages: messages,
+        lastUpdated: Date.now()
+      });
+
+      openGroupSettingsModal();
     };
 
     window.submitEditGroup = async () => {
@@ -1991,39 +2005,7 @@
       closeModal('edit-group-modal');
     };
 
-    window.kickGroupParticipant = async (usernameToKick) => {
-      if (!confirm(`Are you sure you want to kick @${usernameToKick} from this group?`)) return;
-
-      const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
-      const chatSnap = await getDoc(chatRef);
-      if (!chatSnap.exists()) return;
-
-      const chatData = chatSnap.data();
-      if (chatData.createdBy !== currentUser.username) {
-        alert("Only the group creator can kick participants.");
-        return;
-      }
-
-      const updatedParticipants = chatData.participants.filter(p => p !== usernameToKick);
-      const messages = chatData.messages || [];
-
-      messages.push({
-        id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
-        sender: 'system',
-        text: `@${currentUser.username} kicked @${usernameToKick} from the group.`,
-        timestamp: Date.now(),
-        reactions: {}
-      });
-
-      await updateDoc(chatRef, {
-        participants: updatedParticipants,
-        messages: messages,
-        lastUpdated: Date.now()
-      });
-
-      openGroupSettingsModal();
-    };
-
+    // GIPHY API INTEGRATION
     window.toggleGifPicker = () => {
       const picker = document.getElementById('gif-picker-popover');
       picker.classList.toggle('hidden');
@@ -2117,6 +2099,7 @@
       document.getElementById('gif-picker-popover').classList.add('hidden');
     }
 
+    // ROBUST WEBRTC CALLING (TURN / STUN WITH SCHOOL FIREWALL BYPASS)
     const rtcConfig = {
       iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
