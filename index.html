@@ -179,7 +179,7 @@
       --pattern-overlay: none;
     }
 
-    /* Holiday & Event Themes with Restored Emojis */
+    /* Holiday & Event Themes */
     :root[data-theme="halloween"] {
       --bg-gradient: linear-gradient(135deg, #2e0854 0%, #581c87 40%, #c2410c 100%);
       --sidebar-bg: rgba(46, 8, 84, 0.95);
@@ -248,7 +248,7 @@
       --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.15" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">✨</text><text x="70" y="35" font-size="20">🎆</text><text x="25" y="80" font-size="22">🥂</text><text x="75" y="85" font-size="20">🎉</text></svg>');
     }
 
-    /* High-Energy Vibrant Themes */
+    /* Vibrant Themes */
     :root[data-theme="sunset"] {
       --bg-gradient: linear-gradient(135deg, #7c2d12 0%, #ea580c 50%, #db2777 100%);
       --sidebar-bg: rgba(124, 45, 18, 0.95);
@@ -1122,7 +1122,7 @@
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
         <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
           <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
-            <span class="font-bold text-blue-400">Echo Messenger v3.6.1</span>
+            <span class="font-bold text-blue-400">Echo Messenger v3.6.2</span>
             <span class="text-[10px] opacity-60">Latest Release</span>
           </div>
           <p class="font-semibold text-amber-500 flex items-center space-x-1">
@@ -1130,7 +1130,7 @@
             <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
           </p>
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
-            <li>Fixed messages container flexbox height clipping bug.</li>
+            <li>Fixed message text visibility across light and dark themes.</li>
             <li>Added Group Admin Kick feature for group creators.</li>
             <li>Added solid color themes & background tab notifications.</li>
           </ul>
@@ -1714,10 +1714,10 @@
     function formatMessageText(text) {
       if (!text) return '';
       const safeText = escapeHTML(text);
-      let formatted = safeText.replace(/@everyone/g, '<span class="bg-amber-500/20 text-amber-300 font-bold px-1.5 py-0.5 rounded">@everyone</span>');
+      let formatted = safeText.replace(/@everyone/g, '<span class="bg-amber-500/20 text-amber-600 dark:text-amber-300 font-bold px-1.5 py-0.5 rounded">@everyone</span>');
       formatted = formatted.replace(/@([a-zA-Z0-9_]+)/g, (match, username) => {
         if (username === 'everyone') return match;
-        return `<span class="bg-blue-500/20 text-blue-300 font-bold px-1.5 py-0.5 rounded">@${username}</span>`;
+        return `<span class="bg-blue-500/20 text-blue-600 dark:text-blue-300 font-bold px-1.5 py-0.5 rounded">@${username}</span>`;
       });
       return formatted;
     }
