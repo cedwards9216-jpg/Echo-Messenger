@@ -41,263 +41,552 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    button:active {
-      transform: scale(0.95);
-      transition: transform 0.1s ease;
+    /* Dynamic Theme System Engine with Gradients, Holiday Emojis & Solid Colors */
+    :root[data-theme="default"] {
+      --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      --sidebar-bg: rgba(255, 255, 255, 0.95);
+      --chat-bg: #f1f5f9;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --brand-primary: #3b82f6;
+      --brand-hover: #2563eb;
+      --bubble-me: #3b82f6;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #ffffff;
+      --bubble-other-text: #0f172a;
+      --border-color: #cbd5e1;
+      --pattern-overlay: none;
     }
 
-    /* ==================== THEME SYSTEM ==================== */
-    
-    /* 1. SOLID COLORS */
-    :root[data-theme="solid-black"] {
-      --bg-gradient: #000000;
-      --sidebar-bg: #09090b;
-      --chat-bg: #000000;
-      --card-bg: #18181b;
-      --text-main: #ffffff;
-      --text-muted: #a1a1aa;
+    :root[data-theme="default"].dark {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #020617 100%);
+      --sidebar-bg: rgba(15, 23, 42, 0.95);
+      --chat-bg: #0b0f19;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
       --brand-primary: #3b82f6;
       --brand-hover: #2563eb;
       --bubble-me: #2563eb;
       --bubble-me-text: #ffffff;
-      --bubble-other: #27272a;
-      --bubble-other-text: #ffffff;
-      --border-color: rgba(255, 255, 255, 0.15);
-      --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.3);
+      --bubble-other: #1e293b;
+      --bubble-other-text: #f8fafc;
+      --border-color: #334155;
+      --pattern-overlay: none;
     }
 
-    :root[data-theme="solid-navy"] {
-      --bg-gradient: #0f172a;
-      --sidebar-bg: #1e293b;
-      --chat-bg: #0f172a;
-      --card-bg: #334155;
+    /* Solid Color Themes */
+    :root[data-theme="solid-dark"] {
+      --bg-gradient: #1e293b;
+      --sidebar-bg: #0f172a;
+      --chat-bg: #111827;
+      --card-bg: #1e293b;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
-      --brand-primary: #38bdf8;
-      --brand-hover: #0ea5e9;
-      --bubble-me: #0284c7;
+      --brand-primary: #4f46e5;
+      --brand-hover: #4338ca;
+      --bubble-me: #4f46e5;
       --bubble-me-text: #ffffff;
-      --bubble-other: #334155;
+      --bubble-other: #1f2937;
       --bubble-other-text: #f8fafc;
-      --border-color: rgba(56, 189, 248, 0.25);
-      --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.3);
+      --border-color: #374151;
+      --pattern-overlay: none;
     }
 
-    :root[data-theme="solid-charcoal"] {
-      --bg-gradient: #121212;
-      --sidebar-bg: #1e1e1e;
-      --chat-bg: #121212;
-      --card-bg: #2d2d2d;
-      --text-main: #e5e5e5;
-      --text-muted: #a3a3a3;
-      --brand-primary: #a855f7;
-      --brand-hover: #9333ea;
-      --bubble-me: #7e22ce;
+    :root[data-theme="solid-light"] {
+      --bg-gradient: #ffffff;
+      --sidebar-bg: #f8fafc;
+      --chat-bg: #f1f5f9;
+      --card-bg: #ffffff;
+      --text-main: #000000;
+      --text-muted: #475569;
+      --brand-primary: #2563eb;
+      --brand-hover: #1d4ed8;
+      --bubble-me: #2563eb;
       --bubble-me-text: #ffffff;
-      --bubble-other: #262626;
-      --bubble-other-text: #e5e5e5;
-      --border-color: rgba(168, 85, 247, 0.25);
-      --shadow-glow: 0 0 20px rgba(168, 85, 247, 0.3);
+      --bubble-other: #ffffff;
+      --bubble-other-text: #000000;
+      --border-color: #e2e8f0;
+      --pattern-overlay: none;
     }
 
-    :root[data-theme="solid-emerald"] {
-      --bg-gradient: #022c22;
-      --sidebar-bg: #064e3b;
+    :root[data-theme="solid-black"] {
+      --bg-gradient: #000000;
+      --sidebar-bg: #0a0a0a;
+      --chat-bg: #000000;
+      --card-bg: #121212;
+      --text-main: #ffffff;
+      --text-muted: #a3a3a3;
+      --brand-primary: #262626;
+      --brand-hover: #404040;
+      --bubble-me: #262626;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #1a1a1a;
+      --bubble-other-text: #ffffff;
+      --border-color: #262626;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="solid-red"] {
+      --bg-gradient: #7f1d1d;
+      --sidebar-bg: #450a0a;
+      --chat-bg: #450a0a;
+      --card-bg: #7f1d1d;
+      --text-main: #fef2f2;
+      --text-muted: #fca5a5;
+      --brand-primary: #dc2626;
+      --brand-hover: #b91c1c;
+      --bubble-me: #dc2626;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #991b1b;
+      --bubble-other-text: #fef2f2;
+      --border-color: #b91c1c;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="solid-green"] {
+      --bg-gradient: #064e3b;
+      --sidebar-bg: #022c22;
       --chat-bg: #022c22;
-      --card-bg: #065f46;
+      --card-bg: #064e3b;
       --text-main: #ecfdf5;
       --text-muted: #6ee7b7;
-      --brand-primary: #10b981;
-      --brand-hover: #059669;
+      --brand-primary: #059669;
+      --brand-hover: #047857;
       --bubble-me: #059669;
       --bubble-me-text: #ffffff;
-      --bubble-other: #064e3b;
+      --bubble-other: #065f46;
       --bubble-other-text: #ecfdf5;
-      --border-color: rgba(16, 185, 129, 0.3);
-      --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.3);
+      --border-color: #047857;
+      --pattern-overlay: none;
     }
 
-    :root[data-theme="solid-crimson"] {
-      --bg-gradient: #4c0519;
-      --sidebar-bg: #881337;
-      --chat-bg: #4c0519;
-      --card-bg: #9f1239;
-      --text-main: #fff1f2;
-      --text-muted: #fecdd3;
-      --brand-primary: #f43f5e;
-      --brand-hover: #e11d48;
-      --bubble-me: #e11d48;
+    :root[data-theme="solid-blue"] {
+      --bg-gradient: #1e3a8a;
+      --sidebar-bg: #172554;
+      --chat-bg: #172554;
+      --card-bg: #1e3a8a;
+      --text-main: #eff6ff;
+      --text-muted: #93c5fd;
+      --brand-primary: #2563eb;
+      --brand-hover: #1d4ed8;
+      --bubble-me: #2563eb;
       --bubble-me-text: #ffffff;
-      --bubble-other: #881337;
-      --bubble-other-text: #fff1f2;
-      --border-color: rgba(244, 63, 94, 0.3);
-      --shadow-glow: 0 0 20px rgba(244, 63, 94, 0.3);
+      --bubble-other: #1d4ed8;
+      --bubble-other-text: #eff6ff;
+      --border-color: #1d4ed8;
+      --pattern-overlay: none;
     }
 
-    /* 2. BASIC & POPPING GRADIENTS */
-    :root[data-theme="gradient-electric"] {
-      --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #3b82f6 100%);
-      --sidebar-bg: rgba(30, 27, 75, 0.9);
-      --chat-bg: rgba(15, 23, 42, 0.85);
-      --card-bg: rgba(49, 46, 129, 0.85);
-      --text-main: #e0e7ff;
-      --text-muted: #a5b4fc;
-      --brand-primary: #6366f1;
-      --brand-hover: #4f46e5;
-      --bubble-me: linear-gradient(135deg, #6366f1 100%, #3b82f6 0%);
-      --bubble-me-text: #ffffff;
-      --bubble-other: rgba(30, 27, 75, 0.7);
-      --bubble-other-text: #e0e7ff;
-      --border-color: rgba(99, 102, 241, 0.4);
-      --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.5);
-    }
-
-    :root[data-theme="gradient-sunset"] {
-      --bg-gradient: linear-gradient(135deg, #431407 0%, #7c2d12 50%, #db2777 100%);
-      --sidebar-bg: rgba(67, 20, 7, 0.9);
-      --chat-bg: rgba(20, 8, 2, 0.85);
-      --card-bg: rgba(124, 45, 18, 0.85);
-      --text-main: #fff7ed;
-      --text-muted: #fed7aa;
-      --brand-primary: #f97316;
-      --brand-hover: #ea580c;
-      --bubble-me: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
-      --bubble-me-text: #ffffff;
-      --bubble-other: rgba(92, 26, 6, 0.7);
-      --bubble-other-text: #fff7ed;
-      --border-color: rgba(249, 115, 22, 0.4);
-      --shadow-glow: 0 0 25px rgba(249, 115, 22, 0.5);
-    }
-
-    :root[data-theme="gradient-aurora"] {
-      --bg-gradient: linear-gradient(135deg, #064e3b 0%, #0f766e 50%, #1e40af 100%);
-      --sidebar-bg: rgba(6, 78, 59, 0.9);
-      --chat-bg: rgba(2, 20, 15, 0.85);
-      --card-bg: rgba(15, 118, 110, 0.85);
-      --text-main: #f0fdf4;
-      --text-muted: #99f6e4;
-      --brand-primary: #14b8a6;
-      --brand-hover: #0d9488;
-      --bubble-me: linear-gradient(135deg, #14b8a6 0%, #3b82f6 100%);
-      --bubble-me-text: #ffffff;
-      --bubble-other: rgba(13, 74, 94, 0.7);
-      --bubble-other-text: #f0fdf4;
-      --border-color: rgba(20, 184, 166, 0.4);
-      --shadow-glow: 0 0 25px rgba(20, 184, 166, 0.5);
-    }
-
-    :root[data-theme="gradient-cyberpunk"] {
-      --bg-gradient: linear-gradient(135deg, #2e0854 0%, #581c87 50%, #db2777 100%);
-      --sidebar-bg: rgba(46, 8, 84, 0.9);
-      --chat-bg: rgba(15, 2, 30, 0.85);
-      --card-bg: rgba(88, 28, 135, 0.85);
+    /* Holiday & Event Themes with Restored Emojis */
+    :root[data-theme="halloween"] {
+      --bg-gradient: linear-gradient(135deg, #2e0854 0%, #581c87 40%, #c2410c 100%);
+      --sidebar-bg: rgba(46, 8, 84, 0.95);
+      --chat-bg: #18022b;
+      --card-bg: #3b0764;
       --text-main: #fdf4ff;
       --text-muted: #f0abfc;
-      --brand-primary: #ec4899;
-      --brand-hover: #db2777;
-      --bubble-me: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+      --brand-primary: #ea580c;
+      --brand-hover: #c2410c;
+      --bubble-me: linear-gradient(135deg, #f97316 0%, #9333ea 100%);
       --bubble-me-text: #ffffff;
-      --bubble-other: rgba(76, 29, 149, 0.7);
+      --bubble-other: #290842;
       --bubble-other-text: #fdf4ff;
-      --border-color: rgba(236, 72, 153, 0.4);
-      --shadow-glow: 0 0 25px rgba(236, 72, 153, 0.5);
+      --border-color: #fb923c;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.12" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">🎃</text><text x="70" y="40" font-size="20">🦇</text><text x="30" y="80" font-size="22">👻</text><text x="80" y="90" font-size="18">🕷️</text></svg>');
     }
 
-    /* 3. HOLIDAY THEMES WITH BACKGROUND EMOJIS & ATMOSPHERE */
-    :root[data-theme="holiday-halloween"] {
-      --bg-gradient: linear-gradient(135deg, #2e0854 0%, #431407 50%, #09090b 100%);
-      --sidebar-bg: rgba(46, 8, 84, 0.92);
-      --chat-bg: rgba(15, 2, 28, 0.9);
-      --card-bg: rgba(88, 28, 135, 0.88);
-      --text-main: #fff7ed;
-      --text-muted: #fdba74;
-      --brand-primary: #f97316;
-      --brand-hover: #ea580c;
-      --bubble-me: linear-gradient(135deg, #f97316 0%, #7e22ce 100%);
-      --bubble-me-text: #ffffff;
-      --bubble-other: rgba(67, 20, 7, 0.8);
-      --bubble-other-text: #fff7ed;
-      --border-color: rgba(249, 115, 22, 0.5);
-      --shadow-glow: 0 0 30px rgba(249, 115, 22, 0.4);
-    }
-    [data-theme="holiday-halloween"]::before {
-      content: "🎃 👻 🦇 🎃 👻 🦇";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      font-size: 8rem; opacity: 0.03; z-index: 0; pointer-events: none;
-      display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;
-    }
-
-    :root[data-theme="holiday-christmas"] {
-      --bg-gradient: linear-gradient(135deg, #022c22 0%, #14532d 50%, #7f1d1d 100%);
-      --sidebar-bg: rgba(2, 44, 34, 0.92);
-      --chat-bg: rgba(1, 20, 15, 0.9);
-      --card-bg: rgba(20, 83, 45, 0.88);
+    :root[data-theme="christmas"] {
+      --bg-gradient: linear-gradient(135deg, #022c22 0%, #166534 50%, #991b1b 100%);
+      --sidebar-bg: rgba(2, 44, 34, 0.95);
+      --chat-bg: #011c16;
+      --card-bg: #14532d;
       --text-main: #f0fdf4;
       --text-muted: #86efac;
       --brand-primary: #ef4444;
       --brand-hover: #dc2626;
-      --bubble-me: linear-gradient(135deg, #ef4444 0%, #15803d 100%);
+      --bubble-me: linear-gradient(135deg, #ef4444 0%, #16a34a 100%);
       --bubble-me-text: #ffffff;
-      --bubble-other: rgba(13, 59, 34, 0.8);
+      --bubble-other: #0d3b22;
       --bubble-other-text: #f0fdf4;
-      --border-color: rgba(239, 68, 68, 0.5);
-      --shadow-glow: 0 0 30px rgba(239, 68, 68, 0.4);
-    }
-    [data-theme="holiday-christmas"]::before {
-      content: "🎄 ❄️ 🎁 🎄 ❄️ 🎁";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      font-size: 8rem; opacity: 0.03; z-index: 0; pointer-events: none;
-      display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;
+      --border-color: #facc15;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.12" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">❄️</text><text x="70" y="35" font-size="20">🎄</text><text x="30" y="80" font-size="22">🎁</text><text x="75" y="85" font-size="20">🎅</text></svg>');
     }
 
-    :root[data-theme="holiday-valentine"] {
-      --bg-gradient: linear-gradient(135deg, #500724 0%, #831843 50%, #4c0519 100%);
-      --sidebar-bg: rgba(80, 7, 36, 0.92);
-      --chat-bg: rgba(30, 2, 14, 0.9);
-      --card-bg: rgba(131, 24, 67, 0.88);
+    :root[data-theme="valentine"] {
+      --bg-gradient: linear-gradient(135deg, #831843 0%, #e11d48 50%, #fda4af 100%);
+      --sidebar-bg: rgba(131, 24, 67, 0.95);
+      --chat-bg: #500724;
+      --card-bg: #9f1239;
       --text-main: #fff1f2;
       --text-muted: #fecdd3;
       --brand-primary: #fb7185;
       --brand-hover: #f43f5e;
-      --bubble-me: linear-gradient(135deg, #f43f5e 0%, #fda4af 100%);
+      --bubble-me: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%);
       --bubble-me-text: #ffffff;
-      --bubble-other: rgba(103, 15, 47, 0.8);
+      --bubble-other: #670f2f;
       --bubble-other-text: #fff1f2;
-      --border-color: rgba(251, 113, 133, 0.5);
-      --shadow-glow: 0 0 30px rgba(251, 113, 133, 0.4);
-    }
-    [data-theme="holiday-valentine"]::before {
-      content: "💖 💌 🌹 💖 💌 🌹";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      font-size: 8rem; opacity: 0.03; z-index: 0; pointer-events: none;
-      display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;
+      --border-color: #fb7185;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.15" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">💖</text><text x="70" y="35" font-size="20">💕</text><text x="25" y="80" font-size="22">🌹</text><text x="75" y="85" font-size="20">💌</text></svg>');
     }
 
-    :root[data-theme="holiday-newyear"] {
-      --bg-gradient: linear-gradient(135deg, #020617 0%, #312e81 50%, #78350f 100%);
-      --sidebar-bg: rgba(2, 6, 23, 0.92);
-      --chat-bg: rgba(1, 3, 12, 0.9);
-      --card-bg: rgba(49, 46, 129, 0.88);
+    :root[data-theme="newyear"] {
+      --bg-gradient: linear-gradient(135deg, #020617 0%, #312e81 50%, #b45309 100%);
+      --sidebar-bg: rgba(2, 6, 23, 0.95);
+      --chat-bg: #030712;
+      --card-bg: #1e1b4b;
       --text-main: #fef3c7;
       --text-muted: #fde68a;
       --brand-primary: #f59e0b;
       --brand-hover: #d97706;
-      --bubble-me: linear-gradient(135deg, #fbbf24 0%, #b45309 100%);
-      --bubble-me-text: #000000;
-      --bubble-other: rgba(30, 27, 75, 0.8);
+      --bubble-me: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+      --bubble-me-text: #020617;
+      --bubble-other: #111827;
       --bubble-other-text: #fef3c7;
-      --border-color: rgba(245, 158, 11, 0.5);
-      --shadow-glow: 0 0 30px rgba(245, 158, 11, 0.4);
+      --border-color: #fbbf24;
+      --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.15" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">✨</text><text x="70" y="35" font-size="20">🎆</text><text x="25" y="80" font-size="22">🥂</text><text x="75" y="85" font-size="20">🎉</text></svg>');
     }
-    [data-theme="holiday-newyear"]::before {
-      content: "✨ 🎆 🥂 ✨ 🎆 🥂";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      font-size: 8rem; opacity: 0.03; z-index: 0; pointer-events: none;
-      display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center;
+
+    /* High-Energy Vibrant Themes */
+    :root[data-theme="sunset"] {
+      --bg-gradient: linear-gradient(135deg, #7c2d12 0%, #ea580c 50%, #db2777 100%);
+      --sidebar-bg: rgba(124, 45, 18, 0.95);
+      --chat-bg: #431407;
+      --card-bg: #9a3412;
+      --text-main: #fff7ed;
+      --text-muted: #fed7aa;
+      --brand-primary: #fb923c;
+      --brand-hover: #f97316;
+      --bubble-me: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #5c1a06;
+      --bubble-other-text: #fff7ed;
+      --border-color: #fdba74;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="midnight"] {
+      --bg-gradient: linear-gradient(135deg, #09090b 0%, #18181b 50%, #3f3f46 100%);
+      --sidebar-bg: rgba(9, 9, 11, 0.95);
+      --chat-bg: #030304;
+      --card-bg: #27272a;
+      --text-main: #fafafa;
+      --text-muted: #a1a1aa;
+      --brand-primary: #a855f7;
+      --brand-hover: #9333ea;
+      --bubble-me: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #18181b;
+      --bubble-other-text: #fafafa;
+      --border-color: #52525b;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="ocean"] {
+      --bg-gradient: linear-gradient(135deg, #0c4a6e 0%, #0284c7 50%, #38bdf8 100%);
+      --sidebar-bg: rgba(12, 74, 110, 0.95);
+      --chat-bg: #042f40;
+      --card-bg: #0369a1;
+      --text-main: #f0f9ff;
+      --text-muted: #bae6fd;
+      --brand-primary: #38bdf8;
+      --brand-hover: #0ea5e9;
+      --bubble-me: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #075985;
+      --bubble-other-text: #f0f9ff;
+      --border-color: #7dd3fc;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="lavender"] {
+      --bg-gradient: linear-gradient(135deg, #4c1d95 0%, #7c3aed 50%, #c084fc 100%);
+      --sidebar-bg: rgba(76, 29, 149, 0.95);
+      --chat-bg: #2e1065;
+      --card-bg: #6d28d9;
+      --text-main: #faf5ff;
+      --text-muted: #e9d5ff;
+      --brand-primary: #c084fc;
+      --brand-hover: #a855f7;
+      --bubble-me: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #5b21b6;
+      --bubble-other-text: #faf5ff;
+      --border-color: #d8b4fe;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="cherry"] {
+      --bg-gradient: linear-gradient(135deg, #881337 0%, #e11d48 50%, #fb7185 100%);
+      --sidebar-bg: rgba(136, 19, 55, 0.95);
+      --chat-bg: #4c0519;
+      --card-bg: #be123c;
+      --text-main: #fff1f2;
+      --text-muted: #fecdd3;
+      --brand-primary: #fb7185;
+      --brand-hover: #f43f5e;
+      --bubble-me: linear-gradient(135deg, #f43f5e 0%, #eab308 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #9f1239;
+      --bubble-other-text: #fff1f2;
+      --border-color: #fda4af;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="gold"] {
+      --bg-gradient: linear-gradient(135deg, #713f12 0%, #ca8a04 50%, #facc15 100%);
+      --sidebar-bg: rgba(113, 63, 18, 0.95);
+      --chat-bg: #422006;
+      --card-bg: #a16207;
+      --text-main: #fefce8;
+      --text-muted: #fef08a;
+      --brand-primary: #facc15;
+      --brand-hover: #eab308;
+      --bubble-me: linear-gradient(135deg, #eab308 0%, #ea580c 100%);
+      --bubble-me-text: #000000;
+      --bubble-other: #854d0e;
+      --bubble-other-text: #fefce8;
+      --border-color: #fde047;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="matrix"] {
+      --bg-gradient: linear-gradient(135deg, #022c22 0%, #047857 50%, #34d399 100%);
+      --sidebar-bg: rgba(2, 44, 34, 0.95);
+      --chat-bg: #011c14;
+      --card-bg: #059669;
+      --text-main: #ecfdf5;
+      --text-muted: #a7f3d0;
+      --brand-primary: #34d399;
+      --brand-hover: #10b981;
+      --bubble-me: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #047857;
+      --bubble-other-text: #ecfdf5;
+      --border-color: #6ee7b7;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="retro"] {
+      --bg-gradient: linear-gradient(135deg, #3b0764 0%, #ec4899 50%, #06b6d4 100%);
+      --sidebar-bg: rgba(59, 7, 100, 0.95);
+      --chat-bg: #1f0338;
+      --card-bg: #db2777;
+      --text-main: #fdf4ff;
+      --text-muted: #f472b6;
+      --brand-primary: #06b6d4;
+      --brand-hover: #22d3ee;
+      --bubble-me: linear-gradient(135deg, #ec4899 0%, #06b6d4 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #701a75;
+      --bubble-other-text: #fdf4ff;
+      --border-color: #22d3ee;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="coffee"] {
+      --bg-gradient: linear-gradient(135deg, #291509 0%, #78350f 50%, #d97706 100%);
+      --sidebar-bg: rgba(41, 21, 9, 0.95);
+      --chat-bg: #170b04;
+      --card-bg: #92400e;
+      --text-main: #fef3c7;
+      --text-muted: #fde68a;
+      --brand-primary: #f59e0b;
+      --brand-hover: #d97706;
+      --bubble-me: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #451a03;
+      --bubble-other-text: #fef3c7;
+      --border-color: #fbbf24;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="arctic"] {
+      --bg-gradient: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #93c5fd 100%);
+      --sidebar-bg: rgba(3, 105, 161, 0.95);
+      --chat-bg: #0c4a6e;
+      --card-bg: #0284c7;
+      --text-main: #f0f9ff;
+      --text-muted: #e0f2fe;
+      --brand-primary: #7dd3fc;
+      --brand-hover: #38bdf8;
+      --bubble-me: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #0369a1;
+      --bubble-other-text: #f0f9ff;
+      --border-color: #bae6fd;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="aurora"] {
+      --bg-gradient: linear-gradient(135deg, #064e3b 0%, #0d9488 50%, #6366f1 100%);
+      --sidebar-bg: rgba(6, 78, 59, 0.95);
+      --chat-bg: #022c22;
+      --card-bg: #0f766e;
+      --text-main: #f0fdf4;
+      --text-muted: #99f6e4;
+      --brand-primary: #2dd4bf;
+      --brand-hover: #14b8a6;
+      --bubble-me: linear-gradient(135deg, #14b8a6 0%, #6366f1 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #115e59;
+      --bubble-other-text: #f0fdf4;
+      --border-color: #5eead4;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="galaxy"] {
+      --bg-gradient: linear-gradient(135deg, #311042 0%, #701a75 50%, #ec4899 100%);
+      --sidebar-bg: rgba(49, 16, 66, 0.95);
+      --chat-bg: #1a0624;
+      --card-bg: #831843;
+      --text-main: #fdf2f8;
+      --text-muted: #fbcfe8;
+      --brand-primary: #f472b6;
+      --brand-hover: #ec4899;
+      --bubble-me: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #500724;
+      --bubble-other-text: #fdf2f8;
+      --border-color: #f7a8d8;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="autumn"] {
+      --bg-gradient: linear-gradient(135deg, #78350f 0%, #c2410c 50%, #f97316 100%);
+      --sidebar-bg: rgba(120, 53, 15, 0.95);
+      --chat-bg: #451a03;
+      --card-bg: #9a3412;
+      --text-main: #fff7ed;
+      --text-muted: #fed7aa;
+      --brand-primary: #fb923c;
+      --brand-hover: #f97316;
+      --bubble-me: linear-gradient(135deg, #f97316 0%, #eab308 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #7c2d12;
+      --bubble-other-text: #fff7ed;
+      --border-color: #fdba74;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="peach"] {
+      --bg-gradient: linear-gradient(135deg, #9a3412 0%, #ea580c 50%, #fb923c 100%);
+      --sidebar-bg: rgba(154, 52, 18, 0.95);
+      --chat-bg: #7c2d12;
+      --card-bg: #c2410c;
+      --text-main: #fffbeb;
+      --text-muted: #fed7aa;
+      --brand-primary: #fdba74;
+      --brand-hover: #fb923c;
+      --bubble-me: linear-gradient(135deg, #fb923c 0%, #f43f5e 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #9a3412;
+      --bubble-other-text: #fffbeb;
+      --border-color: #fde68a;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="monochrome"] {
+      --bg-gradient: linear-gradient(135deg, #09090b 0%, #27272a 50%, #71717a 100%);
+      --sidebar-bg: rgba(9, 9, 11, 0.95);
+      --chat-bg: #000000;
+      --card-bg: #3f3f46;
+      --text-main: #ffffff;
+      --text-muted: #d4d4d8;
+      --brand-primary: #a1a1aa;
+      --brand-hover: #71717a;
+      --bubble-me: #52525b;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #18181b;
+      --bubble-other-text: #ffffff;
+      --border-color: #71717a;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="neon"] {
+      --bg-gradient: linear-gradient(135deg, #065f46 0%, #10b981 50%, #34d399 100%);
+      --sidebar-bg: rgba(6, 95, 70, 0.95);
+      --chat-bg: #022c22;
+      --card-bg: #059669;
+      --text-main: #f0fdf4;
+      --text-muted: #a7f3d0;
+      --brand-primary: #4ade80;
+      --brand-hover: #22c55e;
+      --bubble-me: linear-gradient(135deg, #22c55e 0%, #06b6d4 100%);
+      --bubble-me-text: #000000;
+      --bubble-other: #047857;
+      --bubble-other-text: #f0fdf4;
+      --border-color: #86efac;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="amethyst"] {
+      --bg-gradient: linear-gradient(135deg, #581c87 0%, #7e22ce 50%, #c084fc 100%);
+      --sidebar-bg: rgba(88, 28, 135, 0.95);
+      --chat-bg: #3b0764;
+      --card-bg: #9333ea;
+      --text-main: #faf5ff;
+      --text-muted: #e9d5ff;
+      --brand-primary: #d8b4fe;
+      --brand-hover: #c084fc;
+      --bubble-me: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #6b21a8;
+      --bubble-other-text: #faf5ff;
+      --border-color: #e9d5ff;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="sakura"] {
+      --bg-gradient: linear-gradient(135deg, #9f1239 0%, #db2777 50%, #f472b6 100%);
+      --sidebar-bg: rgba(159, 18, 57, 0.95);
+      --chat-bg: #881337;
+      --card-bg: #e11d48;
+      --text-main: #fff1f2;
+      --text-muted: #fbcfe8;
+      --brand-primary: #f9a8d4;
+      --brand-hover: #f472b6;
+      --bubble-me: linear-gradient(135deg, #f472b6 0%, #fb7185 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #be123c;
+      --bubble-other-text: #fff1f2;
+      --border-color: #fbcfe8;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="emerald"] {
+      --bg-gradient: linear-gradient(135deg, #064e3b 0%, #10b981 100%);
+      --sidebar-bg: rgba(6, 78, 59, 0.95);
+      --chat-bg: #022c22;
+      --card-bg: #059669;
+      --text-main: #ecfdf5;
+      --text-muted: #a7f3d0;
+      --brand-primary: #34d399;
+      --brand-hover: #10b981;
+      --bubble-me: #10b981;
+      --bubble-me-text: #ffffff;
+      --bubble-other: #044e3a;
+      --bubble-other-text: #ecfdf5;
+      --border-color: #6ee7b7;
+      --pattern-overlay: none;
+    }
+
+    :root[data-theme="cyberpunk"] {
+      --bg-gradient: linear-gradient(135deg, #4c1d95 0%, #db2777 50%, #06b6d4 100%);
+      --sidebar-bg: rgba(76, 29, 149, 0.95);
+      --chat-bg: #2e1065;
+      --card-bg: #be185d;
+      --text-main: #fdf4ff;
+      --text-muted: #f5d0fe;
+      --brand-primary: #22d3ee;
+      --brand-hover: #06b6d4;
+      --bubble-me: linear-gradient(135deg, #06b6d4 0%, #d946ef 100%);
+      --bubble-me-text: #ffffff;
+      --bubble-other: #581c87;
+      --bubble-other-text: #fdf4ff;
+      --border-color: #22d3ee;
+      --pattern-overlay: none;
     }
 
     body {
@@ -307,27 +596,23 @@
 
     aside {
       background: var(--sidebar-bg) !important;
-      backdrop-filter: blur(16px);
       border-color: var(--border-color) !important;
     }
 
     main {
       background: var(--chat-bg) !important;
-      backdrop-filter: blur(16px);
+      background-image: var(--pattern-overlay) !important;
     }
 
     .theme-card {
       background-color: var(--card-bg) !important;
-      backdrop-filter: blur(12px);
       color: var(--text-main) !important;
-      border: 1px solid var(--border-color) !important;
-      box-shadow: var(--shadow-glow);
+      border-color: var(--border-color) !important;
     }
 
     .theme-brand-bg {
       background: var(--brand-primary) !important;
       color: #ffffff !important;
-      box-shadow: var(--shadow-glow);
     }
 
     .theme-brand-bg:hover {
@@ -337,7 +622,6 @@
     .theme-bubble-me {
       background: var(--bubble-me) !important;
       color: var(--bubble-me-text) !important;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
     }
 
     .theme-bubble-other {
@@ -354,51 +638,51 @@
       background: transparent;
     }
     ::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(156, 163, 175, 0.3);
       border-radius: 9999px;
     }
   </style>
 </head>
-<body class="bg-slate-950 text-gray-100 h-screen overflow-hidden antialiased">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-100 h-screen overflow-hidden antialiased">
 
   <!-- APP CONTAINER -->
-  <div id="app" class="h-full w-full flex flex-col justify-between relative z-10">
+  <div id="app" class="h-full w-full flex flex-col justify-between">
     
     <!-- AUTH SCREEN -->
-    <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-black/85 backdrop-blur-md p-4 hidden">
-      <div class="theme-card rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md w-full relative overflow-hidden">
+    <div id="auth-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-95 backdrop-blur-sm p-4 hidden">
+      <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 sm:p-8 max-w-md w-full border border-gray-200 dark:border-gray-700 relative overflow-hidden">
         
         <div class="text-center mb-6 sm:mb-8">
-          <div class="w-16 h-16 theme-brand-bg rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg transform -rotate-6">
+          <div class="w-16 h-16 theme-brand-bg text-white rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-lg transform -rotate-6">
             <i class="fa-solid fa-comments text-3xl"></i>
           </div>
-          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Echo Messenger</h1>
-          <p class="text-xs opacity-70 mt-1">Real-time secure chat with cloud sync</p>
+          <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight dark:text-white">Echo Messenger</h1>
+          <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Real-time chat with auto-login persistent security</p>
         </div>
 
-        <div class="flex border-b border-white/10 mb-6">
-          <button id="tab-login-btn" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-500 text-blue-400">Sign In</button>
-          <button id="tab-register-btn" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent opacity-60 hover:opacity-100">Register</button>
+        <div class="flex border-b border-gray-200 dark:border-gray-700 mb-6">
+          <button id="tab-login-btn" onclick="switchAuthTab('login')" class="flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400">Sign In</button>
+          <button id="tab-register-btn" onclick="switchAuthTab('register')" class="flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400">Register</button>
         </div>
 
-        <div id="auth-alert" class="hidden mb-4 p-3 rounded-xl text-xs font-medium bg-rose-500/20 border border-rose-500/40 text-rose-300"></div>
+        <div id="auth-alert" class="hidden mb-4 p-3 rounded-lg text-xs font-medium bg-red-100 border border-red-200 text-red-700 dark:bg-red-900/30 dark:border-red-800 dark:text-red-300"></div>
 
         <form id="login-form" onsubmit="handleLogin(event)" class="space-y-4">
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 opacity-70">Username</label>
+            <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Username</label>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 flex items-center pl-3 opacity-50"><i class="fa-solid fa-user"></i></span>
-              <input type="text" id="login-username" required class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="enter username">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-user"></i></span>
+              <input type="text" id="login-username" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="enter username">
             </div>
           </div>
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 opacity-70">Password</label>
+            <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Password</label>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 flex items-center pl-3 opacity-50"><i class="fa-solid fa-lock"></i></span>
-              <input type="password" id="login-password" required class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="••••••••">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-lock"></i></span>
+              <input type="password" id="login-password" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="••••••••">
             </div>
           </div>
-          <button type="submit" class="w-full py-3 px-4 theme-brand-bg font-semibold rounded-xl shadow-md hover:opacity-95 transition flex items-center justify-center space-x-2 text-sm">
+          <button type="submit" id="login-submit-btn" class="w-full py-3 px-4 theme-brand-bg text-white font-semibold rounded-xl shadow-md hover:opacity-95 transition duration-200 flex items-center justify-center space-x-2 text-sm">
             <span>Sign In to Echo</span>
             <i class="fa-solid fa-arrow-right text-xs"></i>
           </button>
@@ -406,27 +690,27 @@
 
         <form id="register-form" onsubmit="handleRegister(event)" class="space-y-4 hidden">
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 opacity-70">Choose Username</label>
+            <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Choose Username</label>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 flex items-center pl-3 opacity-50"><i class="fa-solid fa-at"></i></span>
-              <input type="text" id="reg-username" required class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="unique_username">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-at"></i></span>
+              <input type="text" id="reg-username" required class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="unique_username">
             </div>
           </div>
           <div>
-            <label class="block text-xs font-semibold uppercase tracking-wider mb-1 opacity-70">Choose Password</label>
+            <label class="block text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wider mb-1">Choose Password</label>
             <div class="relative">
-              <span class="absolute inset-y-0 left-0 flex items-center pl-3 opacity-50"><i class="fa-solid fa-key"></i></span>
-              <input type="password" id="reg-password" required minlength="4" class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white/5 border border-white/10 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="min 4 characters">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400"><i class="fa-solid fa-key"></i></span>
+              <input type="password" id="reg-password" required minlength="4" class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-blue-500 outline-none text-sm transition" placeholder="min 4 characters">
             </div>
           </div>
-          <button type="submit" class="w-full py-3 px-4 theme-brand-bg font-semibold rounded-xl shadow-md hover:opacity-95 transition flex items-center justify-center space-x-2 text-sm">
+          <button type="submit" id="reg-submit-btn" class="w-full py-3 px-4 theme-brand-bg text-white font-semibold rounded-xl shadow-md hover:opacity-95 transition duration-200 flex items-center justify-center space-x-2 text-sm">
             <span>Create Account</span>
             <i class="fa-solid fa-user-plus text-xs"></i>
           </button>
         </form>
 
-        <div class="mt-6 text-center text-xs opacity-60 flex items-center justify-center space-x-1.5">
-          <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+        <div class="mt-6 text-center text-xs text-gray-400 flex items-center justify-center space-x-1">
+          <i class="fa-solid fa-shield-halved text-emerald-500"></i>
           <span>Synced globally via Cloud Database</span>
         </div>
       </div>
@@ -438,24 +722,24 @@
       <!-- SIDEBAR -->
       <aside id="sidebar-panel" class="w-full md:w-80 lg:w-96 border-r flex flex-col z-10 transition-all duration-300 absolute md:relative inset-y-0 left-0 h-full">
         
-        <div class="p-4 border-b border-white/10 flex items-center justify-between">
+        <div class="p-4 border-b flex items-center justify-between opacity-95">
           <div class="flex items-center space-x-3 cursor-pointer" onclick="openModal('settings-modal')">
             <div class="relative">
-              <div id="user-avatar" class="w-10 h-10 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg shadow-md overflow-hidden">
+              <div id="user-avatar" class="w-10 h-10 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg shadow-sm overflow-hidden">
                 ?
               </div>
-              <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-slate-900 rounded-full"></span>
+              <span id="user-status-dot" class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-white rounded-full"></span>
             </div>
-            <div class="truncate">
+            <div>
               <h2 id="user-display-name" class="font-bold text-sm leading-snug truncate max-w-[120px] sm:max-w-xs">Loading...</h2>
-              <p class="text-xs opacity-70">Online</p>
+              <p id="user-status-text" class="text-xs opacity-70">Online</p>
             </div>
           </div>
           <div class="flex items-center space-x-1">
-            <button onclick="openModal('new-chat-modal')" class="p-2 hover:bg-white/10 rounded-xl transition" title="New Message or Group">
+            <button onclick="openModal('new-chat-modal')" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition" title="New Message or Group">
               <i class="fa-solid fa-pen-to-square text-base"></i>
             </button>
-            <button onclick="openModal('settings-modal')" class="p-2 hover:bg-white/10 rounded-xl transition" title="Settings">
+            <button onclick="openModal('settings-modal')" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition" title="Settings">
               <i class="fa-solid fa-gear text-base"></i>
             </button>
           </div>
@@ -463,16 +747,16 @@
 
         <div class="p-3">
           <div class="relative">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-3 opacity-50">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
               <i class="fa-solid fa-magnifying-glass text-xs"></i>
             </span>
-            <input type="text" id="chat-search-input" onkeyup="filterChats()" placeholder="Search chats or friends..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs placeholder-white/40 focus:border-blue-500 outline-none transition">
+            <input type="text" id="chat-search-input" onkeyup="filterChats()" placeholder="Search chats or friends..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-gray-100 dark:bg-gray-700/60 text-xs text-gray-800 dark:text-gray-200 placeholder-gray-400 border border-transparent focus:border-blue-500 outline-none transition">
           </div>
         </div>
 
-        <div class="flex px-3 pb-2 border-b border-white/10 text-xs font-medium space-x-1">
-          <button id="tab-chats-btn" onclick="switchSidebarTab('chats')" class="flex-1 py-1.5 rounded-lg theme-brand-bg font-semibold shadow-sm transition">Chats</button>
-          <button id="tab-friends-btn" onclick="switchSidebarTab('friends')" class="flex-1 py-1.5 rounded-lg hover:bg-white/10 transition flex items-center justify-center space-x-1 opacity-80">
+        <div class="flex px-3 pb-2 border-b border-gray-200 dark:border-gray-700/40 text-xs font-medium text-gray-500 dark:text-gray-400 space-x-1">
+          <button id="tab-chats-btn" onclick="switchSidebarTab('chats')" class="flex-1 py-1.5 rounded-lg theme-brand-bg text-white font-semibold shadow-xs transition">Chats</button>
+          <button id="tab-friends-btn" onclick="switchSidebarTab('friends')" class="flex-1 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center justify-center space-x-1">
             <span>Friends</span>
             <span id="pending-req-badge" class="hidden px-1.5 py-0.5 bg-rose-500 text-white rounded-full text-[10px]">0</span>
           </button>
@@ -480,15 +764,15 @@
 
         <div id="sidebar-chats-container" class="flex-1 overflow-y-auto p-2 space-y-1">
           <div id="pinned-chats-section" class="mb-2 hidden">
-            <div class="px-2 py-1 text-[11px] font-bold opacity-50 uppercase tracking-wider flex items-center space-x-1">
-              <i class="fa-solid fa-thumbtack text-xs text-amber-400"></i>
+            <div class="px-2 py-1 text-[11px] font-bold text-gray-400 uppercase tracking-wider flex items-center space-x-1">
+              <i class="fa-solid fa-thumbtack text-xs text-amber-500"></i>
               <span>Pinned Conversations</span>
             </div>
             <div id="pinned-chats-list" class="space-y-1"></div>
           </div>
 
           <div id="all-chats-section">
-            <div class="px-2 py-1 text-[11px] font-bold opacity-50 uppercase tracking-wider">
+            <div class="px-2 py-1 text-[11px] font-bold text-gray-400 uppercase tracking-wider">
               <span>Messages</span>
             </div>
             <div id="all-chats-list" class="space-y-1"></div>
@@ -497,23 +781,23 @@
 
         <div id="sidebar-friends-container" class="flex-1 overflow-y-auto p-3 space-y-4 hidden">
           <div id="friend-requests-wrapper" class="hidden">
-            <h3 class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-2 flex items-center space-x-1">
+            <h3 class="text-xs font-bold text-amber-500 uppercase tracking-wider mb-2 flex items-center space-x-1">
               <i class="fa-solid fa-bell text-xs"></i>
               <span>Pending Requests</span>
             </h3>
             <div id="friend-requests-list" class="space-y-2"></div>
           </div>
 
-          <div class="bg-white/5 p-3 rounded-2xl border border-white/10">
-            <label class="block text-xs font-semibold mb-1 opacity-80">Add Friend by Username</label>
+          <div class="bg-gray-50 dark:bg-gray-700/40 p-3 rounded-xl border border-gray-200 dark:border-gray-700">
+            <label class="block text-xs font-semibold mb-1">Add Friend by Username</label>
             <div class="flex space-x-2">
-              <input type="text" id="add-friend-input" placeholder="Enter username..." class="flex-1 px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 text-xs outline-none focus:ring-1 focus:ring-blue-500">
-              <button onclick="sendFriendRequest()" class="px-3 py-1.5 theme-brand-bg rounded-xl text-xs font-semibold hover:opacity-90">Add</button>
+              <input type="text" id="add-friend-input" placeholder="Enter username..." class="flex-1 px-3 py-1.5 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
+              <button onclick="sendFriendRequest()" class="px-3 py-1.5 theme-brand-bg text-white rounded-lg text-xs font-semibold hover:opacity-90">Add</button>
             </div>
           </div>
 
           <div>
-            <h4 class="text-xs font-bold uppercase tracking-wider opacity-50 mb-2">My Friends</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">My Friends</h4>
             <div id="friends-list" class="space-y-1"></div>
           </div>
         </div>
@@ -521,26 +805,26 @@
       </aside>
 
       <!-- MAIN CHAT PANEL -->
-      <main id="chat-main-panel" class="flex-1 flex flex-col relative h-full w-full absolute md:relative inset-0 z-20 hidden md:flex">
+      <main id="chat-main-panel" class="flex-1 flex flex-col relative bg-slate-900/10 h-full w-full absolute md:relative inset-0 z-20 hidden md:flex">
         <div id="no-chat-selected" class="flex-1 flex flex-col items-center justify-center p-6 sm:p-8 text-center">
-          <div class="w-20 h-20 rounded-3xl theme-brand-bg flex items-center justify-center text-4xl mb-4 shadow-2xl transform rotate-3">
+          <div class="w-20 h-20 rounded-3xl theme-brand-bg text-white flex items-center justify-center text-4xl mb-4 shadow-xl">
             <i class="fa-solid fa-comments"></i>
           </div>
           <h2 class="text-2xl font-bold mb-2">Welcome to Echo Messenger</h2>
-          <p class="text-xs opacity-70 max-w-sm mb-6">Select a conversation from the sidebar or start a new direct or group chat.</p>
-          <button onclick="openModal('new-chat-modal')" class="px-5 py-2.5 theme-brand-bg text-xs font-semibold rounded-xl shadow-lg hover:opacity-90 transition">
+          <p class="text-xs opacity-70 max-w-sm mb-6">Select an existing conversation from the sidebar or start a new direct message or group chat.</p>
+          <button onclick="openModal('new-chat-modal')" class="px-5 py-2.5 theme-brand-bg text-white text-xs font-semibold rounded-xl shadow-lg hover:opacity-90 transition">
             <i class="fa-solid fa-plus mr-1.5"></i> Start New Chat
           </button>
         </div>
 
         <div id="active-chat-wrapper" class="flex-1 flex flex-col h-full hidden">
-          <div class="p-3 border-b border-white/10 flex items-center justify-between theme-card rounded-none">
+          <div class="p-3 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between theme-card">
             <div class="flex items-center space-x-3 truncate">
               <!-- Mobile Back Button -->
-              <button onclick="backToChatsList()" class="md:hidden p-2 hover:bg-white/10 rounded-xl transition shrink-0" title="Back to Chats">
+              <button onclick="backToChatsList()" class="md:hidden p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition shrink-0" title="Back to Chats">
                 <i class="fa-solid fa-arrow-left"></i>
               </button>
-              <div id="active-chat-avatar" class="w-10 h-10 rounded-full theme-brand-bg flex items-center justify-center font-bold shrink-0 overflow-hidden shadow-md">
+              <div id="active-chat-avatar" class="w-10 h-10 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold shrink-0 overflow-hidden">
                 ?
               </div>
               <div class="truncate">
@@ -549,25 +833,22 @@
               </div>
             </div>
             <div class="flex items-center space-x-1 sm:space-x-2 shrink-0">
-              <button id="group-kick-member-btn" onclick="openGroupKickModal()" class="p-2 hover:bg-white/10 rounded-xl transition text-rose-400 hidden" title="Manage / Kick Participants">
-                <i class="fa-solid fa-user-slash"></i>
-              </button>
-              <button id="group-settings-btn" onclick="openGroupSettingsModal()" class="p-2 hover:bg-white/10 rounded-xl transition text-amber-400 hidden" title="Edit Group Settings">
+              <button id="group-settings-btn" onclick="openGroupSettingsModal()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-amber-400 hidden" title="Edit Group Settings & Members">
                 <i class="fa-solid fa-gear"></i>
               </button>
-              <button id="group-add-member-btn" onclick="openModal('add-participant-modal')" class="p-2 hover:bg-white/10 rounded-xl transition text-purple-400 hidden" title="Add Participant to Group">
+              <button id="group-add-member-btn" onclick="openModal('add-participant-modal')" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-purple-400 hidden" title="Add Participant to Group">
                 <i class="fa-solid fa-user-plus"></i>
               </button>
-              <button onclick="startAudioCall()" class="p-2 hover:bg-white/10 rounded-xl transition text-emerald-400" title="Start Audio Call">
+              <button onclick="startAudioCall()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-emerald-500" title="Start Audio Call">
                 <i class="fa-solid fa-phone"></i>
               </button>
-              <button onclick="startVideoCall()" class="p-2 hover:bg-white/10 rounded-xl transition text-blue-400" title="Start Video Call">
+              <button onclick="startVideoCall()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-blue-500" title="Start Video Call">
                 <i class="fa-solid fa-video"></i>
               </button>
-              <button onclick="togglePinCurrentChat()" class="p-2 hover:bg-white/10 rounded-xl transition text-amber-400" title="Pin/Unpin Conversation">
-                <i class="fa-solid fa-thumbtack"></i>
+              <button onclick="togglePinCurrentChat()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition" title="Pin/Unpin Conversation">
+                <i class="fa-solid fa-thumbtack text-amber-500"></i>
               </button>
-              <button onclick="hideCurrentChat()" class="p-2 hover:bg-white/10 rounded-xl transition text-gray-400 hover:text-rose-400" title="Hide Conversation">
+              <button onclick="hideCurrentChat()" class="p-2 hover:bg-black/10 dark:hover:bg-white/10 rounded-xl transition text-gray-400 hover:text-rose-500" title="Hide Conversation">
                 <i class="fa-solid fa-eye-slash"></i>
               </button>
             </div>
@@ -575,8 +856,8 @@
 
           <div id="chat-pinned-message-bar" class="bg-amber-500/15 border-b border-amber-500/30 px-4 py-2 flex items-center justify-between text-xs hidden">
             <div class="flex items-center space-x-2 truncate">
-              <i class="fa-solid fa-thumbtack text-amber-400"></i>
-              <span class="font-semibold text-amber-300 shrink-0">Pinned:</span>
+              <i class="fa-solid fa-thumbtack text-amber-500"></i>
+              <span class="font-semibold text-amber-600 dark:text-amber-400 shrink-0">Pinned:</span>
               <span id="pinned-message-text" class="truncate opacity-90">Message content...</span>
             </div>
             <button onclick="unpinChatMessage()" class="text-xs opacity-60 hover:opacity-100 shrink-0 ml-2"><i class="fa-solid fa-xmark"></i></button>
@@ -584,26 +865,26 @@
 
           <div id="messages-container" class="flex-1 overflow-y-auto p-3 sm:p-4 space-y-3"></div>
 
-          <div id="attachment-preview-bar" class="px-4 py-2 bg-black/20 flex items-center justify-between text-xs hidden">
+          <div id="attachment-preview-bar" class="px-4 py-2 bg-black/10 dark:bg-white/10 flex items-center justify-between text-xs hidden">
             <div class="flex items-center space-x-3 truncate">
-              <div id="media-preview-container" class="w-10 h-10 rounded-xl overflow-hidden bg-white/10 flex items-center justify-center shrink-0"></div>
+              <div id="media-preview-container" class="w-10 h-10 rounded-lg overflow-hidden bg-gray-300 dark:bg-gray-700 flex items-center justify-center shrink-0"></div>
               <span id="media-filename" class="font-medium truncate max-w-xs">attachment.png</span>
             </div>
-            <button onclick="clearAttachment()" class="text-rose-400 hover:text-rose-500 shrink-0 ml-2"><i class="fa-solid fa-circle-xmark text-lg"></i></button>
+            <button onclick="clearAttachment()" class="text-rose-500 hover:text-rose-600 shrink-0 ml-2"><i class="fa-solid fa-circle-xmark text-lg"></i></button>
           </div>
 
-          <div id="reply-preview-bar" class="px-4 py-2 bg-blue-500/15 border-t border-blue-500/30 flex items-center justify-between text-xs hidden">
+          <div id="reply-preview-bar" class="px-4 py-2 bg-blue-500/10 border-t border-blue-500/30 flex items-center justify-between text-xs hidden">
             <div class="truncate">
-              <span id="reply-to-user" class="font-bold text-blue-400">Replying to @user</span>
+              <span id="reply-to-user" class="font-bold text-blue-500">Replying to @user</span>
               <p id="reply-to-text" class="truncate opacity-80 text-[11px]">Original message...</p>
             </div>
             <button onclick="cancelReply()" class="text-xs opacity-60 hover:opacity-100 shrink-0 ml-2"><i class="fa-solid fa-xmark"></i></button>
           </div>
 
           <!-- Input Bar -->
-          <div class="p-2 sm:p-3 border-t border-white/10 theme-card rounded-none relative">
+          <div class="p-2 sm:p-3 border-t border-gray-200 dark:border-gray-800 theme-card relative">
             <!-- Quick Emoji Popover -->
-            <div id="quick-emoji-popover" class="absolute bottom-16 left-3 theme-card border rounded-2xl p-2 shadow-2xl flex space-x-2 hidden z-20">
+            <div id="quick-emoji-popover" class="absolute bottom-16 left-3 theme-card border rounded-2xl p-2 shadow-xl flex space-x-2 hidden z-20">
               <button onclick="insertEmoji('❤️')" class="text-xl hover:scale-125 transition">❤️</button>
               <button onclick="insertEmoji('😂')" class="text-xl hover:scale-125 transition">😂</button>
               <button onclick="insertEmoji('😭')" class="text-xl hover:scale-125 transition">😭</button>
@@ -613,32 +894,32 @@
             </div>
 
             <!-- GIF Picker Popover -->
-            <div id="gif-picker-popover" class="absolute bottom-16 left-12 theme-card border rounded-2xl p-3 shadow-2xl w-72 max-w-[90vw] hidden z-25">
+            <div id="gif-picker-popover" class="absolute bottom-16 left-12 theme-card border rounded-2xl p-3 shadow-xl w-72 max-w-[90vw] hidden z-25">
               <div class="flex items-center justify-between mb-2">
                 <span class="text-xs font-bold">Search GIPHY</span>
                 <button onclick="toggleGifPicker()" class="text-xs opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark"></i></button>
               </div>
-              <input type="text" id="gif-search-box" onkeyup="searchGifs(event)" placeholder="Search GIFs..." class="w-full px-2 py-1.5 rounded-xl border border-white/10 bg-white/5 text-xs mb-2 outline-none">
+              <input type="text" id="gif-search-box" onkeyup="searchGifs(event)" placeholder="Search GIFs..." class="w-full px-2 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs mb-2 outline-none">
               <div id="gif-results-container" class="grid grid-cols-2 gap-1.5 max-h-48 overflow-y-auto">
-                <p class="text-[11px] opacity-50 col-span-2 text-center py-4">Type a query above</p>
+                <p class="text-[11px] text-gray-400 col-span-2 text-center py-4">Type a query above</p>
               </div>
             </div>
 
             <form onsubmit="sendMessage(event)" class="flex items-center space-x-1 sm:space-x-2">
               <input type="file" id="media-file-input" accept="image/*,video/*" onchange="handleFileSelect(event)" class="hidden">
-              <button type="button" onclick="document.getElementById('media-file-input').click()" class="p-2 sm:p-2.5 rounded-xl hover:bg-white/10 opacity-70 hover:opacity-100 transition shrink-0" title="Attach Image or Video">
+              <button type="button" onclick="document.getElementById('media-file-input').click()" class="p-2 sm:p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition shrink-0" title="Attach Image or Video">
                 <i class="fa-solid fa-paperclip text-base"></i>
               </button>
-              <button type="button" onclick="toggleEmojiPicker()" class="p-2 sm:p-2.5 rounded-xl hover:bg-white/10 opacity-70 hover:opacity-100 transition shrink-0" title="Emojis">
+              <button type="button" onclick="toggleEmojiPicker()" class="p-2 sm:p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition shrink-0" title="Emojis">
                 <i class="fa-solid fa-face-smile text-base"></i>
               </button>
-              <button type="button" onclick="toggleGifPicker()" class="p-2 sm:p-2.5 rounded-xl hover:bg-white/10 opacity-70 hover:opacity-100 transition text-amber-400 font-bold text-xs shrink-0" title="Send GIF">
+              <button type="button" onclick="toggleGifPicker()" class="p-2 sm:p-2.5 rounded-xl hover:bg-black/10 dark:hover:bg-white/10 opacity-70 hover:opacity-100 transition text-amber-400 font-bold text-xs shrink-0" title="Send GIF">
                 GIF
               </button>
               
-              <input type="text" id="message-text-input" placeholder="Type a message (@username or @everyone)..." class="flex-1 py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl bg-white/5 text-xs outline-none focus:ring-1 focus:ring-blue-500 transition min-w-0 border border-white/10">
+              <input type="text" id="message-text-input" placeholder="Type a message (@username or @everyone)..." class="flex-1 py-2 sm:py-2.5 px-3 sm:px-4 rounded-xl bg-gray-100 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500 transition min-w-0">
               
-              <button type="submit" class="p-2 sm:p-2.5 theme-brand-bg rounded-xl shadow-md hover:opacity-90 transition shrink-0">
+              <button type="submit" class="p-2 sm:p-2.5 theme-brand-bg text-white rounded-xl shadow-md hover:opacity-90 transition shrink-0">
                 <i class="fa-solid fa-paper-plane text-xs"></i>
               </button>
             </form>
@@ -651,92 +932,89 @@
   </div>
 
   <!-- NEW CHAT MODAL -->
-  <div id="new-chat-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="theme-card rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+  <div id="new-chat-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="theme-card rounded-2xl max-w-md w-full p-6 border shadow-2xl relative">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-base font-bold">Start New Conversation</h3>
         <button onclick="closeModal('new-chat-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
-      <div id="modal-new-chat-alert" class="hidden mb-4 p-3 rounded-xl text-xs bg-rose-500/20 border border-rose-500/40 text-rose-300"></div>
+      <div id="modal-new-chat-alert" class="hidden mb-4 p-3 rounded-lg text-xs bg-red-500/10 border border-red-500/30 text-red-500"></div>
 
       <div class="space-y-4">
         <div>
           <label class="block text-xs font-semibold opacity-70 mb-1">Target Username(s)</label>
-          <input type="text" id="target-usernames-input" placeholder="e.g. john, sarah (comma separated for groups)" class="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs outline-none focus:ring-1 focus:ring-blue-500">
+          <input type="text" id="target-usernames-input" placeholder="e.g. john, sarah (comma separated for groups)" class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
         </div>
 
         <div>
           <label class="block text-xs font-semibold opacity-70 mb-1">Group Title (Optional)</label>
-          <input type="text" id="group-title-input" placeholder="e.g. Weekend Crew" class="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs outline-none focus:ring-1 focus:ring-blue-500">
+          <input type="text" id="group-title-input" placeholder="e.g. Weekend Crew" class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
         </div>
 
-        <button onclick="createConversation()" class="w-full py-3 theme-brand-bg text-xs font-semibold rounded-xl shadow-md hover:opacity-90 transition">
+        <button onclick="createConversation()" class="w-full py-2.5 theme-brand-bg text-white text-xs font-semibold rounded-xl shadow-md hover:opacity-90 transition">
           Create Chat
         </button>
       </div>
     </div>
   </div>
 
-  <!-- ADD PARTICIPANT MODAL -->
-  <div id="add-participant-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="theme-card rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
+  <!-- ADD PARTICIPANT TO GROUP CHAT MODAL -->
+  <div id="add-participant-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="theme-card rounded-2xl max-w-md w-full p-6 border shadow-2xl relative">
       <div class="flex items-center justify-between mb-4">
         <h3 class="text-base font-bold">Add Participant to Group Chat</h3>
         <button onclick="closeModal('add-participant-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
-      <div id="modal-add-participant-alert" class="hidden mb-4 p-3 rounded-xl text-xs bg-rose-500/20 border border-rose-500/40 text-rose-300"></div>
+      <div id="modal-add-participant-alert" class="hidden mb-4 p-3 rounded-lg text-xs bg-red-500/10 border border-red-500/30 text-red-500"></div>
 
       <div class="space-y-4">
         <div>
           <label class="block text-xs font-semibold opacity-70 mb-1">Username to Add</label>
-          <input type="text" id="new-participant-input" placeholder="e.g. alex" class="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs outline-none focus:ring-1 focus:ring-blue-500">
+          <input type="text" id="new-participant-input" placeholder="e.g. alex" class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
         </div>
 
-        <button onclick="submitAddParticipant()" class="w-full py-3 theme-brand-bg text-xs font-semibold rounded-xl shadow-md hover:opacity-90 transition">
+        <button onclick="submitAddParticipant()" class="w-full py-2.5 theme-brand-bg text-white text-xs font-semibold rounded-xl shadow-md hover:opacity-90 transition">
           Add to Group
         </button>
       </div>
     </div>
   </div>
 
-  <!-- KICK / MANAGE PARTICIPANTS MODAL -->
-  <div id="kick-participant-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="theme-card rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-base font-bold">Manage / Kick Group Members</h3>
-        <button onclick="closeModal('kick-participant-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
-      </div>
-      <p class="text-xs opacity-70 mb-3">As group admin, you can remove members from this chat:</p>
-      <div id="kick-participants-list" class="space-y-2 max-h-60 overflow-y-auto"></div>
-    </div>
-  </div>
-
-  <!-- EDIT GROUP SETTINGS MODAL -->
-  <div id="edit-group-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="theme-card rounded-3xl max-w-md w-full p-6 shadow-2xl relative">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-base font-bold">Edit Group Settings</h3>
+  <!-- EDIT GROUP SETTINGS & ADMIN KICK MODAL -->
+  <div id="edit-group-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="theme-card rounded-2xl max-w-md w-full p-6 border shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-4">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-base font-bold">Group Settings & Members</h3>
         <button onclick="closeModal('edit-group-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
       </div>
 
-      <div class="space-y-4">
+      <div id="modal-edit-group-alert" class="hidden mb-2 p-3 rounded-lg text-xs bg-red-500/10 border border-red-500/30 text-red-500"></div>
+
+      <div class="space-y-3">
         <div>
           <label class="block text-xs font-semibold opacity-70 mb-1">Group Title</label>
-          <input type="text" id="edit-group-title-input" placeholder="Group name..." class="w-full px-3 py-2.5 rounded-xl border border-white/10 bg-white/5 text-xs outline-none focus:ring-1 focus:ring-blue-500">
+          <input type="text" id="edit-group-title-input" placeholder="Group name..." class="w-full px-3 py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-xs outline-none focus:ring-1 focus:ring-blue-500">
         </div>
 
         <div>
           <label class="block text-xs font-semibold opacity-70 mb-1">Group Profile Picture</label>
-          <div class="flex items-center space-x-3 bg-white/5 p-3 rounded-2xl border border-white/10">
-            <div id="edit-group-avatar-preview" class="w-12 h-12 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg overflow-hidden shrink-0 shadow-md">?</div>
+          <div class="flex items-center space-x-3 bg-black/5 dark:bg-white/5 p-3 rounded-xl">
+            <div id="edit-group-avatar-preview" class="w-12 h-12 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg overflow-hidden shrink-0 shadow-inner">?</div>
             <input type="file" id="edit-group-avatar-file" accept="image/*" onchange="handleGroupAvatarSelect(event)" class="hidden">
-            <button type="button" onclick="document.getElementById('edit-group-avatar-file').click()" class="px-3 py-1.5 theme-brand-bg rounded-xl text-xs font-semibold">Upload Picture</button>
+            <button type="button" onclick="document.getElementById('edit-group-avatar-file').click()" class="px-3 py-1.5 theme-brand-bg text-white rounded-lg text-xs font-semibold hover:opacity-90">Upload Picture</button>
           </div>
         </div>
 
-        <button onclick="submitEditGroup()" class="w-full py-3 theme-brand-bg text-xs font-semibold rounded-xl shadow-md hover:opacity-90 transition">
+        <div>
+          <label class="block text-xs font-semibold opacity-70 mb-1">Participants & Admin Controls</label>
+          <div id="group-participants-management-list" class="space-y-2 max-h-40 overflow-y-auto bg-black/5 dark:bg-white/5 p-2 rounded-xl">
+            <!-- Rendered dynamically -->
+          </div>
+        </div>
+
+        <button onclick="submitEditGroup()" class="w-full py-2.5 theme-brand-bg text-white text-xs font-semibold rounded-xl shadow-md hover:opacity-90 transition">
           Save Group Changes
         </button>
       </div>
@@ -744,11 +1022,11 @@
   </div>
 
   <!-- SETTINGS & THEMES MODAL -->
-  <div id="settings-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 hidden">
-    <div class="theme-card rounded-3xl max-w-2xl w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-6">
-      <div class="flex items-center justify-between border-b pb-3 border-white/10">
+  <div id="settings-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
+    <div class="theme-card rounded-2xl max-w-2xl w-full p-6 border shadow-2xl relative max-h-[90vh] overflow-y-auto space-y-6">
+      <div class="flex items-center justify-between border-b pb-3 border-black/10 dark:border-white/10">
         <h3 class="text-base font-bold flex items-center space-x-2">
-          <i class="fa-solid fa-gear text-blue-400"></i>
+          <i class="fa-solid fa-gear text-blue-500"></i>
           <span>Settings & Preferences</span>
         </h3>
         <button onclick="closeModal('settings-modal')" class="opacity-60 hover:opacity-100"><i class="fa-solid fa-xmark text-lg"></i></button>
@@ -757,11 +1035,11 @@
       <!-- Profile Picture Section -->
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Profile Avatar</h4>
-        <div class="flex items-center space-x-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-          <div id="settings-avatar-preview" class="w-12 h-12 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg overflow-hidden shadow-md shrink-0">?</div>
+        <div class="flex items-center space-x-4 bg-black/5 dark:bg-white/5 p-4 rounded-xl">
+          <div id="settings-avatar-preview" class="w-12 h-12 rounded-full theme-brand-bg flex items-center justify-center font-bold text-lg overflow-hidden shadow-inner shrink-0">?</div>
           <div class="truncate">
             <input type="file" id="avatar-file-input" accept="image/*" onchange="handleAvatarSelect(event)" class="hidden">
-            <button onclick="document.getElementById('avatar-file-input').click()" class="px-3 py-2 theme-brand-bg rounded-xl text-xs font-semibold hover:opacity-90 transition">Change Profile Picture</button>
+            <button onclick="document.getElementById('avatar-file-input').click()" class="px-3 py-1.5 theme-brand-bg text-white rounded-lg text-xs font-semibold hover:opacity-90 transition">Change Profile Picture</button>
             <p class="text-[11px] opacity-60 mt-1 truncate">Upload an image to serve as your profile icon.</p>
           </div>
         </div>
@@ -770,19 +1048,19 @@
       <!-- Notifications Toggle Section -->
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Notifications</h4>
-        <div class="flex items-center justify-between bg-white/5 p-4 rounded-2xl border border-white/10">
+        <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl">
           <div class="pr-3">
-            <p class="text-xs font-semibold">Enable Push & Audio Notifications</p>
-            <p class="text-[11px] opacity-60">Play audio chime & desktop alerts when messages arrive.</p>
+            <p class="text-xs font-semibold">Enable Push Notifications (Background & Tab Alerts)</p>
+            <p class="text-[11px] opacity-60">Receive desktop/mobile push alerts when new messages arrive.</p>
           </div>
-          <button onclick="requestNotificationPermission()" class="px-3 py-2 theme-brand-bg rounded-xl text-xs font-semibold hover:opacity-90 transition shrink-0">Enable Alerts</button>
+          <button onclick="requestNotificationPermission()" class="px-3 py-1.5 theme-brand-bg text-white rounded-lg text-xs font-semibold hover:opacity-90 transition shrink-0">Enable Alerts</button>
         </div>
       </div>
 
       <!-- Privacy Section -->
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Privacy & Approval</h4>
-        <div class="flex items-center justify-between bg-white/5 p-4 rounded-2xl border border-white/10">
+        <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl">
           <div class="pr-3">
             <p class="text-xs font-semibold">Message Approval Required</p>
             <p class="text-[11px] opacity-60">People cannot message you unless they are on your friends list.</p>
@@ -793,54 +1071,73 @@
 
       <!-- Appearance Section -->
       <div>
-        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">🎨 Solid Colors</h4>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-4">
-          <button onclick="setTheme('solid-black')" class="p-3 rounded-2xl border border-white/10 bg-black text-xs font-semibold text-center hover:scale-105 transition text-white">⚫ Solid Black</button>
-          <button onclick="setTheme('solid-navy')" class="p-3 rounded-2xl border border-white/10 bg-slate-900 text-xs font-semibold text-center hover:scale-105 transition text-sky-300">🔵 Solid Navy</button>
-          <button onclick="setTheme('solid-charcoal')" class="p-3 rounded-2xl border border-white/10 bg-zinc-900 text-xs font-semibold text-center hover:scale-105 transition text-purple-300">⬛ Solid Charcoal</button>
-          <button onclick="setTheme('solid-emerald')" class="p-3 rounded-2xl border border-white/10 bg-emerald-950 text-xs font-semibold text-center hover:scale-105 transition text-emerald-300">🟢 Solid Emerald</button>
-          <button onclick="setTheme('solid-crimson')" class="p-3 rounded-2xl border border-white/10 bg-rose-950 text-xs font-semibold text-center hover:scale-105 transition text-rose-300">🔴 Solid Crimson</button>
+        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">Appearance & Solid/Gradient Themes</h4>
+        <div class="flex items-center justify-between bg-black/5 dark:bg-white/5 p-4 rounded-xl mb-4">
+          <span class="text-sm font-semibold">Dark Mode</span>
+          <button onclick="toggleDarkMode()" class="px-4 py-2 rounded-xl bg-black/10 dark:bg-white/10 text-xs font-semibold flex items-center space-x-2 shrink-0">
+            <i class="fa-solid fa-moon text-amber-400"></i>
+            <span id="darkmode-toggle-text">Toggle Mode</span>
+          </button>
         </div>
 
-        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">⚡ Vibrant Gradients</h4>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-4">
-          <button onclick="setTheme('gradient-electric')" class="p-3 rounded-2xl border border-white/10 bg-indigo-900/50 text-xs font-semibold text-center hover:scale-105 transition">⚡ Electric Indigo</button>
-          <button onclick="setTheme('gradient-sunset')" class="p-3 rounded-2xl border border-white/10 bg-orange-950/50 text-xs font-semibold text-center hover:scale-105 transition">🌅 Sunset Flare</button>
-          <button onclick="setTheme('gradient-aurora')" class="p-3 rounded-2xl border border-white/10 bg-teal-950/50 text-xs font-semibold text-center hover:scale-105 transition">🌌 Deep Aurora</button>
-          <button onclick="setTheme('gradient-cyberpunk')" class="p-3 rounded-2xl border border-white/10 bg-fuchsia-950/50 text-xs font-semibold text-center hover:scale-105 transition">👾 Cyberpunk Punch</button>
-        </div>
-
-        <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-3">🎃 Holiday Themes (With Background Atmosphere & Emojis)</h4>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-          <button onclick="setTheme('holiday-halloween')" class="p-3 rounded-2xl border border-white/10 bg-purple-950/60 text-xs font-semibold text-center hover:scale-105 transition text-orange-400">🎃 Halloween</button>
-          <button onclick="setTheme('holiday-christmas')" class="p-3 rounded-2xl border border-white/10 bg-emerald-950/60 text-xs font-semibold text-center hover:scale-105 transition text-red-400">🎄 Christmas</button>
-          <button onclick="setTheme('holiday-valentine')" class="p-3 rounded-2xl border border-white/10 bg-pink-950/60 text-xs font-semibold text-center hover:scale-105 transition text-pink-300">💖 Valentine</button>
-          <button onclick="setTheme('holiday-newyear')" class="p-3 rounded-2xl border border-white/10 bg-amber-950/60 text-xs font-semibold text-center hover:scale-105 transition text-amber-300">✨ New Year</button>
+        <p class="text-xs font-semibold mb-2">Select Theme & Color Palette</p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          <button onclick="setTheme('default')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>Default</span></button>
+          <button onclick="setTheme('solid-dark')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⬛ Solid Dark</span></button>
+          <button onclick="setTheme('solid-light')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⬜ Solid Light</span></button>
+          <button onclick="setTheme('solid-black')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🖤 OLED Black</span></button>
+          <button onclick="setTheme('solid-red')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🔴 Solid Red</span></button>
+          <button onclick="setTheme('solid-green')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🟢 Solid Green</span></button>
+          <button onclick="setTheme('solid-blue')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🔵 Solid Blue</span></button>
+          <button onclick="setTheme('emerald')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>Emerald</span></button>
+          <button onclick="setTheme('cyberpunk')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⚡ Cyberpunk</span></button>
+          <button onclick="setTheme('halloween')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🎃 Halloween</span></button>
+          <button onclick="setTheme('christmas')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🎄 Christmas</span></button>
+          <button onclick="setTheme('valentine')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>💖 Valentine</span></button>
+          <button onclick="setTheme('newyear')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>✨ New Year</span></button>
+          <button onclick="setTheme('sunset')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌅 Sunset</span></button>
+          <button onclick="setTheme('midnight')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌑 Midnight</span></button>
+          <button onclick="setTheme('ocean')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌊 Ocean</span></button>
+          <button onclick="setTheme('lavender')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🍇 Lavender</span></button>
+          <button onclick="setTheme('cherry')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🍒 Cherry</span></button>
+          <button onclick="setTheme('gold')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>👑 Gold</span></button>
+          <button onclick="setTheme('matrix')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>💻 Matrix</span></button>
+          <button onclick="setTheme('retro')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>📼 Vaporwave</span></button>
+          <button onclick="setTheme('coffee')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>☕ Coffee</span></button>
+          <button onclick="setTheme('arctic')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>❄️ Arctic</span></button>
+          <button onclick="setTheme('aurora')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌌 Aurora</span></button>
+          <button onclick="setTheme('galaxy')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🪐 Galaxy</span></button>
+          <button onclick="setTheme('autumn')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🍂 Autumn</span></button>
+          <button onclick="setTheme('peach')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🍑 Peach</span></button>
+          <button onclick="setTheme('monochrome')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🦓 Monochrome</span></button>
+          <button onclick="setTheme('neon')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⚡ Neon Lime</span></button>
+          <button onclick="setTheme('amethyst')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🔮 Amethyst</span></button>
+          <button onclick="setTheme('sakura')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>🌸 Sakura</span></button>
         </div>
       </div>
 
       <!-- Changelog Section -->
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
-        <div class="bg-white/5 p-4 rounded-2xl text-xs space-y-2 border border-white/10">
-          <div class="flex items-center justify-between pb-2 border-b border-white/10">
-            <span class="font-bold text-blue-400">Echo Messenger v3.8.0</span>
+        <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
+          <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
+            <span class="font-bold text-blue-400">Echo Messenger v3.6.0</span>
             <span class="text-[10px] opacity-60">Latest Release</span>
           </div>
-          <p class="font-semibold text-amber-400 flex items-center space-x-1">
+          <p class="font-semibold text-amber-500 flex items-center space-x-1">
             <i class="fa-solid fa-code"></i>
             <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
           </p>
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
-            <li>Restored all solid color themes and vibrant popping gradients.</li>
-            <li>Restored holiday themes featuring background ambient emojis and custom atmosphere.</li>
-            <li>Group admin kick, WebRTC calling, and audio notifications fully active.</li>
+            <li>Added Group Admin Kick feature for group creators.</li>
+            <li>Added solid color themes (Solid Dark, Solid Black, Solid Red, etc.).</li>
+            <li>Upgraded notifications for background tabs and minimized windows.</li>
           </ul>
         </div>
       </div>
 
-      <div class="pt-2 border-t border-white/10">
-        <button onclick="handleLogout()" class="w-full py-3 bg-rose-500/80 hover:bg-rose-600 font-semibold rounded-xl transition flex items-center justify-center space-x-2 text-xs">
+      <div class="pt-2 border-t border-gray-200 dark:border-gray-700">
+        <button onclick="handleLogout()" class="w-full py-3 bg-rose-500 text-white font-semibold rounded-xl hover:bg-rose-600 transition flex items-center justify-center space-x-2 text-xs">
           <i class="fa-solid fa-right-from-bracket"></i>
           <span>Sign Out of Account</span>
         </button>
@@ -850,14 +1147,14 @@
 
   <!-- VIDEO/AUDIO CALL MODAL OVERLAY -->
   <div id="call-modal" class="fixed inset-0 z-50 bg-black/90 flex flex-col items-center justify-center p-4 hidden">
-    <div class="relative w-full max-w-4xl bg-slate-900 rounded-3xl overflow-hidden border border-white/10 shadow-2xl flex flex-col h-[80vh]">
-      <div class="p-4 bg-slate-800/80 flex items-center justify-between border-b border-white/10">
+    <div class="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden border border-gray-700 shadow-2xl flex flex-col h-[80vh]">
+      <div class="p-4 bg-gray-800 flex items-center justify-between">
         <h3 id="call-title" class="font-bold text-white text-sm">Echo Secure Call</h3>
-        <button onclick="endCall()" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-xl text-xs font-semibold">End Call</button>
+        <button onclick="endCall()" class="px-3 py-1.5 bg-rose-500 hover:bg-rose-600 text-white rounded-lg text-xs font-semibold">End Call</button>
       </div>
       <div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-2 p-2 bg-black relative">
-        <video id="local-video" autoplay muted playsinline class="w-full h-full object-cover rounded-2xl bg-slate-800"></video>
-        <video id="remote-video" autoplay playsinline class="w-full h-full object-cover rounded-2xl bg-slate-800"></video>
+        <video id="local-video" autoplay muted playsinline class="w-full h-full object-cover rounded-xl bg-gray-800"></video>
+        <video id="remote-video" autoplay playsinline class="w-full h-full object-cover rounded-xl bg-gray-800"></video>
       </div>
     </div>
   </div>
@@ -916,24 +1213,6 @@
 
     const GIPHY_API_KEY = "H4ANxvnXMow7tMhtH0Wj0o7RFgWw8FH8";
 
-    // AUDIO NOTIFICATION CHIME GENERATOR
-    function playNotificationChime() {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.15); // A5
-        gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.3);
-      } catch (e) {}
-    }
-
     async function hashString(str) {
       const encoder = new TextEncoder();
       const data = encoder.encode(str);
@@ -970,13 +1249,13 @@
     window.switchAuthTab = (tab) => {
       document.getElementById('auth-alert').classList.add('hidden');
       if (tab === 'login') {
-        document.getElementById('tab-login-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-500 text-blue-400";
-        document.getElementById('tab-register-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent opacity-60 hover:opacity-100";
+        document.getElementById('tab-login-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400";
+        document.getElementById('tab-register-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400";
         document.getElementById('login-form').classList.remove('hidden');
         document.getElementById('register-form').classList.add('hidden');
       } else {
-        document.getElementById('tab-register-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-500 text-blue-400";
-        document.getElementById('tab-login-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent opacity-60 hover:opacity-100";
+        document.getElementById('tab-register-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-blue-600 text-blue-600 dark:text-blue-400";
+        document.getElementById('tab-login-btn').className = "flex-1 pb-3 text-center text-sm font-semibold border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400";
         document.getElementById('register-form').classList.remove('hidden');
         document.getElementById('login-form').classList.add('hidden');
       }
@@ -1067,20 +1346,32 @@
       }
       const permission = await Notification.requestPermission();
       if (permission === "granted") {
-        alert("Notifications & audio chimes enabled successfully!");
+        alert("Notifications enabled successfully!");
       } else {
         alert("Notification permission denied.");
       }
     };
 
     function triggerPushNotification(sender, text) {
-      playNotificationChime();
       if (Notification.permission === "granted" && sender !== currentUser.username) {
         const isMentioned = text.includes(`@${currentUser.username}`) || text.includes('@everyone');
-        new Notification(isMentioned ? `🚨 Mentioned by @${sender}` : `New message from @${sender}`, {
-          body: text || '[Media Attachment]',
-          icon: 'https://cdn-icons-png.flaticon.com/512/1341/1341593.png'
-        });
+        const notifTitle = isMentioned ? `🚨 Mentioned by @${sender}` : `New message from @${sender}`;
+        
+        if (document.visibilityState === 'hidden') {
+          // Trigger persistent background notification if supported
+          try {
+            navigator.serviceWorker?.ready.then(reg => {
+              reg.showNotification(notifTitle, {
+                body: text || '[Media Attachment]',
+                icon: 'https://cdn-icons-png.flaticon.com/512/1341/1341593.png'
+              });
+            });
+          } catch(e) {
+            new Notification(notifTitle, { body: text || '[Media Attachment]' });
+          }
+        } else {
+          new Notification(notifTitle, { body: text || '[Media Attachment]' });
+        }
       }
     }
 
@@ -1139,6 +1430,9 @@
             }
             lastKnownMessageCounts[chatId] = messages.length;
             rawChats.push({ id: chatId, ...data });
+          } else if (chatId === activeChatId) {
+            // User was kicked from active chat
+            backToChatsList();
           }
         });
         chatsData = rawChats;
@@ -1165,13 +1459,13 @@
       const friendsContainer = document.getElementById('sidebar-friends-container');
 
       if (tab === 'chats') {
-        chatsTab.className = "flex-1 py-1.5 rounded-lg theme-brand-bg font-semibold shadow-sm transition";
-        friendsTab.className = "flex-1 py-1.5 rounded-lg hover:bg-white/10 transition flex items-center justify-center space-x-1 opacity-80";
+        chatsTab.className = "flex-1 py-1.5 rounded-lg theme-brand-bg text-white font-semibold shadow-xs transition";
+        friendsTab.className = "flex-1 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition flex items-center justify-center space-x-1";
         chatsContainer.classList.remove('hidden');
         friendsContainer.classList.add('hidden');
       } else {
-        friendsTab.className = "flex-1 py-1.5 rounded-lg theme-brand-bg font-semibold shadow-sm transition flex items-center justify-center space-x-1";
-        chatsTab.className = "flex-1 py-1.5 rounded-lg hover:bg-white/10 transition opacity-80";
+        friendsTab.className = "flex-1 py-1.5 rounded-lg theme-brand-bg text-white font-semibold shadow-xs transition flex items-center justify-center space-x-1";
+        chatsTab.className = "flex-1 py-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition";
         friendsContainer.classList.remove('hidden');
         chatsContainer.classList.add('hidden');
       }
@@ -1212,8 +1506,8 @@
       const div = document.createElement('div');
       const isActive = chat.id === activeChatId;
       
-      div.className = `p-3 rounded-2xl flex items-center justify-between cursor-pointer transition ${
-        isActive ? 'theme-brand-bg shadow-lg scale-102' : 'hover:bg-white/10'
+      div.className = `p-3 rounded-xl flex items-center justify-between cursor-pointer transition ${
+        isActive ? 'theme-brand-bg text-white shadow-md' : 'hover:bg-gray-100 dark:hover:bg-gray-700/60'
       }`;
 
       let displayTitle = chat.title;
@@ -1224,9 +1518,9 @@
 
       let avatarMarkup = '';
       if (chat.groupAvatar) {
-        avatarMarkup = `<div class="w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-md"><img src="${chat.groupAvatar}" class="w-full h-full object-cover"></div>`;
+        avatarMarkup = `<div class="w-10 h-10 rounded-full overflow-hidden shrink-0"><img src="${chat.groupAvatar}" class="w-full h-full object-cover"></div>`;
       } else {
-        avatarMarkup = `<div class="w-10 h-10 rounded-full ${isActive ? 'bg-white/20 text-white' : 'bg-white/10 text-gray-200'} flex items-center justify-center font-bold text-sm shrink-0 shadow-md">${displayTitle.charAt(0).toUpperCase()}</div>`;
+        avatarMarkup = `<div class="w-10 h-10 rounded-full ${isActive ? 'bg-white/20 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200'} flex items-center justify-center font-bold text-sm shrink-0">${displayTitle.charAt(0).toUpperCase()}</div>`;
       }
 
       const lastMsg = chat.messages && chat.messages.length > 0 ? chat.messages[chat.messages.length - 1] : null;
@@ -1238,8 +1532,8 @@
         <div class="flex items-center space-x-3 truncate">
           ${avatarMarkup}
           <div class="truncate">
-            <h4 class="font-semibold text-xs truncate ${isActive ? 'text-white' : 'text-gray-100'}">${displayTitle}</h4>
-            <p class="text-[11px] truncate ${isActive ? 'text-white/80' : 'opacity-60'}">${lastText}</p>
+            <h4 class="font-semibold text-xs truncate ${isActive ? 'text-white' : 'text-gray-800 dark:text-gray-200'}">${displayTitle}</h4>
+            <p class="text-[11px] truncate ${isActive ? 'text-white/80' : 'text-gray-500 dark:text-gray-400'}">${lastText}</p>
           </div>
         </div>
       `;
@@ -1308,23 +1602,15 @@
         activeAvatarEl.textContent = displayTitle.charAt(0).toUpperCase();
       }
 
-      // Group management buttons
+      // Show group management buttons only for group chats
       const groupAddBtn = document.getElementById('group-add-member-btn');
       const groupSettingsBtn = document.getElementById('group-settings-btn');
-      const groupKickBtn = document.getElementById('group-kick-member-btn');
-
       if (chat.isGroup) {
         groupAddBtn.classList.remove('hidden');
         groupSettingsBtn.classList.remove('hidden');
-        if (chat.createdBy === currentUser.username) {
-          groupKickBtn.classList.remove('hidden');
-        } else {
-          groupKickBtn.classList.add('hidden');
-        }
       } else {
         groupAddBtn.classList.add('hidden');
         groupSettingsBtn.classList.add('hidden');
-        groupKickBtn.classList.add('hidden');
       }
 
       const pinBar = document.getElementById('chat-pinned-message-bar');
@@ -1344,7 +1630,7 @@
         if (isSystem) {
           const sysDiv = document.createElement('div');
           sysDiv.className = "flex justify-center my-2";
-          sysDiv.innerHTML = `<span class="bg-white/15 px-3 py-1 rounded-full text-[10px] italic opacity-80">${escapeHTML(msg.text)}</span>`;
+          sysDiv.innerHTML = `<span class="bg-black/20 dark:bg-white/20 px-3 py-1 rounded-full text-[10px] italic opacity-80">${escapeHTML(msg.text)}</span>`;
           msgContainer.appendChild(sysDiv);
           return;
         }
@@ -1356,9 +1642,9 @@
         let mediaHTML = '';
         if (msg.media) {
           if (msg.mediaType === 'video') {
-            mediaHTML = `<video src="${msg.media}" controls class="max-w-xs rounded-xl mb-1 max-h-48 shadow-md"></video>`;
+            mediaHTML = `<video src="${msg.media}" controls class="max-w-xs rounded-lg mb-1 max-h-48"></video>`;
           } else {
-            mediaHTML = `<img src="${msg.media}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'p-3 bg-white/10 rounded-xl text-xs italic\\'>🎬 [GIF / Media Filtered]</div>';" class="max-w-xs rounded-xl mb-1 object-cover max-h-48 shadow-md">`;
+            mediaHTML = `<img src="${msg.media}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'p-3 bg-black/20 rounded-lg text-xs italic\\'>🎬 [GIF / Media Filtered by School Network]</div>';" class="max-w-xs rounded-lg mb-1 object-cover max-h-48">`;
           }
         }
 
@@ -1376,33 +1662,33 @@
           reactionsHTML = `<div class="flex flex-wrap gap-1 mt-1">`;
           for (const [emoji, users] of Object.entries(msg.reactions)) {
             if (users.length > 0) {
-              reactionsHTML += `<span onclick="toggleReaction('${msg.id}', '${emoji}')" class="text-[10px] bg-white/15 px-2 py-0.5 rounded-full cursor-pointer hover:scale-110 transition">${emoji} ${users.length}</span>`;
+              reactionsHTML += `<span onclick="toggleReaction('${msg.id}', '${emoji}')" class="text-[10px] bg-black/15 dark:bg-white/15 px-1.5 py-0.5 rounded-full cursor-pointer hover:scale-105">${emoji} ${users.length}</span>`;
             }
           }
           reactionsHTML += `</div>`;
         }
 
-        let deleteBtnHTML = isMe ? `<button onclick="deleteMessage('${msg.id}')" class="p-1 hover:text-rose-400" title="Delete Message"><i class="fa-solid fa-trash"></i></button>` : '';
+        let deleteBtnHTML = isMe ? `<button onclick="deleteMessage('${msg.id}')" class="p-1 hover:text-rose-500" title="Delete Message"><i class="fa-solid fa-trash"></i></button>` : '';
 
         let avatarHTML = '';
         if (!isMe) {
           const senderAvatarUrl = usersAvatarsMap[msg.sender];
           if (senderAvatarUrl) {
-            avatarHTML = `<div class="w-7 h-7 rounded-full overflow-hidden shrink-0 shadow-md"><img src="${senderAvatarUrl}" onerror="this.src=''; this.textContent='${msg.sender.charAt(0).toUpperCase()}';" class="w-full h-full object-cover"></div>`;
+            avatarHTML = `<div class="w-7 h-7 rounded-full overflow-hidden shrink-0 shadow-xs"><img src="${senderAvatarUrl}" onerror="this.src=''; this.textContent='${msg.sender.charAt(0).toUpperCase()}';" class="w-full h-full object-cover"></div>`;
           } else {
-            avatarHTML = `<div class="w-7 h-7 rounded-full theme-brand-bg flex items-center justify-center font-bold text-[10px] shrink-0 shadow-md">${msg.sender.charAt(0).toUpperCase()}</div>`;
+            avatarHTML = `<div class="w-7 h-7 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold text-[10px] shrink-0 shadow-xs">${msg.sender.charAt(0).toUpperCase()}</div>`;
           }
         }
 
         msgWrapper.innerHTML = `
-          <div class="text-[10px] opacity-60 px-1">${isMe ? 'You' : '@' + msg.sender} • ${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+          <div class="text-[10px] opacity-70 px-1">${isMe ? 'You' : '@' + msg.sender} • ${new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
           <div class="flex items-end space-x-2 ${isMe ? 'flex-row-reverse space-x-reverse' : ''}">
             ${avatarHTML}
             <div class="relative max-w-xs md:max-w-md">
-              <div class="p-3.5 rounded-2xl text-xs ${
+              <div class="p-3 rounded-2xl text-xs ${
                 isMe 
-                  ? 'theme-bubble-me rounded-tr-none' 
-                  : 'theme-bubble-other rounded-tl-none'
+                  ? 'theme-bubble-me rounded-tr-none shadow-md' 
+                  : 'theme-bubble-other rounded-tl-none shadow-sm'
               }">
                 ${replyHTML}
                 ${mediaHTML}
@@ -1410,11 +1696,11 @@
                 ${reactionsHTML}
               </div>
 
-              <div class="absolute top-0 ${isMe ? '-left-28' : '-right-28'} hidden group-hover:flex items-center space-x-1 theme-card border rounded-xl p-1 shadow-2xl z-10 text-[10px]">
-                <button onclick="setReply('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-blue-400" title="Reply"><i class="fa-solid fa-reply"></i></button>
+              <div class="absolute top-0 ${isMe ? '-left-28' : '-right-28'} hidden group-hover:flex items-center space-x-1 theme-card border rounded-lg p-1 shadow-md z-10 text-[10px]">
+                <button onclick="setReply('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-blue-500" title="Reply"><i class="fa-solid fa-reply"></i></button>
                 <button onclick="toggleReaction('${msg.id}', '❤️')" class="p-1 hover:scale-125 transition">❤️</button>
                 <button onclick="toggleReaction('${msg.id}', '😂')" class="p-1 hover:scale-125 transition">😂</button>
-                <button onclick="pinChatMessage('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-amber-400" title="Pin"><i class="fa-solid fa-thumbtack"></i></button>
+                <button onclick="pinChatMessage('${msg.id}', '${msg.sender}', '${escapeJS(msg.text)}')" class="p-1 hover:text-amber-500" title="Pin"><i class="fa-solid fa-thumbtack"></i></button>
                 ${deleteBtnHTML}
               </div>
             </div>
@@ -1430,10 +1716,10 @@
     function formatMessageText(text) {
       if (!text) return '';
       const safeText = escapeHTML(text);
-      let formatted = safeText.replace(/@everyone/g, '<span class="bg-amber-500/30 text-amber-300 font-bold px-1.5 py-0.5 rounded">@everyone</span>');
+      let formatted = safeText.replace(/@everyone/g, '<span class="bg-amber-500/20 text-amber-300 font-bold px-1.5 py-0.5 rounded">@everyone</span>');
       formatted = formatted.replace(/@([a-zA-Z0-9_]+)/g, (match, username) => {
         if (username === 'everyone') return match;
-        return `<span class="bg-blue-500/30 text-blue-300 font-bold px-1.5 py-0.5 rounded">@${username}</span>`;
+        return `<span class="bg-blue-500/20 text-blue-300 font-bold px-1.5 py-0.5 rounded">@${username}</span>`;
       });
       return formatted;
     }
@@ -1585,7 +1871,7 @@
 
         const previewContainer = document.getElementById('media-preview-container');
         if (isVideo) {
-          previewContainer.innerHTML = `<i class="fa-solid fa-file-video text-blue-400 text-xl"></i>`;
+          previewContainer.innerHTML = `<i class="fa-solid fa-file-video text-blue-500 text-xl"></i>`;
         } else {
           previewContainer.innerHTML = `<img src="${event.target.result}" class="w-full h-full object-cover">`;
         }
@@ -1620,7 +1906,7 @@
       reader.readAsDataURL(file);
     };
 
-    // GROUP SETTINGS & KICK MEMBER FEATURES
+    // GROUP SETTINGS, AVATAR & ADMIN KICK ENGINE
     window.openGroupSettingsModal = () => {
       const chat = chatsData.find(c => c.id === activeChatId);
       if (!chat || !chat.isGroup) return;
@@ -1634,6 +1920,31 @@
       } else {
         previewEl.textContent = (chat.title || 'G').charAt(0).toUpperCase();
       }
+
+      const isAdmin = chat.createdBy === currentUser.username;
+      const participantsListEl = document.getElementById('group-participants-management-list');
+      participantsListEl.innerHTML = '';
+
+      chat.participants.forEach(participant => {
+        const row = document.createElement('div');
+        row.className = "flex items-center justify-between p-2 rounded-lg bg-white dark:bg-gray-800 text-xs";
+        
+        let adminBadge = participant === chat.createdBy ? `<span class="text-[10px] bg-amber-500/20 text-amber-500 px-1.5 py-0.5 rounded font-bold ml-1">Admin</span>` : '';
+        let kickBtn = '';
+
+        if (isAdmin && participant !== currentUser.username) {
+          kickBtn = `<button type="button" onclick="kickGroupParticipant('${participant}')" class="px-2 py-1 bg-rose-500 hover:bg-rose-600 text-white rounded text-[10px]">Kick</button>`;
+        }
+
+        row.innerHTML = `
+          <div class="flex items-center space-x-1 truncate">
+            <span class="font-semibold">@${participant}</span>
+            ${adminBadge}
+          </div>
+          ${kickBtn}
+        `;
+        participantsListEl.appendChild(row);
+      });
 
       openModal('edit-group-modal');
     };
@@ -1653,6 +1964,9 @@
 
     window.submitEditGroup = async () => {
       const newTitle = document.getElementById('edit-group-title-input').value.trim();
+      const alertBox = document.getElementById('modal-edit-group-alert');
+      alertBox.classList.add('hidden');
+
       if (!activeChatId) return;
 
       const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
@@ -1680,29 +1994,7 @@
       closeModal('edit-group-modal');
     };
 
-    window.openGroupKickModal = () => {
-      const chat = chatsData.find(c => c.id === activeChatId);
-      if (!chat || !chat.isGroup || chat.createdBy !== currentUser.username) return;
-
-      const listContainer = document.getElementById('kick-participants-list');
-      listContainer.innerHTML = '';
-
-      chat.participants.forEach(participant => {
-        if (participant === currentUser.username) return;
-
-        const item = document.createElement('div');
-        item.className = "flex items-center justify-between p-2.5 bg-white/5 rounded-2xl border border-white/10 text-xs";
-        item.innerHTML = `
-          <span class="font-semibold">@${participant}</span>
-          <button onclick="kickParticipant('${participant}')" class="px-3 py-1 bg-rose-500/80 hover:bg-rose-600 text-white rounded-xl font-semibold">Kick</button>
-        `;
-        listContainer.appendChild(item);
-      });
-
-      openModal('kick-participant-modal');
-    };
-
-    window.kickParticipant = async (usernameToKick) => {
+    window.kickGroupParticipant = async (usernameToKick) => {
       if (!confirm(`Are you sure you want to kick @${usernameToKick} from this group?`)) return;
 
       const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
@@ -1711,7 +2003,7 @@
 
       const chatData = chatSnap.data();
       if (chatData.createdBy !== currentUser.username) {
-        alert("Only the group creator can kick members.");
+        alert("Only the group creator can kick participants.");
         return;
       }
 
@@ -1721,7 +2013,7 @@
       messages.push({
         id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
         sender: 'system',
-        text: `@${currentUser.username} removed @${usernameToKick} from the group.`,
+        text: `@${currentUser.username} kicked @${usernameToKick} from the group.`,
         timestamp: Date.now(),
         reactions: {}
       });
@@ -1732,8 +2024,7 @@
         lastUpdated: Date.now()
       });
 
-      closeModal('kick-participant-modal');
-      openGroupKickModal();
+      openGroupSettingsModal(); // Refresh modal list
     };
 
     // GIPHY API INTEGRATION
@@ -1747,13 +2038,13 @@
 
     async function loadTrendingGifs() {
       const container = document.getElementById('gif-results-container');
-      container.innerHTML = `<p class="text-[11px] opacity-50 col-span-2 text-center py-2">Loading GIFs...</p>`;
+      container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-2">Loading GIFs...</p>`;
       try {
         const res = await fetch(`https://api.giphy.com/v1/gifs/trending?api_key=${GIPHY_API_KEY}&limit=6`);
         const data = await res.json();
         renderGifResults(data.data);
       } catch (err) {
-        container.innerHTML = `<p class="text-[11px] text-rose-400 col-span-2 text-center py-2">Failed to load GIFs.</p>`;
+        container.innerHTML = `<p class="text-[11px] text-red-400 col-span-2 text-center py-2">Failed to load GIFs.</p>`;
       }
     }
 
@@ -1771,10 +2062,10 @@
         if (data.data && data.data.length > 0) {
           renderGifResults(data.data);
         } else {
-          container.innerHTML = `<p class="text-[11px] opacity-50 col-span-2 text-center py-4">No GIFs found</p>`;
+          container.innerHTML = `<p class="text-[11px] text-gray-400 col-span-2 text-center py-4">No GIFs found</p>`;
         }
       } catch (err) {
-        container.innerHTML = `<p class="text-[11px] text-rose-400 col-span-2 text-center py-2">Search error.</p>`;
+        container.innerHTML = `<p class="text-[11px] text-red-400 col-span-2 text-center py-2">Search error.</p>`;
       }
     };
 
@@ -1785,7 +2076,7 @@
         const imgUrl = gif.images.fixed_height_small.url;
         const img = document.createElement('img');
         img.src = imgUrl;
-        img.className = "w-full h-20 object-cover rounded-xl cursor-pointer hover:opacity-80 transition shadow-md";
+        img.className = "w-full h-20 object-cover rounded-lg cursor-pointer hover:opacity-80 transition";
         img.onclick = () => sendGifMessage(imgUrl);
         container.appendChild(img);
       });
@@ -1809,15 +2100,36 @@
         reactions: {}
       });
 
+      for (const participant of (chatData.participants || [])) {
+        if (participant !== currentUser.username) {
+          try {
+            const pDocRef = doc(PUBLIC_USERS_COL, participant);
+            const pSnap = await getDoc(pDocRef);
+            if (pSnap.exists()) {
+              const pData = pSnap.data();
+              const pHidden = pData.hiddenChats || [];
+              if (pHidden.includes(activeChatId)) {
+                const updatedHidden = pHidden.filter(id => id !== activeChatId);
+                await updateDoc(pDocRef, { hiddenChats: updatedHidden });
+              }
+            }
+          } catch(err) {}
+        }
+      }
+
       await updateDoc(chatRef, { messages: messages, lastUpdated: Date.now() });
       document.getElementById('gif-picker-popover').classList.add('hidden');
     }
 
-    // WEBRTC CALLING CONFIGURATION
+    // ROBUST WEBRTC CALLING (TURN / STUN WITH SCHOOL FIREWALL BYPASS)
     const rtcConfig = {
       iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
         { urls: 'stun:stun1.l.google.com:19302' },
+        { urls: 'stun:stun2.l.google.com:19302' },
+        { urls: 'stun:stun3.l.google.com:19302' },
+        { urls: 'stun:stun.services.mozilla.com' },
+        { urls: 'stun:stun.stunprotocol.org:3478' },
         {
           urls: 'turn:openrelay.metered.ca:80',
           username: 'openrelayproject',
@@ -1884,7 +2196,7 @@
                 if (c.sender !== currentUser.username) {
                   try {
                     await peerConnection.addIceCandidate(new RTCIceCandidate(c.candidate));
-                  } catch (e) {}
+                  } catch (e) { console.error("ICE add error:", e); }
                 }
               });
             }
@@ -1906,14 +2218,15 @@
                 if (c.sender !== currentUser.username) {
                   try {
                     await peerConnection.addIceCandidate(new RTCIceCandidate(c.candidate));
-                  } catch (e) {}
+                  } catch (e) { console.error("ICE add error:", e); }
                 }
               });
             }
           });
         }
       } catch (err) {
-        alert("Could not start call. Check permissions or network firewall restrictions.");
+        console.error("Call initialization error:", err);
+        alert("Could not start call. Check microphone/camera permissions or school firewall restrictions.");
         endCall();
       }
     }
@@ -1964,6 +2277,27 @@
             alertBox.classList.remove('hidden');
             return;
           }
+
+          const targetData = userDoc.data();
+          if (targetData.privacyApproval && (!targetData.friends || !targetData.friends.includes(currentUser.username))) {
+            alertBox.textContent = `@${target} requires friend approval before messaging. Send them a request first!`;
+            alertBox.classList.remove('hidden');
+            return;
+          }
+        }
+      }
+
+      if (uniqueParticipants.length === 2 && !groupTitle) {
+        const existing = chatsData.find(c => !c.isGroup && c.participants.length === 2 && uniqueParticipants.every(p => c.participants.includes(p)));
+        if (existing) {
+          const hiddenList = currentUser.hiddenChats || [];
+          if (hiddenList.includes(existing.id)) {
+            const updatedHidden = hiddenList.filter(id => id !== existing.id);
+            await updateDoc(doc(PUBLIC_USERS_COL, currentUser.username), { hiddenChats: updatedHidden });
+          }
+          closeModal('new-chat-modal');
+          selectChat(existing.id);
+          return;
         }
       }
 
@@ -1995,8 +2329,14 @@
       if (!chatSnap.exists()) return;
 
       const chatData = chatSnap.data();
+      if (!chatData.isGroup) {
+        alertBox.textContent = "You can only add participants to group chats.";
+        alertBox.classList.remove('hidden');
+        return;
+      }
+
       if (chatData.participants.includes(usernameToAdd)) {
-        alertBox.textContent = `@${usernameToAdd} is already in this group.`;
+        alertBox.textContent = `@${usernameToAdd} is already in this group chat.`;
         alertBox.classList.remove('hidden');
         return;
       }
@@ -2072,10 +2412,12 @@
 
       reqs.forEach(req => {
         const item = document.createElement('div');
-        item.className = "flex items-center justify-between p-2.5 bg-white/5 rounded-2xl border border-white/10 text-xs";
+        item.className = "flex items-center justify-between p-2 bg-white dark:bg-gray-800 rounded-lg text-xs shadow-xs border border-gray-200 dark:border-gray-700";
         item.innerHTML = `
           <span class="font-semibold">@${req.from}</span>
-          <button onclick="acceptFriendRequest('${req.id}', '${req.from}')" class="px-3 py-1 bg-emerald-500 text-white rounded-xl font-semibold">Accept</button>
+          <div class="flex space-x-1">
+            <button onclick="acceptFriendRequest('${req.id}', '${req.from}')" class="px-2 py-1 bg-emerald-500 text-white rounded hover:bg-emerald-600">Accept</button>
+          </div>
         `;
         list.appendChild(item);
       });
@@ -2102,13 +2444,13 @@
 
       const friends = currentUser.friends || [];
       if (friends.length === 0) {
-        container.innerHTML = `<p class="text-xs opacity-50 italic">No friends added yet.</p>`;
+        container.innerHTML = `<p class="text-xs text-gray-400 italic">No friends added yet.</p>`;
         return;
       }
 
       friends.forEach(friend => {
         const item = document.createElement('div');
-        item.className = "flex items-center justify-between p-2 hover:bg-white/10 rounded-2xl cursor-pointer text-xs transition";
+        item.className = "flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-700/60 rounded-xl cursor-pointer text-xs";
         item.onclick = () => {
           document.getElementById('target-usernames-input').value = friend;
           openModal('new-chat-modal');
@@ -2116,12 +2458,12 @@
 
         item.innerHTML = `
           <div class="flex items-center space-x-2">
-            <div class="w-8 h-8 rounded-full theme-brand-bg flex items-center justify-center font-bold shadow-md">
+            <div class="w-8 h-8 rounded-full theme-brand-bg text-white flex items-center justify-center font-bold">
               ${friend.charAt(0).toUpperCase()}
             </div>
             <span class="font-medium">@${friend}</span>
           </div>
-          <i class="fa-solid fa-message opacity-60 hover:opacity-100"></i>
+          <i class="fa-solid fa-message text-gray-400 hover:text-blue-500"></i>
         `;
         container.appendChild(item);
       });
@@ -2139,8 +2481,18 @@
       localStorage.setItem('echo_theme', themeName);
     };
 
-    const savedTheme = localStorage.getItem('echo_theme') || 'gradient-cyberpunk';
+    window.toggleDarkMode = () => {
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('echo_darkmode', isDark ? 'true' : 'false');
+    };
+
+    const savedTheme = localStorage.getItem('echo_theme') || 'default';
+    const savedDark = localStorage.getItem('echo_darkmode');
     document.documentElement.setAttribute('data-theme', savedTheme);
+    if (savedDark === 'false') {
+      document.documentElement.classList.remove('dark');
+    }
 
     window.openModal = (id) => document.getElementById(id).classList.remove('hidden');
     window.closeModal = (id) => document.getElementById(id).classList.add('hidden');
