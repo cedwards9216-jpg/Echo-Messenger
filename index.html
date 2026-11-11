@@ -41,7 +41,7 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Dynamic Theme System Engine with High-Energy Gradients & Holiday Emojis */
+    /* Dynamic Theme System Engine */
     :root[data-theme="default"] {
       --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
       --sidebar-bg: rgba(255, 255, 255, 0.95);
@@ -76,7 +76,7 @@
       --pattern-overlay: none;
     }
 
-    /* Solid Color Themes Added */
+    /* Solid Color Themes */
     :root[data-theme="solid-black"] {
       --bg-gradient: #000000;
       --sidebar-bg: #000000;
@@ -162,7 +162,7 @@
       --pattern-overlay: none;
     }
 
-    /* Holiday & Event Themes with Restored Emojis */
+    /* Holiday & Event Themes */
     :root[data-theme="halloween"] {
       --bg-gradient: linear-gradient(135deg, #2e0854 0%, #581c87 40%, #c2410c 100%);
       --sidebar-bg: rgba(46, 8, 84, 0.95);
@@ -231,7 +231,7 @@
       --pattern-overlay: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" opacity="0.15" viewBox="0 0 100 100"><text x="10" y="30" font-size="22">✨</text><text x="70" y="35" font-size="20">🎆</text><text x="25" y="80" font-size="22">🥂</text><text x="75" y="85" font-size="20">🎉</text></svg>');
     }
 
-    /* High-Energy Vibrant Themes */
+    /* Vibrant Gradients */
     :root[data-theme="sunset"] {
       --bg-gradient: linear-gradient(135deg, #7c2d12 0%, #ea580c 50%, #db2777 100%);
       --sidebar-bg: rgba(124, 45, 18, 0.95);
@@ -942,7 +942,7 @@
     </div>
   </div>
 
-  <!-- ADD PARTICIPANT TO GROUP CHAT MODAL -->
+  <!-- ADD PARTICIPANT MODAL -->
   <div id="add-participant-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
     <div class="theme-card rounded-2xl max-w-md w-full p-6 border shadow-2xl relative">
       <div class="flex items-center justify-between mb-4">
@@ -965,7 +965,7 @@
     </div>
   </div>
 
-  <!-- EDIT GROUP SETTINGS & ADMIN MEMBER KICK MODAL -->
+  <!-- EDIT GROUP SETTINGS & ADMIN KICK MODAL -->
   <div id="edit-group-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 hidden">
     <div class="theme-card rounded-2xl max-w-md w-full p-6 border shadow-2xl relative">
       <div class="flex items-center justify-between mb-4">
@@ -1063,14 +1063,14 @@
 
         <p class="text-xs font-semibold mb-2">Select Theme & Solid Colors</p>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          <!-- Solid Colors Added -->
+          <!-- Solid Colors -->
           <button onclick="setTheme('solid-black')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-black text-white border-zinc-700"><span>⬛ Solid Black</span></button>
           <button onclick="setTheme('solid-red')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-red-800 text-white border-red-600"><span>🔴 Solid Red</span></button>
           <button onclick="setTheme('solid-green')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-green-800 text-white border-green-600"><span>🟢 Solid Green</span></button>
           <button onclick="setTheme('solid-blue')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-blue-800 text-white border-blue-600"><span>🔵 Solid Blue</span></button>
           <button onclick="setTheme('solid-purple')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition bg-purple-800 text-white border-purple-600"><span>🟣 Solid Purple</span></button>
           
-          <!-- Existing Gradients & Holidays -->
+          <!-- Gradients & Holidays -->
           <button onclick="setTheme('default')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>Default</span></button>
           <button onclick="setTheme('emerald')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>Emerald</span></button>
           <button onclick="setTheme('cyberpunk')" class="p-2.5 rounded-xl border text-xs font-medium text-center flex items-center justify-center space-x-1.5 hover:scale-102 transition"><span>⚡ Cyberpunk</span></button>
@@ -1104,17 +1104,17 @@
         <h4 class="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Changelog & Creator Credits</h4>
         <div class="bg-black/5 dark:bg-white/5 p-4 rounded-xl text-xs space-y-2 border border-black/10 dark:border-white/10">
           <div class="flex items-center justify-between pb-2 border-b border-black/10 dark:border-white/10">
-            <span class="font-bold text-blue-400">Echo Messenger v3.6.0</span>
-            <span class="text-[10px] opacity-60">Latest Release</span>
+            <span class="font-bold text-blue-400">Echo Messenger v3.6.1</span>
+            <span class="text-[10px] opacity-60">Bugfix Release</span>
           </div>
           <p class="font-semibold text-amber-500 flex items-center space-x-1">
             <i class="fa-solid fa-code"></i>
             <span>Created & Developed by: <strong>Caleb Edwards</strong></span>
           </p>
           <ul class="list-disc list-inside opacity-80 space-y-1 pt-1">
+            <li>Fixed messaging bug where sent messages disappeared due to Firestore undefined-value handling.</li>
             <li>Added Group Admin Kick feature for group creators.</li>
             <li>Added solid color themes (Solid Black, Red, Green, Blue, Purple).</li>
-            <li>Upgraded group title/avatar management and push notifications.</li>
           </ul>
         </div>
       </div>
@@ -1128,7 +1128,7 @@
     </div>
   </div>
 
-  <!-- VIDEO/AUDIO CALL MODAL OVERLAY -->
+  <!-- VIDEO/AUDIO CALL MODAL -->
   <div id="call-modal" class="fixed inset-0 z-50 bg-black/90 flex flex-col items-center justify-center p-4 hidden">
     <div class="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden border border-gray-700 shadow-2xl flex flex-col h-[80vh]">
       <div class="p-4 bg-gray-800 flex items-center justify-between">
@@ -1161,7 +1161,6 @@
       deleteDoc 
     } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-    // Hardcoded Firebase & App Config for GitHub Pages Hosting
     const appId = 'echo-messenger-app';
     const firebaseConfig = {
       apiKey: "AIzaSyD0JT-XWV_3An3m6me8tU3yo9oQ2_uYtGI",
@@ -1518,7 +1517,7 @@
 
     window.hideCurrentChat = async () => {
       if (!activeChatId) return;
-      if (!confirm("Are you sure you want to hide this conversation? (New incoming messages will unhide it)")) return;
+      if (!confirm("Are you sure you want to hide this conversation?")) return;
 
       const hiddenList = currentUser.hiddenChats || [];
       if (!hiddenList.includes(activeChatId)) {
@@ -1577,7 +1576,6 @@
         activeAvatarEl.textContent = displayTitle.charAt(0).toUpperCase();
       }
 
-      // Show group management buttons only for group chats
       const groupAddBtn = document.getElementById('group-add-member-btn');
       const groupSettingsBtn = document.getElementById('group-settings-btn');
       if (chat.isGroup) {
@@ -1619,7 +1617,7 @@
           if (msg.mediaType === 'video') {
             mediaHTML = `<video src="${msg.media}" controls class="max-w-xs rounded-lg mb-1 max-h-48"></video>`;
           } else {
-            mediaHTML = `<img src="${msg.media}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'p-3 bg-black/20 rounded-lg text-xs italic\\'>🎬 [GIF / Media Filtered by School Network]</div>';" class="max-w-xs rounded-lg mb-1 object-cover max-h-48">`;
+            mediaHTML = `<img src="${msg.media}" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'p-3 bg-black/20 rounded-lg text-xs italic\\'>🎬 [Media Attachment]</div>';" class="max-w-xs rounded-lg mb-1 object-cover max-h-48">`;
           }
         }
 
@@ -1699,6 +1697,7 @@
       return formatted;
     }
 
+    // FIXED: Strict undefined-value protection for Firebase Firestore
     window.sendMessage = async (e) => {
       e.preventDefault();
       const textInput = document.getElementById('message-text-input');
@@ -1716,16 +1715,13 @@
       const newMsg = {
         id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
         sender: currentUser.username,
-        text: text,
+        text: text || "",
         timestamp: Date.now(),
-        reactions: {}
+        reactions: {},
+        replyTo: replyingToMsg ? { id: replyingToMsg.id, sender: replyingToMsg.sender, text: replyingToMsg.text || "" } : null,
+        media: selectedAttachmentBase64 ? selectedAttachmentBase64.data : null,
+        mediaType: selectedAttachmentBase64 ? selectedAttachmentBase64.type : null
       };
-
-      if (replyingToMsg) newMsg.replyTo = replyingToMsg;
-      if (selectedAttachmentBase64) {
-        newMsg.media = selectedAttachmentBase64.data;
-        newMsg.mediaType = selectedAttachmentBase64.type;
-      }
 
       messages.push(newMsg);
 
@@ -1770,7 +1766,7 @@
     };
 
     window.setReply = (msgId, sender, text) => {
-      replyingToMsg = { id: msgId, sender: sender, text: text };
+      replyingToMsg = { id: msgId, sender: sender, text: text || "" };
       document.getElementById('reply-to-user').textContent = `Replying to @${sender}`;
       document.getElementById('reply-to-text').textContent = text || '[Attachment]';
       document.getElementById('reply-preview-bar').classList.remove('hidden');
@@ -1808,7 +1804,7 @@
     window.pinChatMessage = async (msgId, sender, text) => {
       const chatRef = doc(PUBLIC_CHATS_COL, activeChatId);
       await updateDoc(chatRef, {
-        pinnedMsg: { id: msgId, sender: sender, text: text }
+        pinnedMsg: { id: msgId, sender: sender, text: text || "" }
       });
     };
 
@@ -1881,7 +1877,6 @@
       reader.readAsDataURL(file);
     };
 
-    // GROUP SETTINGS & ADMIN KICK FUNCTIONALITY
     window.openGroupSettingsModal = () => {
       const chat = chatsData.find(c => c.id === activeChatId);
       if (!chat || !chat.isGroup) return;
@@ -1896,7 +1891,6 @@
         previewEl.textContent = (chat.title || 'G').charAt(0).toUpperCase();
       }
 
-      // Render members list with admin kick options
       const membersContainer = document.getElementById('group-members-list');
       membersContainer.innerHTML = '';
 
@@ -1961,7 +1955,10 @@
         sender: 'system',
         text: `@${currentUser.username} removed @${usernameToKick} from the group.`,
         timestamp: Date.now(),
-        reactions: {}
+        reactions: {},
+        replyTo: null,
+        media: null,
+        mediaType: null
       });
 
       await updateDoc(chatRef, {
@@ -1992,12 +1989,15 @@
         sender: 'system',
         text: `@${currentUser.username} updated group settings.`,
         timestamp: Date.now(),
-        reactions: {}
+        reactions: {},
+        replyTo: null,
+        media: null,
+        mediaType: null
       });
 
       await updateDoc(chatRef, {
         title: newTitle,
-        groupAvatar: selectedGroupAvatarBase64,
+        groupAvatar: selectedGroupAvatarBase64 || "",
         messages: messages,
         lastUpdated: Date.now()
       });
@@ -2005,7 +2005,6 @@
       closeModal('edit-group-modal');
     };
 
-    // GIPHY API INTEGRATION
     window.toggleGifPicker = () => {
       const picker = document.getElementById('gif-picker-popover');
       picker.classList.toggle('hidden');
@@ -2071,11 +2070,12 @@
       messages.push({
         id: 'msg_' + Date.now() + '_' + Math.random().toString(36).substr(2, 4),
         sender: currentUser.username,
-        text: '',
+        text: "",
         media: gifUrl,
         mediaType: 'image',
         timestamp: Date.now(),
-        reactions: {}
+        reactions: {},
+        replyTo: null
       });
 
       for (const participant of (chatData.participants || [])) {
@@ -2099,7 +2099,6 @@
       document.getElementById('gif-picker-popover').classList.add('hidden');
     }
 
-    // ROBUST WEBRTC CALLING (TURN / STUN WITH SCHOOL FIREWALL BYPASS)
     const rtcConfig = {
       iceServers: [
         { urls: 'stun:stun.l.google.com:19302' },
@@ -2204,7 +2203,7 @@
         }
       } catch (err) {
         console.error("Call initialization error:", err);
-        alert("Could not start call. Check microphone/camera permissions or school firewall restrictions.");
+        alert("Could not start call. Check microphone/camera permissions or firewall restrictions.");
         endCall();
       }
     }
@@ -2281,12 +2280,14 @@
 
       const newChatId = 'chat_' + Date.now();
       const newChatObj = {
-        title: groupTitle || '',
+        title: groupTitle || "",
         isGroup: uniqueParticipants.length > 2 || !!groupTitle,
         participants: uniqueParticipants,
         createdBy: currentUser.username,
         lastUpdated: Date.now(),
-        messages: []
+        messages: [],
+        pinnedMsg: null,
+        groupAvatar: ""
       };
 
       await setDoc(doc(PUBLIC_CHATS_COL, newChatId), newChatObj);
@@ -2334,7 +2335,10 @@
         sender: 'system',
         text: `@${currentUser.username} added @${usernameToAdd} to the group.`,
         timestamp: Date.now(),
-        reactions: {}
+        reactions: {},
+        replyTo: null,
+        media: null,
+        mediaType: null
       });
 
       await updateDoc(chatRef, {
